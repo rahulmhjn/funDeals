@@ -1,0 +1,567 @@
+
+    <!-- Register -->
+    <div id="registerpopup">
+        <div class="upperContainer">
+                <div class="container">
+                        <div class="registercross"><h5 class="cross">Close<i class="fas fa-times i"></i></h5></div>
+                    <div class="signImage">
+                        <img src="/images/demo1.png" alt="">
+                    </div>
+                    <div class="sideLogin">
+                        <div class="loginsignup">
+                            <button class="UserLogin">SignUp as CUSTOMER</button>
+                            <button class="BusinessLogin">SignUp as BUSINESS</button>
+                       </div>
+                    </div>
+                </div>
+        </div>
+</div>
+
+<!-- Merchant signup -->
+<div class="merchantLoginPop">
+    <div class="upperContainer">
+        <div class="container">
+            <div class="crossUpper"><h5 class="cross">Close<i class="fas fa-times i"></i></h5></div>
+            <div class="signImage">
+                <img src="/images/demo1.png" alt="">
+            </div>
+            <div class="sideLogin">
+                <div class="Uppersignup">
+                    <div class="stats">
+                        <div id="basicbutton">Basic</div>
+                        <div id="schedulebutton">Schedule</div>
+                        
+                        <div id="logobutton">Logo</div>
+                    </div>
+                    <div class="signup">
+    <form action="/auth/register/merchant" method="POST" enctype="multipart/form-data">
+                    <div id="basicinfo">
+                            <h3><b>New Business</b></h3>
+                            <div class="selectOption">
+                                     <div class="dropdown">
+                                            <h3 class="classbusinessType"><select type="text" class="select_" placeholder="Buiseness Name" onchange="changedroptype(this)" onblur="validate()" name="businessType" id="businessType"></h3>
+                                                    <option value="0" selected>Business Type *</option>
+                                                    <option value="food">Food</option>
+                                                    <option value="fashion">Fashion</option>
+                                                    <option value="others">Activity/others</option>
+        
+                                                </select>
+                                            </div>
+                                           <!--  495 -->
+                                            <div class="dropdown">
+                                                    <h3 class="classbusinessCategory"><select type="text" class="select_" placeholder="Buiseness Name" name="businessCategory" id="businessCategory" onblur="validate()"></h3>
+                                                            <option value="0" selected>Business Category *</option>
+                                                            <option class="fooddrop" value="Restaurant">Restaurant</option>
+                                                            <option class="fooddrop" value="Food Corner">Food Corner</option>
+                                                            <option class="fooddrop" value="Outlet">Outlet</option>
+                                                            <option class="fooddrop" value="Food Truck">Food Truck</option>
+                                                            <option class="fooddrop" value="Snack and Farsan">Snack and Farsan</option>
+                                                            <option class="fooddrop" value="Confectionary and Dessert">Confectionary and Dessert</option>
+                                                            <option class="fooddrop" value="Ice Cream Parlour">Ice Cream Parlour</option>
+                                                            <option class="fooddrop" value="Juice Center">Juice Center</option>
+                                                            <option class="fooddrop" value="Fast Food">Fast Food</option>
+                                                            <option class="fooddrop" value="Cafe">Cafe</option>
+                                                            <option class="fooddrop" value="Sweet Shop">Sweet Shop</option>
+                                                            <option class="fooddrop" value="Bakery">Bakery</option>
+                                                            <option class="fooddrop" value="Dairy Product">Dairy Product</option>
+                                                            <option class="fooddrop" value="Hotels">Hotels</option>
+                                                            <option class="fooddrop" value="Banquet">Banquet</option>
+                                                            <option class="fashiondrop" value="Women's Wear">Women's Wear</option>
+                                                            <option class="fashiondrop" value="Men's Wear">Men's Wear</option>
+                                                            <option class="fashiondrop" value="Kid's Wear">Kid's Wear</option>
+                                                            <option class="fashiondrop" value="Bridal Wear">Bridal Wear</option>
+                                                            <option class="fashiondrop" value="Groom's Wear">Groom's Wear</option>
+                                                            <option class="fashiondrop" value="Boutique">Boutique</option>
+                                                            <option class="fashiondrop" value="Clothing Store">Clothing Store</option>
+                                                            <option class="fashiondrop" value="Shoe Wear">Shoe Wear</option>
+                                                            <option class="fashiondrop" value="Purse and Handbag">Purse and Handbag</option>
+                                                            <option class="fashiondrop" value="Jwellery">Jwellery</option>
+                                                            <option class="fashiondrop" value="Make Up and More">Make Up and More</option>
+                                                            <option class="fashiondrop" value="Optic Wear">Optic Wear</option>
+                                                            <option class="fashiondrop" value="Nail Painting">Nail Painting</option>
+                                                            <option class="fashiondrop" value="Tattos">Tattos</option>
+                                                            <option class="fashiondrop" value="Mehndi Art">Mehndi Art</option>
+                                                            <option class="fashiondrop" value="Salon and Spa">Salon and Spa</option>
+                                                            <option class="fashiondrop" value="Man Salon">Man Salon</option>
+                                                            <option class="fashiondrop" value="Women Salon">Women Salon</option>
+                                                            <option class="othersdrop" value="Resorts">Resorts</option>
+                                                            <option class="othersdrop" value="Events">Events</option>
+                                                            <option class="othersdrop" value="Toy Store">Toy Store</option>
+                                                            <option class="othersdrop" value="Activity">Activity</option>
+                                                            <option class="othersdrop" value="Health & Wellness">Health & Wellness</option>
+                                                            <option class="othersdrop" value="Spa">Spa</option>
+                                                            <option class="othersdrop" value="Fitness">Fitness</option>
+                                                            <option class="othersdrop" value="Pet Care">Pet Care</option>
+                                                            <option class="othersdrop" value="Aesthetics">Aesthetics</option>
+                                                            <option class="othersdrop" value="Car spa">Car spa</option>
+
+                                                            <option class="othersdrop" value="Game zone">Game zone</option>
+                                                            <option class="othersdrop" value="Automobile">Automobile</option>
+                                                            <option class="othersdrop" value="Adventure sports">Adventure sports</option>
+                                                            <option class="othersdrop" value="Banquets">Banquets</option>
+                                                            <option class="othersdrop" value="Discotheque">Discotheque</option>
+                                                            <option class="othersdrop" value="Art Gallery">Art Gallery</option>
+                                                            <option class="othersdrop" value="Exhibitions">Exhibitions</option>
+                                                            <option class="othersdrop" value="Photo Frames">Photo Frames</option>
+                                                            <option class="othersdrop" value="Home Decor">Home Decor</option>
+                                                            <option class="othersdrop" value="Watch Gallery">Watch Gallery</option>
+                                                            
+                                                            <option class="othersdrop" value="Electronics">Electronics</option>
+
+                                                            <option class="othersdrop" value="Mobile shop & Accessories">Mobile shop & Accessories</option>
+
+                                                            <option class="othersdrop" value="Photography">Photography</option>
+
+                                                            <option class="othersdrop" value="Dance & Zumba">Dance & Zumba</option>
+                                                            
+                                                    </select>
+                                                </div>
+
+
+                            </div>
+                            <div class="selectOption">
+                                <div class="userName in classbusinessName">
+                                    <input type="text" placeholder="Business Name *" onblur="validate()" name="businessName" id="businessName">
+                                </div>
+                                <div class="in">
+                                    <input type="text" id="" placeholder="FSSAI Number" inputmode="numeric" name="fassaiNumber" pattern="[0-9]{14}"  maxlength="14">
+                                </div>
+                            </div>
+                            <div class="mobile in classnumber">
+                                    <input type="tel" placeholder="Phone Number *" pattern="[0-9]{10}" maxlength="10" onblur="validate()" name="number" inputmode="numeric" id="number">
+                            </div>
+                            <div class="email in classemail">
+                                <input type="email" placeholder="Email *"  name="email" id="email"  onblur="validate()">
+                            </div>
+                            <div class="in">
+                                    <input type="text" name="website" id="" placeholder="Website">
+                            </div>
+                            <div class="address1">
+
+                                <div class="dropdown">
+                                                <h3 class="classstate"><select type="text" class="select_" placeholder="Buiseness Name" onchange="statemerchantchange(this)"
+                                                    name="state" id="state" onblur="validate()"
+                                                    ></h3>
+                                                    <option value="0" selected>State *</option>
+                                                    <%for(state in settings){%>
+                                                        <option value="<%=state%>"><%=state%></option>
+                                                    <%}%>
+                                                    
+                                                   
+        
+                                                </select>
+                                            </div>
+                                            <div class="dropdown">
+                                                    <h3 class="classcity"><select type="text" class="select_" placeholder="Buiseness Name"
+                                                        name="city" id="city" onblur="validate()"
+                                                        onchange="districtmerchantchange(this)"></h3>
+                                                        <option value="0" selected>City *</option>
+
+                                                    <%for(state in settings){%>
+                                                        <%for(city in settings[state]){%>
+                                                            <option value="<%=city%>" class="<%=state%>"><%=city%></option>    
+                                                        <%}%>
+                                                        
+                                                   <%}%>
+            
+                                                    </select>
+                                                </div>
+                                                <div class="dropdown">
+                                                        <h3 class="classarea"><select type="text" class="select_" 
+                                                            name="area" id="area" onblur="validate()"
+                                                            placeholder="Buiseness Name"></h3>
+
+                                                  
+                                            <option value="0">Area *</option>
+                                                <%for(state in settings){%>
+                                                <%for(city in settings[state]){%>
+                                                <%for(area of settings[state][city]){%>
+                                                            <option value="<%=area%>" class="<%=city%>"><%=area%></option>    
+                                                <%}%>  
+                                                    <%}%>
+                                                        
+                                                    <%}%>
+                                                           
+                                        </select>
+                                </div>
+                         
+                                          
+    </div> <!-- .addressLine1 -->
+                            <div class="in classusername">
+                                    <input type="text" name="username" id="username" placeholder="Your First Name *" onblur="validate()">
+                            </div>
+                            <div class="in classpassword">
+                                    <i class="fas fa-key i"></i>
+                                    <input type="password" name="password" id="password" placeholder="Password*" onblur="validate()">
+                                    <i class="fas fa-eye" onclick="showpassword(this)" style="margin: auto;"></i>
+                            </div>
+                            
+                            <div class="addressLine in">
+                                <input type="text" class="classaddress" name="address" id="" id="address" placeholder="Address Line *" onblur="validate()">
+                            </div>
+                            <div class="in">
+                                <input type="text" class="classabout" name="about" id="" placeholder="About" id="about" placeholder="About" onblur="validate()">
+                            </div>
+                            <div>
+                                <input class="in" inputmode="numeric" type="text" name="establishedYear" placeholder="Established Year*">
+                            </div>
+                            <div class="in1">
+                                <button id="basicInfo" disabled="true" type="button"><b>Next<i class="fas fa-arrow-right i"></i></b></button>
+                                <div class="in2"><a class="already"><i class="fas fa-sign-in-alt i"></i>Already a member</a></div>
+                            </div>
+                    </div>
+                    
+                    <div id="schedule">
+                                <h3><b>Schedule</b></h3>
+                                <div class="checkOtp">
+                                        <div class="time1">
+                                                <div class="dropdown">
+                                                        <h3>
+                                            <select type="text" class="select_" placeholder="Buiseness Name*" name="openTime">
+
+                                                            </h3>
+                                                            <option value="0">Open*</option>
+                                                            <option value="12:00 AM">12:00 AM</option>
+                                                            <option value="12:30 AM">12:30 AM</option>
+                                                            <option value="01:00 AM">01:00 AM</option>
+                                                            <option value="01:30 AM">01:30 AM</option>
+                                                            <option value="02:00 AM">02:00 AM</option>
+                                                            <option value="02:30 AM">02:30 AM</option>
+                                                            <option value="03:00 AM">03:00 AM</option>
+                                                            <option value="03:30 AM">03:30 AM</option>
+                                                            <option value="04:00 AM">04:00 AM</option>
+                                                            <option value="04:30 AM">04:30 AM</option>
+                                                            <option value="05:00 AM">05:00 AM</option>
+                                                            <option value="05:30 AM">05:30 AM</option>
+                                                            <option value="06:00 AM">06:00 AM</option>
+                                                            <option value="06:30 AM">06:30 AM</option>
+                                                            <option value="07:00 AM">07:00 AM</option>
+                                                            <option value="07:30 AM">07:30 AM</option>
+                                                            <option value="08:00 AM">08:00 AM</option>
+                                                            <option value="08:30 AM">08:30 AM</option>
+                                                            <option value="09:00 AM">09:00 AM</option>
+                                                            <option value="09:30 AM">09:30 AM</option>
+                                                            <option value="10:00 AM">10:00 AM</option>
+                                                            <option value="10:30 AM">10:30 AM</option>
+                                                            <option value="11:00 AM">11:00 AM</option>
+                                                            <option value="11:30 AM">11:30 AM</option>
+                                                            <option value="12:00 PM">12:00 PM</option>
+                                                            <option value="12:30 PM">12:30 PM</option>
+                                                            <option value="01:00 PM">01:00 PM</option>
+                                                            <option value="01:30 PM">01:30 PM</option>
+                                                            <option value="02:00 PM">02:00 PM</option>
+                                                            <option value="02:30 PM">02:30 PM</option>
+                                                            <option value="03:00 PM">03:00 PM</option>
+                                                            <option value="03:30 PM">03:30 PM</option>
+                                                            <option value="04:00 PM">04:00 PM</option>
+                                                            <option value="04:30 PM">04:30 PM</option>
+                                                            <option value="05:00 PM">05:00 PM</option>
+                                                            <option value="05:30 PM">05:30 PM</option>
+                                                            <option value="06:00 PM">06:00 PM</option>
+                                                            <option value="06:30 PM">06:30 PM</option>
+                                                            <option value="07:00 PM">07:00 PM</option>
+                                                            <option value="07:30 PM">07:30 PM</option>
+                                                            <option value="08:00 PM">08:00 PM</option>
+                                                            <option value="08:30 PM">08:30 PM</option>
+                                                            <option value="09:00 PM">09:00 PM</option>
+                                                            <option value="09:30 PM">09:30 PM</option>
+                                                            <option value="10:00 PM">10:00 PM</option>
+                                                            <option value="10:30 PM">10:30 PM</option>
+                                                            <option value="11:00 PM">11:00 PM</option>
+                                                            <option value="11:30 PM">11:30 PM</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="dropdown">
+                                                            <h3>
+                                                    <select type="text" class="select_" placeholder="Buiseness Name*" name="closeTime">
+
+                                                    </h3>
+                                                                <option value="0">Closed*</option>
+                                                                <option value="12:00 PM">12:00 PM</option>
+                                                                <option value="12:30 PM">12:30 PM</option>
+                                                                <option value="01:00 PM">01:00 PM</option>
+                                                                <option value="01:30 PM">01:30 PM</option>
+                                                                <option value="02:00 PM">02:00 PM</option>
+                                                                <option value="02:30 PM">02:30 PM</option>
+                                                                <option value="03:00 PM">03:00 PM</option>
+                                                                <option value="03:30 PM">03:30 PM</option>
+                                                                <option value="04:00 PM">04:00 PM</option>
+                                                                <option value="04:30 PM">04:30 PM</option>
+                                                                <option value="05:00 PM">05:00 PM</option>
+                                                                <option value="05:30 PM">05:30 PM</option>
+                                                                <option value="06:00 PM">06:00 PM</option>
+                                                                <option value="06:30 PM">06:30 PM</option>
+                                                                <option value="07:00 PM">07:00 PM</option>
+                                                                <option value="07:30 PM">07:30 PM</option>
+                                                                <option value="08:00 PM">08:00 PM</option>
+                                                                <option value="08:30 PM">08:30 PM</option>
+                                                                <option value="09:00 PM">09:00 PM</option>
+                                                                <option value="09:30 PM">09:30 PM</option>
+                                                                <option value="10:00 PM">10:00 PM</option>
+                                                                <option value="10:30 PM">10:30 PM</option>
+                                                                <option value="11:00 PM">11:00 PM</option>
+                                                                <option value="11:30 PM">11:30 PM</option>
+                                                                <option value="12:00 AM">12:00 AM</option>
+                                                                <option value="12:30 AM">12:30 AM</option>
+                                                                <option value="01:00 AM">01:00 AM</option>
+                                                                <option value="01:30 AM">01:30 AM</option>
+                                                                <option value="02:00 AM">02:00 AM</option>
+                                                                <option value="02:30 AM">02:30 AM</option>
+                                                                <option value="03:00 AM">03:00 AM</option>
+                                                                <option value="03:30 AM">03:30 AM</option>
+                                                                <option value="04:00 AM">04:00 AM</option>
+                                                                <option value="04:30 AM">04:30 AM</option>
+                                                                <option value="05:00 AM">05:00 AM</option>
+                                                                <option value="05:30 AM">05:30 AM</option>
+                                                                <option value="06:00 AM">06:00 AM</option>
+                                                                <option value="06:30 AM">06:30 AM</option>
+                                                                <option value="07:00 AM">07:00 AM</option>
+                                                                <option value="07:30 AM">07:30 AM</option>
+                                                                <option value="08:00 AM">08:00 AM</option>
+                                                                <option value="08:30 AM">08:30 AM</option>
+                                                                <option value="09:00 AM">09:00 AM</option>
+                                                                <option value="09:30 AM">09:30 AM</option>
+                                                                <option value="10:00 AM">10:00 AM</option>
+                                                                <option value="10:30 AM">10:30 AM</option>
+                                                                <option value="11:00 AM">11:00 AM</option>
+                                                                <option value="11:30 AM">11:30 AM</option>
+                                                            </select>
+                                                        </div>
+                                            </div>
+                                </div>
+                               
+                            <div class="checkOtp checkOtpschedule" id="checkOtp1">
+                                <label for="checkbox1"><i class="fas fa-check i"></i></label><b>Monday</b>
+                                <input type="checkbox" name="monday" value="Open" id="checkbox1">
+                            </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp2">
+                                <label for="checkbox2"><i class="fas fa-check i"></i></label><b>Tuesday</b>
+                                <input type="checkbox" name="tuesday" value="Open" id="checkbox2">
+                            </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp3">
+                                <label for="checkbox3"><i class="fas fa-check i"></i></label><b>Wednesday</b>
+                                <input type="checkbox" name="wednesday" value="Open" id="checkbox3">
+                                </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp4">
+                                <label for="checkbox4"><i class="fas fa-check i"></i></label><b>Thrusday</b>
+                                <input type="checkbox" value="Open" name="thursday" id="checkbox4">
+                            </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp5">
+                                <label for="checkbox5"><i class="fas fa-check i"></i></label><b>Friday</b>
+                                <input type="checkbox" name="friday" value="Open" id="checkbox5">
+                                </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp6">
+                                <label for="checkbox6"><i class="fas fa-check i"></i></label><b>Saturday</b>
+                                <input type="checkbox" name="saturday" value="Open" id="checkbox6">
+                            </div>
+                            <div class="checkOtp checkOtpschedule" id="checkOtp7">
+                                <label for="checkbox7"><i class="fas fa-check i"></i></label><b>Sunday</b>
+                                <input type="checkbox" name="sunday" value="Open" id="checkbox7">
+                            </div>
+                            <div class="in1">
+                                    <button id="scheduleButton" type="button"><b>Next<i class="fas fa-arrow-right i"></i></b></button>
+                                    <div class="in2"><a class="already"><i class="fas fa-sign-in-alt i"></i>Already a member</a></div>
+                                </div>
+                        </div> <!--  schedule -->
+
+
+                    <div id="uploadlogo">
+                        <h3><b>Upload Logo</b></h3>
+                        <div class="logoupload">
+                                <label for="imagechoose"><i class="fas fa-upload i"></i>Choose Image</label>
+                                <input type="file" accept="image/*" name="logo" id="imagechoose" onchange="readURL1(this)" />
+                                <img id="imgsrc" src="" alt="" style="border-radius: 5px;">
+                        </div>
+                        <!----========= new ===========-->
+                            <div class="in3">
+                             <div class="checkOtp" id="checkTerms" style="padding-left: 20px;">
+                                 <label for="checkbox"><i class="fas fa-check i"></i></label><b>I Accept All The <a data-toggle="modal" data-target="#exampleModal10">
+                                    <span class="link_"> Terms and Conditions </span></a> & <a data-toggle="modal" data-target="#exampleModal11">
+                                        <span class="link_"> Privacy Policy </span></a></b>
+                                 <input type="checkbox" name="" id="checkbox"  onchange="changebutton(this)">
+                             </div>
+                         </div>
+                           <!----========= new ===========-->
+                     <div class="in1">
+                             <button class="nextOtp disable" id="btncheck" disabled>Create Account</button>
+                             <div class="in2"><a class="already"><i class="fas fa-sign-in-alt i"></i>Already a member</a></div>
+                        </div>
+                      </div>  
+                </form>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <!-- new -->
+ <div class="modal fade" id="exampleModal10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="font-size: 1.5rem;color: #217ab3;font-weight: 600;">Merchant Terms and Conditions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <div class="col-md-12" style="text-align: center; width: 100%;">
+                        <img src="/images/logo.png" width="15%">
+                </div>
+          <ul class="termsul">
+              <li>Fun Deal is authorized to promote and sell up to the Maximum
+                    Number of Fun Deal (voucher)s in multiple markets and on dates in its
+                    discretion. If Merchant elects to offer recurring month-to-month features,
+                    then Fun Deal will promote and sell up to the Maximum Number of
+                    Fun Deal (voucher)s for the initial feature, then promote and sell up to
+                    the Monthly Maximum Number of Fun Deal (voucher)s for subsequent
+                    features. Merchant shall specify the Maximum Number of Fun Deal
+                    (voucher)s and, if applicable, specify the Monthly Maximum Number of
+                    Fun Deal (voucher)s, and may increase either number in its discretion.</li>
+              <li>Fun Deal reserves the continuing right to reject, revise, or
+                    discontinue any Merchant Offering, at any time and for any reason in
+                    Fun Deal’s sole discretion, and to terminate the Merchant Offering
+                    and to remove all references to the Merchant Offering and Fun Deal
+                    (voucher) from the Website; and redirect or delete any URL used in
+                    connection with the Merchant Offering.</li>
+              <li>Merchant shall honor the Fun Deal (voucher)s for the Merchant Offering
+                    through the Promotional Value Expiration Date. After the Promotional
+                    Value Expiration Date,<b> MERCHANT AGREES TO REDEEM THE HAPPY
+                    DEAL (VOUCHER) FOR THE AMOUNT PAID INDEFINITELY.</b></li>
+              <li>The authority of setting the price of the Fun Deal (voucher)s shall be
+                    solely with HappinessDeal.com, prices might change without any prior
+                    notice to the merchant.</li>
+              <li>No commission shall be charged to the merchant for the sales being
+                    made through HappinessDeal.com for the merchant, certain exceptions
+                    might occur based on the conditions set forth by the Merchant.</li>
+              <li>
+                    A HappinessDeal.com, merchant registration charges would be charged
+                    minimally from the merchant which could be subjected to changes made
+                    by HappinessDeal.com.
+              </li>
+              <li>
+                    HappinessDeal.com holds the right to approve or reject an offer made by
+                    the merchant on account of any discrepancy present.
+              </li>
+          </ul>
+        </div>
+       <div class="modal-footer" style="justify-content:flex-start;">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- new -->
+   <!-- new -->
+   <div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog width700" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="font-size: 1.5rem;color: #217ab3;font-weight: 600;">Merchant Privacy Policies</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <div class="col-md-12" style="text-align: center; width: 100%;">
+                            <img src="/images/logo.png" width="15%">
+                    </div>
+              <ul class="paddingleft20">
+                <b  style="color: #217ab3;">“MERCHANT OFFERING”</b> means the goods and/or services to be provided by the Merchant, stated on the Fun Deal [Fun Deal (voucher)] as presented by Fun Deal. Values determined by Merchant. <br>
+                <b  style="color: #217ab3;">“MAXIMUM NUMBER OF Fun Deal (VOUCHER)S”</b> means the maximum number of Fun Deal (voucher)s Fun Deal is authorized to administer the sale of on behalf of the Merchant.<br>
+                <b  style="color: #217ab3;">“MONTHLY MAXIMUM NUMBER OF Fun Deal (VOUCHER)S”</b> means the maximum number of Fun Deal (voucher)s Fun Deal is authorized to administer the sale of on behalf of Merchant each month after the Maximum Number of Fun Deal (voucher)s has been sold.<br>
+                <b  style="color: #217ab3;">“FULL OFFER VALUE”</b> means the Amount Paid plus the Promotional Value.<br>
+                <b  style="color: #217ab3;">“AMOUNT PAID”</b> means the amount a purchaser pays for each Fun Deal (voucher).<br>
+                <b  style="color: #217ab3;">“PROMOTIONAL VALUE”</b> means the Full Offer Value less the Amount Paid.<br>
+                <b  style="color: #217ab3;">“PROMOTIONAL VALUE EXPIRATION DATE”</b> means the date stated on the Fun Deal (voucher) when the Promotional Value expires.<br>
+                <b  style="color: #217ab3;" >“FINE PRINT”</b> means the conditions and restrictions concerning Fun Deal (voucher) redemption and the Merchant Offering stated on the Website and Fun Deal (voucher).<br><br>
+                <ol class="paddingleft10">
+                <li><b  style="color: #217ab3;">Fun Deal (voucher) Program</b></li><br>
+                <ol type="i" class="paddingleft10">
+                <li>Fun Deal is authorized to promote and sell Fun Deal (voucher)s on Merchant’s behalf subject to the terms of this Agreement and the “Terms of Sale” of the Website. The Fun Deal (voucher) will evidence the Merchant Offering and will be sent to the purchaser electronically once payment is received. The purchaser will then redeem the Fun Deal (voucher) with the Merchant by presenting the Fun Deal (voucher) in paper or electronic form. Merchant is the issuer of the Fun Deal (voucher)s and seller of the Merchant Offering. If there is a conflict between this Agreement and the Terms of Sale, the Agreement controls.</li>
+                <li>Fun Deal is authorized to promote and sell Fun Deal (voucher)s on Merchant’s behalf through any platform, including its feature deal-of-the-day, affiliates, business partner network, marketplace, or referral network. The Fun Deal (voucher)s may be offered to all or part of Fun Deal’s subscriber base or its affiliate subscriber base or referral network and segmented by various variables including gender, age, location, and consumer preferences. The features may be offered through a variety of distribution channels, including, the Internet, the Website, affiliate websites, business partner network, email, mobile applications, other types of electronic offerings and other platforms or distribution channels owned, controlled, or operated by Fun Deal, its affiliates or business partners. In addition, in connection with Fun Deal’s promotion of a Merchant Offering, Merchant authorizes Fun Deal to shorten or extend the Promotional Value Expiration Date.</li>
+                <li>For appointment based Merchant Offerings, Fun Deal may require that Merchant provide Fun Deal with a calendar of available appointment times and allow Fun Deal purchasers to schedule appointments with the Merchant through Fun Deal and any third party service Fun Deal may use. Fun Deal may audit Merchant response times using various methods, including but not limited to, auto-dialers, call forwarding and pre-recorded calls. If Fun Deal, in its sole discretion, determines Merchant response times or the quality of service provided to purchasers is unsatisfactory, Fun Deal may terminate the Agreement and return the Amount Paid to purchasers for unredeemed Fun Deal (voucher).</li>
+                 
+                <li>Fun Deal is authorized to promote and sell up to the Maximum Number of Fun Deal (voucher)s in multiple markets and on dates in its discretion. If Merchant elects to offer recurring month-to-month features, then Fun Deal will promote and sell up to the Maximum Number of Fun Deal (voucher)s for the initial feature, then promote and sell up to the Monthly Maximum Number of Fun Deal (voucher)s for subsequent features. Merchant shall specify the Maximum Number of Fun Deal (voucher)s and, if applicable, specify the Monthly Maximum Number of Fun Deal (voucher)s, and may increase either number in its discretion.</li>
+                <li>Fun Deal reserves the continuing right to reject, revise, or discontinue any Merchant Offering, at any time and for any reason in Fun Deal’s sole discretion, and to terminate the Merchant Offering and to remove all references to the Merchant Offering and Fun Deal (voucher) from the Website; and redirect or delete any URL used in connection with the Merchant Offering.</li>
+               <li> Merchant shall honor the Fun Deal (voucher)s for the Merchant Offering through the Promotional Value Expiration Date. After the Promotional Value Expiration Date,<b> MERCHANT AGREES TO REDEEM THE Fun Deal (VOUCHER) FOR THE AMOUNT PAID INDEFINITELY.</b></li>
+                <li>After the Promotional Value Expiration Date, Merchant must always allow the purchaser to redeem the Fun Deal (voucher) for the Amount Paid toward the Merchant Offering. If the goods and services constituting the Merchant Offering and stated on the Fun Deal (voucher) are no longer available, the Merchant must always allow the purchaser to redeem the Fun Deal (voucher) toward any goods or services then offered by the Merchant equivalent to at least the Amount Paid.</li>
+                <li>Partial redemptions: If applicable, and if a purchaser redeems a Fun Deal (voucher) for less than the Amount Paid, the Merchant is responsible for handling any unredeemed value as required by applicable law.</li>
+                <li>Merchant agrees that in providing the Merchant Offering, Merchant will not inflate prices or impose any additional fees, charges, conditions or restrictions that contradict or are inconsistent with the terms stated on the Fun Deal (voucher), including the Fine Print. Unless disclosed in the Fine Print, Merchant further agrees not to impose different terms or a different cancellation policy than what is imposed on its non-Fun Deal customers.</li>
+                <li>Merchant agrees that so long as an appointment or reservation is made to redeem a Fun Deal (voucher), or purchaser has made an attempt to make an appointment, before the Fun Deal (voucher)’s Promotional Value Expiration Date, the Fun Deal (voucher) will be honored for the Full Offer Value without restriction, even though the services may be provided after the Promotional Value Expiration Date.</li>
+                <li>Merchant is responsible for all customer service in connection with the Merchant Offering and for supplying all goods and services stated in the Merchant Offering. Merchant is also responsible for any customer loyalty programs associated with the Merchant Offering.</li>
+                <li>If applicable, Merchant will hold the Merchant Offering for pick-up by each purchaser at the Redemption Site. The “Redemption Site” is the complete and accurate address provided by Merchant to Fun Deal where purchasers are able to redeem the Fun Deal (voucher) to pick-up the Merchant Offering. Merchant also agrees to provide Fun Deal with the hours and dates of operation, complete with any exceptions, and a valid phone number for the Redemption Site. If any of the information related to a Redemption Site changes, Merchant agrees to notify Fun Deal immediately of such change.</li>
+                <li>Merchant agrees to accept returns of the Merchant Offering in compliance with applicable laws and the Fine Print, but in any event: (i) will accept returns of a defective Merchant Offering or nonconforming items in or a part of any Merchant Offering at all times and pay (or reimburse a purchaser for) any and all costs associated with the return of such Merchant Offering; and (ii) will not impose a more restrictive return policy on purchasers than Merchant’s regular return policy as applied to Merchant’s purchaser in the ordinary course of Merchant’s business. <br></li>
+                 </ol><br>
+                <li><b  style="color: #217ab3;">Payment</b></li><br>
+                <ol type="i">
+                <li>Amounts retained by Fun Deal from the proceeds of the Merchant Offering are compensation to Fun Deal for marketing, promoting, and advertising the Merchant Offering and distributing the Fun Deal (voucher)s on behalf of Merchant. Merchant shall retain the Remittance Amount in trust for the benefit of purchasers holding unredeemed Fun Deal (voucher)s until Merchant delivers the Merchant Offering, refunds the holder of any unredeemed Fun Deal (voucher) or escheats the amount required to a taxing authority, if applicable. The funds held in trust shall be returned to Fun Deal upon demand for refunds to purchasers. Fun Deal is authorized to review Merchant’s credit history, which may include a soft credit check.</li>
+                 <li>   Notwithstanding anything to the contrary, Fun Deal will have no obligation to advance amounts that have been paid to Fun Deal by a purchaser until Merchant has complied with Merchant’s obligations under this Agreement. If Fun Deal reasonably believes that Merchant has breached any provision of this Agreement, Fun Deal may offset, delay, withhold, or suspend future payments to Merchant, in Fun Deal’s sole discretion. In addition, if Merchant is unwilling to, or in Fun Deal’s reasonable discretion appears unable to, perform its obligations under this Agreement, Fun Deal is authorized to offset, delay, withhold, or suspend future payments to Merchant in addition to such other remedies as may be available under this Agreement or at law, to secure payment from Merchant for any refunds and/or other amounts payable by Merchant under this Agreement.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Customer Data Restrictions</b></li><br>
+                <ol type="i">
+                <li><b>“Customer Data”</b> means all identifiable information about purchasers generated or collected by Fun Deal or Merchant, including, but not limited to, purchasers’ name, shipping addresses, email addresses, phone numbers, purchaser preferences and tendencies, and financial transaction data.</li>
+                <li>Merchant shall use Customer Data only to fulfill its redemption obligations in connection with the Merchant Offering as authorized by this Agreement. Merchant expressly agrees that any Customer Data shall be used only for this purpose (including, but not limited to, the redemption of Fun Deal (voucher)s and provision of goods and services to purchasers), and not to enhance a file or list owned by Merchant, or any third party. Merchant represents, warrants and covenants that it will not resell, broker or otherwise disclose any Customer Data to any third party, in whole or in part, for any purpose, unless required by applicable law. If Merchant engages any third party to facilitate its redemption obligations hereunder, Merchant shall ensure that such third party implements and complies with reasonable security measures in handling any Customer Data. If any Customer Data is collected directly by Merchant or a third party engaged by Merchant to facilitate its redemption obligations hereunder, Merchant shall ensure that it or such third party adopts, posts and processes the Customer Data in conformity with its posted privacy policy and all applicable laws.</li>
+                <li>As long as Merchant uses Customer Data in compliance with applicable law and Merchant’s posted privacy policy, restrictions stated in this Agreement on Merchant’s use of Customer Data do not apply to: (i) data from any purchaser who is already a customer of Merchant before the Effective Date, if such data was provided to Merchant by such purchaser independent of this Agreement or any transaction hereunder; or (ii) data supplied by a purchaser directly to Merchant who becomes a customer of Merchant in connection with such purchaser explicitly opting in to receive communications from Merchant.</li>
+                <li>Merchant shall immediately notify Fun Deal if Merchant becomes aware of or suspects any unauthorized access to or use of Customer Data or any confidential information of Fun Deal, and shall cooperate with Fun Deal in the investigation of such breach and the mitigation of any damages. Merchant will bear all associated expenses incurred by Fun Deal to comply with applicable laws (including, but not limited to, any data breach laws) or arising from any unauthorized access or acquisition of Customer Data while such data is in Merchant’s reasonable possession or control. Upon termination or expiration of this Agreement, Merchant shall, as directed by Fun Deal, destroy or return to Fun Deal all the Customer Data in Merchant’s or any agent of Merchant’s possession.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Term and Termination</b></li><br>
+                <ol type="i">
+                <li>This Agreement will continue in effect until terminated by either party in accordance with this Section (“Term”). Fun Deal is authorized to terminate this Agreement, at any time for any reason, upon written notice to Merchant. Merchant is authorized to terminate this Agreement upon seven (7) business days prior written notice to Fun Deal. Termination of this Agreement will not in any way affect Merchant’s obligation to redeem any Fun Deal (Fun Deal (voucher)) according to the terms of this Agreement, including the obligation to honor the Fun Deal (Fun Deal (voucher)) for the Amount Paid after the Promotional Value Expiration Date. Provisions in this Agreement that are intended to survive termination will continue in full force and effect after the Term.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Compliance with Gift Card, Gift Certificate and Abandoned Property Laws</b></li><br>
+                <ol type="i">
+                <li>Merchant agrees to comply with the Fun Deal (Fun Deal (voucher)) terms and conditions as stated on the Website, including but not limited to the “Terms of Use” of the Website, and to ensure that the Fun Deal (Fun Deal (voucher))s comply with all laws. Merchant is solely responsible for compliance with any applicable escheat or abandoned or unclaimed property laws. Upon written request from Merchant, but only when required, Fun Deal will provide Merchant with information in Fun Deal’s possession that the Merchant needs to comply with its obligations under this Agreement. Merchant agrees that, regardless of the payment terms, Merchant, and not Fun Deal, maintains any obligation for unredeemed Fun Deal (Fun Deal (voucher))s under applicable escheat or abandoned or unclaimed property laws.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Marketing</b></li><br>
+                <ol type="i">
+                <li>Happines s Deal and its business partners may communicate with Merchant with regard to products, promotions, and other services that may be of interest to Merchant. This may include email or other communications. Fun Deal may also solicit Merchant’s opinion for market research purposes.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Intellectual Property Rights</b></li><br>
+                <ol type="i">
+                <li>Merchant grants to Fun Deal a non-exclusive, worldwide, royalty free, paid-up, perpetual, irrevocable, transferable and sub-licensable license and right to use, modify, reproduce, sublicense, publicly display, distribute, broadcast, transmit, stream, publish and publicly perform: (a) Merchant’s name, logos, trademarks, service marks, domain names, and any audiovisual content, video recordings, audio recordings, photographs, graphics, artwork, text and any other content provided, specified, recommended, directed, authorized or approved to use by Merchant (collectively, “Merchant IP”); and (b) any third party’s name, logos, trademarks, service marks, domain names, audiovisual recordings, video recordings, audio recordings, photographs, graphics, artwork, text and any other content provided, specified, recommended, directed, authorized or approved for use by Merchant (collectively, “Third Party IP”), in each case in connection with the promotion, sale/resale (as may be applicable) or distribution of the Merchant Offering in all media or formats now known or hereinafter developed (“License”). Any use of the Merchant IP or Third Party IP as contemplated in this Agreement is within Fun Deal’s sole discretion.</li>
+               <li> Merchant acknowledges and agrees that, as between the parties, Fun Deal owns all interest in and to the Website, Customer Data, logos, trademarks, service marks, domain names, social media identifiers, all data collected through or from the Website, all audiovisual content, video recordings, audio recordings, photographs, graphics, artwork, text or any other content created by Fun Deal or at Fun Deal’s direction, or assigned to Fun Deal, and any materials, software, technology or tools used or provided by Fun Deal to promote, sell/resell (as may be applicable) or distribute the Merchant Offering and conduct its business in connection therewith (collectively “Fun Deal IP”). Merchant shall not use, sell, rent, lease, sublicense, distribute, broadcast, transmit, stream, place shift, transfer, copy, reproduce, download, time shift, display, perform, modify or timeshare the Fun Deal IP or any portion thereof, or use such Fun Deal IP as a component of or a base for products or services prepared for commercial use, sale, sublicense, lease, access or distribution, except that Fun Deal grants Merchant a limited, non-exclusive, revocable, non-transferable, non-sub licensable license during the Term to use one copy of Fun Deal’s mobile merchant software application on a single mobile computer, tablet computer, or other device, solely for the purposes permitted by that software, and to make one copy of the software for back-up purposes. Merchant shall keep the Fun Deal IP confidential, and shall not prepare any derivative work based on the Fun Deal IP or translate, reverse engineer, decompile or disassemble the Fun Deal IP. Merchant shall not take any action to challenge or object to the validity of Fun Deal’s rights in the Fun Deal IP or Fun Deal’s ownership or registration thereof. Except as specifically provided in this Agreement, Merchant and any third party assisting Merchant with its obligations in this Agreement, are not authorized to use Fun Deal IP in any medium without prior written approval from an authorized representative of Fun Deal. Merchant shall not include any trade name, trademark, service mark, domain name, social media identifier, of Fun Deal or its affiliates, or any variant or misspelling thereof, in any trademark, domain name, email address, social network identifier, metadata or search engine keyword. Merchant shall not use or display any Fun Deal IP in a manner that could reasonably imply an endorsement, relationship, affiliation with, or sponsorship between Merchant or a third party and Fun Deal. All rights to the Fun Deal IP not expressly granted in this Agreement are reserved by Fun Deal.</li>
+                <li>If Merchant provides Fun Deal or any of its affiliates with feedback, suggestions, reviews, modifications, data, images, text, or other information or content about a Fun Deal product or service or otherwise in connection with this Agreement, any Fun Deal IP, or Merchant’s participation in the Merchant Offering or Fun Deal (Fun Deal (voucher)), (collectively, “Feedback”), Merchant irrevocably assigns to Fun Deal all right, title, and interest in and to Feedback. In the event your assignment to Fun Deal is invalid for any reason, you hereby irrevocably grant Fun Deal and its affiliates a perpetual, paid-up, royalty-free, nonexclusive, worldwide, irrevocable, freely transferable right and license to (i) use, reproduce, perform, display, and distribute Feedback; (ii) adapt, modify, re-format, and create derivative works of Feedback for any purpose and sublicense the foregoing rights to any other person or entity. Merchant warrants that: (A) Feedback is Merchant’s original work, or Merchant obtained Feedback in a lawful manner; and (B) Fun Deal and its sublicensees’ exercise of rights under the license above will not violate any person’s or entity’s rights, including any copyright rights. Merchant agrees to provide Fun Deal’s such assistance as Fun Deal might require to document, perfect, or maintain Fun Deal’s rights in and to Feedback.</li>
+                 </ol>
+                <li><b  style="color: #217ab3;">Representations and Warranties</b></li><br>
+                <ol type="i">
+               <li> Merchant represents and warrants that: (a) Merchant has the right, power and authority to enter into this Agreement; (b) Merchant, if required by applicable law, is registered for sales and use tax collection purposes in all jurisdictions where Merchant’s goods and services will be provided; (c) the Fun Deal (Fun Deal (voucher)), upon being delivered by Fun Deal, will be available immediately for redemption and Merchant will have sufficient goods and/or services available for redemption through the Promotional Value Expiration Date (i.e., a number of goods and/or services sufficient to fulfill its redemption obligations in connection with the applicable Maximum Number of Fun Deal (Fun Deal (voucher))s); (d) the terms and conditions of the Fun Deal (Fun Deal (voucher)), including any discounts or goods and services offered thereunder do not and will not violate any, local, state, or central law, statute, rule, regulation, or order, including but not limited to, any law or regulation governing the use, sale, and distribution of alcohol and any laws governing Fun Deal (Fun Deal (voucher))s, gift cards, coupons, and gift certificates; (e) the Merchant’s redemption of the Fun Deal (Fun Deal (voucher)) will result in the bona fide provision of goods and/or services by Merchant to the purchaser; (f) Merchant owns all interest in and to the Merchant IP and has licensing rights in (with the right to sublicense to Fun Deal) the Third Party IP, and has the right to grant the License stated in this Agreement; (g) the Merchant IP and the Third Party IP, the Merchant Offering, Fun Deal’s use and promotion thereof, and the results of such Merchant Offerings, will not infringe, dilute, misappropriate, or otherwise violate, anywhere in the world, any patent, copyright, logo, trademark, service mark, trade name, rights in designs, or other intellectual property right or right of privacy or publicity of any third party or any applicable law, and does not and will not result from the misappropriation of any trade secret or the breach of any confidentiality obligations to any person or entity; (h) the Merchant IP and Third Party IP does not include any material that is unlawful, threatening, abusive, defamatory, vulgar, obscene, profane or otherwise objectionable, or that encourages conduct that constitutes a criminal offense, gives rise to civil liability or otherwise violates any law; (i) the Fun Deal (Fun Deal (voucher))s and any advertising or promotion of Merchant’s goods and services relating thereto will not constitute false, deceptive or unfair advertising or disparagement under any applicable law; (j) Merchant and its employees, contractors and agents have had the proper education and training and hold all required and up-to-date regulatory authorization, licenses and certifications relating to any Merchant Offering to provide the goods or services described in this Agreement; (k) Merchant’s business information and direct deposit details as provided in this Agreement, indicating where payments should be forwarded are accurate and Merchant is the authorized entity to receive the funds forwarded by Fun Deal; (l) Merchant is not authorized to resell, broker or otherwise disclose any Customer Data (as defined in this Agreement) to any third party, in whole or in part, for any purpose, and Merchant is not authorized to copy or otherwise reproduce any Customer Data other than for the purpose of redeeming or verifying the validity of Fun Deal (Fun Deal (voucher))s in connection with this Agreement and (m) the Merchant Offering is: (i) free from defects in workmanship, materials and design, (ii) merchantable and suitable for the purposes, if any, stated in the Agreement, and (iii) genuine, bona fide products, as described herein and does not violate the rights of any third party.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Indemnification</b></li><br>
+                <ol type="i">
+                <li>To the extent allowed under applicable law, Merchant agrees to defend, indemnify and hold Fun Deal, its affiliated and related entities, and any of its respective officers, directors, agents and employees, harmless from and against any claims, lawsuits, investigations, penalties, damages, losses or expenses (including but not limited to reasonable attorneys’ fees and costs) arising out of or relating to any of the following: (a) any breach or alleged breach by Merchant of this Agreement, or the representations and warranties made in this Agreement; (b) any claim for state sales, use, or similar tax obligations of Merchant arising from the sale and redemption of a Fun Deal (Fun Deal (voucher)); (c) any claim arising out of a violation of any law or regulation by Merchant or governing Merchant’s goods and/or services; (d) any claim arising out of Merchant’s violation of law or regulation governing the use, sale, and distribution of alcohol; (e) any claim by a purchaser or anyone else arising out of or relating to the goods and services provided by Merchant and/or pick up of the goods and services at the Redemption Site, including but not limited to, any claims for false advertising, product defects, personal injury, death, or property damages; (f ) any claim by a purchaser for the Amount Paid; (g) any claim arising out of Merchant’s misuse of Customer Data, or any violation of an applicable data privacy or security law; and (h) any claim arising out of Merchant’s negligence, fraud or willful misconduct. Fun Deal maintains the right to control its own defense and to choose and appoint its own defense counsel, regardless of the presence or absence of a conflict of interest between Fun Deal and Merchant. Merchant’s duty to defend and indemnify Fun Deal includes the duty to pay Fun Deal’s reasonable attorneys’ fees and costs, including any expert fees.</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Confidentiality</b></li><br>
+                <ol type="i">
+                <li>The terms for the Merchant Offering described in this Agreement are confidential, and Merchant agrees not to disclose the terms described in this Agreement to any party (other than to its employees, parent companies, shareholders, lawyers and accountants on a strict need-to-know basis or as required by applicable public records and other law, if Merchant has taken the necessary precautions of the kind generally taken with confidential information to preserve the confidentiality of the information made available to such parties). In the event of a breach, Fun Deal is entitled to injunctive relief and a decree for specific performance, and any other relief allowed under applicable law (including monetary damages if appropriate).</li>
+                </ol>
+                <li><b  style="color: #217ab3;">Limitation of Liability</b></li><br>
+                <ol type="i">
+               <li><b> EXCEPT FOR MERCHANT’S INDEMNIFICATION OBLIGATIONS HEREUNDER, IN NO EVENT IS EITHER PARTY LIABLE OR OBLIGATED TO THE OTHER PARTY OR ANY THIRD PARTY FOR ANY LOST PROFITS, LOST BUSINESS, SPECIAL, INCIDENTAL, EXEMPLARY, CONSEQUENTIAL, PUNITIVE, OR INDIRECT DAMAGES REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT OR OTHERWISE, EVEN IF INFORMED OF THE POSSIBILITY OF ANY SUCH DAMAGES IN ADVANCE. Fun Deal’S SOLE AND COMPLETE LIABILITY TO MERCHANT FOR ANY CLAIMS ARISING OUT OF OR RELATING TO THIS AGREEMENT, OR ANY ERRORS, OMISSIONS OR MISPLACEMENTS OF ANY Fun Deal (VOUCHER) IS LIMITED TO THE AMOUNT OF FEES RETAINED BY Fun Deal HEREUNDER FOR THE PRECEDING SIX(6) MONTHS AFTER FINAL CALCULATION AND RECONCILIATION OF ALL REFUNDS. THIS LIMITATION OF LIABILITY APPLIES TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW AND NOTWITHSTANDING THE FAILURE OF ANY LIMITED REMEDY. </b></li>
+                 </ol>
+            </ol>
+              </ul>
+            </div>
+            <div class="modal-footer" style="justify-content:flex-start;">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- new -->
+<script>
+            function readURL1(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+
+               reader.onload = function (e) {
+                   $('#imgsrc')
+                       .attr('src', e.target.result);
+               };
+
+               reader.readAsDataURL(input.files[0]);
+           }
+       }
+    </script>
+

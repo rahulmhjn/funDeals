@@ -1,0 +1,466 @@
+<% include ../partials/header.ejs%>
+
+<!-- Slide show -->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="4000">
+            <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  </ol>
+            <div class="carousel-inner">
+
+              
+              <% if(admin){ %> <% if(admin.gallery){ %>
+                <%admin.gallery.forEach((image,index)=>{ %>
+                
+                <div class="carousel-item 
+                <%if(index===0){%>
+                    active
+                <%}%>
+                ">
+                <a href="<%=image.link%>"><img class="d-block w-100" src="<%=image.url%>" alt="First slide"></a>
+                
+                    
+                </div>
+            <% })%> <% } %> <% } %>
+
+
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only" >Next</span>
+                </a>
+          </div>
+
+ <!-- UpperImages -->
+
+ <div class="container-fluid"><br>
+     <div class="row">
+    <% if(admin){ %> <% if(admin.indexAdOne){ %>
+        <%admin.indexAdOne.forEach((image,index)=>{ %>
+        <div class="col-md-4 inner_1">
+              <a href="<%=image.link%>"><img  src="<%=image.url%>"></a>
+        </div>
+    <% })%> <% } %><% } %>    
+  
+    </div>
+ </div>
+    
+    <!-- Today Deals  -->
+
+    <div class="topDeals"><br><br>
+
+            <div class="headingUpper">
+                <h3 class="heading"><a href="/coupons?homeField=todayDeals" style="text-decoration: none;"> Today Deals</a>   <hr class="hr_"></h3>
+                
+            </div>
+            <div class="scrollfixed">
+            <div class="slideshowcardUpper"  id="topDealsCard1">
+            <div class="slideshowcard">
+			<%todayDeals.forEach(coupon=>{%>
+
+                        
+                            <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    <!-- <p class="qty">Qty: <span class="qty_count"><%=coupon.quantity%></span></p> -->
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author._id%>"><%=coupon.author.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        
+                      <%})%>
+
+                </div>
+            </div>
+            <div class="moveRight" id="topDealsRight1"><i class="fas fa-chevron-right i"></i></div>
+        </div>
+       <form action="/coupons" method="GET" >
+                   	<input type="hidden" name="homeField" value="todayDeals">
+                   		<button class="view_all">View all <i class="fas fa-arrow-right i"></i></button>	
+                   </form>
+         </div>
+
+        <!-- Below Top Deals -->
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner smallslider">
+
+
+                <% if(admin){ %> <% if(admin.indexSliderThree){ %>
+                    <%admin.indexSliderTwo.forEach((image,index)=>{ %>
+                    
+                    <div class="carousel-item 
+                    <%if(index===0){%>
+                        active
+                    <%}%>
+                    ">
+                    <a href="<%=image.link%>"> <img src="<%=image.url%>" class="d-block w-100" alt="..."></a>
+                       
+                    </div>
+                <% })%> <% } %><% } %>
+
+
+              
+            </div>
+            <a class="carousel-control-prev topDealsLeftSlider" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+                <a class="carousel-control-next topDealsRightSlider" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+          </div>
+
+          <br>
+        <!-- Top Deals -->
+    <div class="topDeals margin-70-0 un-600-0">
+        <div class="headingUpper">
+            <h3 class="heading"><a href="/coupons?homeField=topDeals" style="text-decoration: none;"> Top Deals</a><hr class="hr_"></h3>
+        </div>
+        <div class="scrollfixed">
+        <div class="slideshowcardUpper" id="topDealsCard">
+            <div class="slideshowcard">
+                   <%topDeals.forEach(coupon=>{%>
+
+                       <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author._id%>"><%=coupon.author.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                      <%})%>
+     
+            </div>
+        </div>
+        <div class="moveRight" id="topDealsRight"><i class="fas fa-chevron-right i"></i></div>
+    </div>
+     <form action="/coupons" method="GET" >
+                   	<input type="hidden" name="homeField" value="topDeals">
+                   		<button class="view_all">View all <i class="fas fa-arrow-right i"></i></button>	
+                   </form>
+    </div>
+    <br><br><br>
+
+    <!-- Advertise Images -->
+
+<div class="advertiseOuter">
+        <div class="advertiseLeft">
+           <% if(admin&&admin.indexAdTwo[0]){ %>
+           <a href="<%=admin.indexAdTwo[0].link%>"><img src="<%=admin.indexAdTwo[0].url%>" alt=""></a>
+            
+             <% } %>
+        </div>
+        <div class="advertiseRight">
+            <div class="advertiserightUpper">
+                <div>
+            <% if(admin&&admin.indexAdTwo[1]){ %>
+                    <a href="<%=admin.indexAdTwo[1].link%>"><img src="<%=admin.indexAdTwo[1].url%>" alt=""></a>
+             <% } %>
+                               </div>
+                <div>
+                    <% if(admin&&admin.indexAdTwo[2]){ %>
+                        <a href="<%=admin.indexAdTwo[2].link%>"><img src="<%=admin.indexAdTwo[2].url%>" alt=""></a>
+                    <% } %>
+                    </div>
+            </div>
+            <div class="advertiserightLower">
+                <div>
+                    <% if(admin&&admin.indexAdTwo[3]){ %>
+                    <a href="<%=admin.indexAdTwo[3].link%>"><img src="<%=admin.indexAdTwo[3].url%>" alt=""></a>
+            
+             <% } %>
+                    
+                </div>
+                <div>
+                    <% if(admin&&admin.indexAdTwo[4]){ %>
+                    <a href="<%=admin.indexAdTwo[4].link%>"><img src="<%=admin.indexAdTwo[4].url%>" alt=""></a>
+            
+             <% } %>
+                </div>
+
+
+            </div>
+        </div>
+    </div>   
+    
+    <!-- Happy Hours -->
+
+    <div class="topDeals margin-70-0"><br><br><br>
+            <div class="headingUpper">
+                <h3 class="heading"><a href="/coupons?homeField=happyHours" style="text-decoration: none;"> Happy Hours</a>  <hr class="hr_"></h3>
+            </div>
+            <div class="scrollfixed">
+            <div class="slideshowcardUpper"  id="topDealsCard2">
+                <div class="slideshowcard">
+                        <%happyHours.forEach(coupon=>{%>
+
+                        <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                   
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author._id%>"><%=coupon.author.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                      <%})%>
+      
+                </div>
+            </div>
+            <div class="moveRight" id="topDealsRight2"><i class="fas fa-chevron-right i"></i></div>
+            </div>
+            <form action="/coupons" method="GET" >
+            	<input type="hidden" name="homeField" value="happyHours">
+            		<button class="view_all">View all <i class="fas fa-arrow-right i"></i></button>	
+            </form>
+            
+        </div>
+
+        <!-- topDealSlider Two -->
+        <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner smallslider">
+                <% if(admin){ %> <% if(admin.indexSliderTwo){ %>
+                    <%admin.indexSliderThree.forEach((image,index)=>{ %>
+                    
+                    <div class="carousel-item 
+                    <%if(index===0){%>
+                        active
+                    <%}%>
+                    ">
+                    <a href="<%=image.link%>"><img src="<%=image.url%>" class="d-block w-100" alt="..."></a>
+                        
+                    </div>
+                <% })%> <% } %><% } %>
+
+
+            </div>
+            <a class="carousel-control-prev topDealsLeftSlider" href="#carouselExampleControls1" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+                <a class="carousel-control-next topDealsRightSlider" href="#carouselExampleControls1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+          </div>
+<br>
+        <!-- Major Discount -->
+
+        <div class="topDeals margin-70-70 un-600-70"><br>
+                <div class="headingUpper">
+                    <h3 class="heading"><a href="/coupons?homeField=majorDiscount" style="text-decoration: none;">SaveXtra</a> <hr class="hr_"></h3>
+                </div>
+                <div class="scrollfixed">
+                <div class="slideshowcardUpper"id="topDealsCard3">
+                    <div class="slideshowcard">
+                            <%majorDiscount.forEach(coupon=>{%>
+
+                        <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author._id%>"><%=coupon.author.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                      <%})%>
+           
+                    </div>
+                </div>
+                <div class="moveRight" id="topDealsRight3"><i class="fas fa-chevron-right i"></i></div>
+            </div>
+             <form action="/coupons" method="GET" >
+                   	<input type="hidden" name="homeField" value="majorDiscount">
+                   		<button class="view_all">View all <i class="fas fa-arrow-right i"></i></button>	
+                   </form>
+        </div><br><br><br>
+
+            <!-- footer add -->
+            <div class="footerAdd">
+                <div>
+                    <h3><%=admin.quotes%></h3>
+                    
+                   
+                </div>
+            </div>
+
+<%include ../partials/footer.ejs%>

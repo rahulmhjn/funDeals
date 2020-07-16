@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fun Deal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/stylesheets/adminStyleSheets/dadmin1.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Rubik|Ubuntu&display=swap" rel="stylesheet">
+    <link href="/stylesheets/adminStyleSheets/vertical-responsive-menu.min.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-----==============================header nav bar ===========================================-->
+    <header class="header clearfix">
+        <button type="button" id="toggleMenu" class="toggle_menu">
+            <i onclick="myFunction(this)" class="fas fa-bars"></i>
+        </button>
+
+        <h1>Admin</h1>
+        <div class="dropdown">
+            <button class="dropbtn"> <b>Admin</b></button>
+            <div class="dropdown-content">
+                <a href="/auth/logout" style="text-decoration: none;"><b> Logout &nbsp;&nbsp; <i class="fas fa-sign-out-alt"
+                            style="font-size: px;"></i></b></a>
+            </div>
+        </div>
+        <img class="profile" src="/images/images.png">
+    </header>
+    <!-----==============================end header nav bar ===========================================-->
+
+<!-----==============================preloader preloader ===========================================-->
+
+    <div class="preloading">
+        <div class="preUpper">
+            <img src="/images/preloadergif.gif" alt="Loading">
+        </div>
+    </div>
+        <!-----==============================preloader preloader ===========================================-->
+
+    <!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+
+    <li class="menu--item">
+        <a
+          href="/adminDashboard/merchant"
+          class="active menu--link tablinks1"
+          title="create coupon"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-store"></i>
+          <span class="top">Merchants</span>
+        </a>
+      </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/coupon"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Deal Requests</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/couponType" class=" menu--link tablinks1" 
+          title="Customer coupon list" style="text-decoration: none;">
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal Type</span>
+      </a>
+  </li>
+  <li class="menu--item">
+      <a href="/adminDashboard/couponList" class=" menu--link tablinks1" 
+          title="Customer coupon list" style="text-decoration: none;">
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal List</span>
+      </a>
+  </li>
+   
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/customer"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/analytics" class="menu--link tablinks1"  title="analytics"
+          style="text-decoration: none;">
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Analytics</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/benefits"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-gifts "></i>
+        <span class="top">Benefits</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/setting"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-cogs "></i>
+        <span class="top">Settings</span>
+      </a>
+    </li>
+    <li class="menu--item">
+        <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">HD points</span>
+        </a>
+    </li>
+    <li class="menu--item">
+        <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">Special signup</span>
+        </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Slider Images</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+    <!-----==============================  body  ===========================================-->
+
+
+    <!-----============== customer body========================-->
+
+    <div class="wrapper" id="main">
+
+        <!-----============== coupon body========================-->
+        <section class="tabcontent1" id="coupons"><br>
+            <div class="tab100">
+                <div class="tab13 topnav" style="top: 48px;">
+                        <button class="tablinks2" onclick="openCity2(event, 'paid')" id="defaultOpen2" auto>Paid</button>
+                        <button class="tablinks2" onclick="openCity2(event, 'nonpaid')">Non 
+                            Paid</button>                   
+                              <div class="form-group search_">
+    <form action="/adminDashboard/merchant" method=GET style="display: inline;">
+        
+
+<input
+            class="form-control"
+            id="myInput"
+            type="text"
+            name="merchantName"
+            placeholder="Search.."
+            style="display: inline;"
+          />
+
+    </form>
+          
+        </div>
+      
+                </div>
+            </div>
+
+            <!----=================== paid ======================-->
+            <div id="paid" class="tabcontent2">
+            <div class="profile_card">
+                <div class="row" style="margin-top: 5%;">
+                    <% paid.forEach(merchant => { %>
+                        
+                    
+                    <div class="col-md-6">
+                        <div class="card1">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 col-xs-12 merchant-col1 zero-right-padding">
+                                    <img src="<%= merchant.logo.secure_url%>" class="card-img1" alt="">
+                                </div>
+                                <div class="col-md-8 col-xs-12 zero-left-padding">
+                                    <div class="card-body1">
+                                        <p class="profile_name2"><i class="fas fa-store-alt"
+                                                style="font-size: 12px;"></i>
+                                            <a href="/adminDashboard/showAdminMerchant/<%=merchant._id%>"><span class="pro_name merchant_cop"><%=merchant.businessName%></span></a>
+                                        </p>
+                                        <br>
+                                        <p class="profile_address"><i class="fas fa-map-marked-alt"
+                                                style="font-size: 12px;"></i>
+                                            <span class="pro_add"> <%=merchant.address%>
+                                            </span>
+                                        </p>
+                                        <p class="profile_website"><i class="fas fa-globe" style="font-size: 12px;"></i>
+                                            <span class="pro_website">
+                                                <%=merchant.website%></span>
+                                        </p>
+                                        <p class="profile_phone"><i class="fas fa-phone-alt"
+                                                style="font-size: 12px;"></i>
+                                            Tel. <span class="pro_phone">
+                                                 <%=merchant.number%></span>
+                                        </p>
+                                        <p class="profile_email"><i class="fas fa-envelope"
+                                                style="font-size: 12px;"></i>
+                                            E-mail. <span class="pro_email"> 
+                                                <%=merchant.email%> </span>
+                                        </p>
+                                        <span class="des"><br><br> </span>
+                                        <div class="col-md-10 zero-left-padding zero-right-padding">
+                                            <p class="profile_type">
+                                                * Business in <span class="pro_type">
+                                                     <%=merchant.businessType%> </span> *
+                                            </p>
+                                            <p class="profile_year">
+                                                * Established in <span class="pro_year"> <%=merchant.establishedYear%> </span> *
+                                            </p>
+                                        </div>
+                                        <div class="card-bottom1">
+                                            <form action="/adminDashboard/merchant-un-payment/<%=merchant._id%>?_method=PUT" method="POST">
+                                            <button type="submit"
+                                                class="btn btn-danger d-inline card-button merchant-btn">Block</button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% })%>
+                </div>
+            </div>
+            </div>
+
+            <!----=================== nonpaid ======================-->
+            <div id="nonpaid" class="tabcontent2">
+                    <div class="profile_card">
+                        <div class="row" style="margin-top: 5%;">
+                            <% nonPaid.forEach(merchant => { %>
+                        
+                    
+                    <div class="col-md-6">
+                        <div class="card1">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 col-xs-12 merchant-col1 zero-right-padding">
+                                    <img src="<%= merchant.logo.secure_url%>" class="card-img1" alt="">
+                                </div>
+                                <div class="col-md-8 col-xs-12 zero-left-padding">
+                                    <div class="card-body1">
+                                        <p class="profile_name2"><i class="fas fa-store-alt"
+                                                style="font-size: 12px;"></i>
+                                            <span class="pro_name merchant_cop"><%=merchant.businessName%></span>
+                                        </p>
+                                        <br>
+                                        <p class="profile_address"><i class="fas fa-map-marked-alt"
+                                                style="font-size: 12px;"></i>
+                                            <span class="pro_add"> <%=merchant.address%>
+                                            </span>
+                                        </p>
+                                        <p class="profile_website"><i class="fas fa-globe" style="font-size: 12px;"></i>
+                                            <span class="pro_website">
+                                                <%=merchant.website%></span>
+                                        </p>
+                                        <p class="profile_phone"><i class="fas fa-phone-alt"
+                                                style="font-size: 12px;"></i>
+                                            Tel. <span class="pro_phone">
+                                                 <%=merchant.number%></span>
+                                        </p>
+                                        <p class="profile_email"><i class="fas fa-envelope"
+                                                style="font-size: 12px;"></i>
+                                            E-mail. <span class="pro_email"> 
+                                                <%=merchant.email%> </span>
+                                        </p>
+                                        <span class="des"><br><br> </span>
+                                        <div class="col-md-10 zero-left-padding zero-right-padding">
+                                            <p class="profile_type">
+                                                * Bussiness in <span class="pro_type">
+                                                     <%=merchant.businessType%> </span> *
+                                            </p>
+                                            <p class="profile_year">
+                                                * Established in <span class="pro_year"> <%=merchant.establishedYear%> </span> *
+                                            </p>
+                                        </div>
+                                        <div class="card-bottom1">
+                                            <form action="/adminDashboard/merchant-payment/<%=merchant._id%>?_method=PUT" method="POST">
+                                            <button type="submit"
+                                                        class="btn btn-primary d-inline card-button merchant-btn">Allow<button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% })%>
+                            
+                        </div>
+                    </div>
+                    </div>
+        </section>
+        <!--============== end reviews body========================-->
+    </div>
+
+    <!-----============================== js files  ===========================================-->
+
+<script>
+  $(()=>{
+    $('.preloading').fadeOut(10);
+});</script>
+
+
+<script>
+  window.addEventListener('load', (event) => {
+ 
+  button1=document.getElementById("defaultOpen2");
+  button1.click();
+
+});
+</script>
+
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }</script>
+
+    <script>
+        $(document).ready(function () {
+            $('.bar span').hide();
+            $('#bar-five').animate({
+                width: '75%'
+            }, 1000);
+            $('#bar-four').animate({
+                width: '35%'
+            }, 1000);
+            $('#bar-three').animate({
+                width: '20%'
+            }, 1000);
+            $('#bar-two').animate({
+                width: '15%'
+            }, 1000);
+            $('#bar-one').animate({
+                width: '30%'
+            }, 1000);
+
+            setTimeout(function () {
+                $('.bar span').fadeIn('slow');
+            }, 1000);
+
+        });</script>
+    <!--================== menu icon toogle ==================-->
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("fa-times");
+        }
+    </script>
+
+    <!--================== side menu active ==================-->
+    <script>
+        $('ul li a').click(function () {
+
+            if ($('ul li a').hasClass("active")) {
+                $('ul li a').removeClass("active");
+            }
+
+            $(this).addClass("active");
+
+        });</script>
+
+    <!--================== customer search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== coupon search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput1").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable1 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== side menu toogle ==================-->
+    <script>
+        function openCity1(evt, cityName1) {
+            var i, tabcontent1, tablinks1;
+            tabcontent1 = document.getElementsByClassName("tabcontent1");
+            for (i = 0; i < tabcontent1.length; i++) {
+                tabcontent1[i].style.display = "none";
+            }
+            tablinks1 = document.getElementsByClassName("tablinks1");
+            for (i = 0; i < tablinks1.length; i++) {
+                tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName1).style.display = "block";
+            evt.currentTarget.className1 += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen1").click();
+    </script>
+
+    <!--================== inner customers toogle areas==================-->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <script src="vertical-responsive-menu.min.js"></script>
+
+
+    <!--================== inner coupons toogle areas==================-->
+    <script>
+        function openCity2(evt, cityName2) {
+            var i, tabcontent2, tablinks2;
+            tabcontent2 = document.getElementsByClassName("tabcontent2");
+            for (i = 0; i < tabcontent2.length; i++) {
+                tabcontent2[i].style.display = "none";
+            }
+            tablinks2 = document.getElementsByClassName("tablinks2");
+            for (i = 0; i < tablinks2.length; i++) {
+                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName2).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen2").click();
+    </script>
+
+    <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5dd1320c43be710e1d1db019/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<% include ../partials/header.ejs%> 
+    <!-- Preloader -->
+    <div class="preloading">
+        <div class="preUpper">
+            <img src="/images/preloadergif.gif" alt="Loading">
+        </div>
+    </div>
+  
+    <!-- Login Page -->
+
+
+
+    <div id="">
+            <div class="upperContainerlogin">
+                    <div class="container">
+                        <div class="signImage">
+                            <img src="/images/demo1.png" alt="">
+                        </div>
+                        <div class="sideLogin">
+                               <form action="/auth/login" method="post">
+                                    <div class="login" id="loginmain">
+                                            <h3><b>Login</b></h3>
+                                            <div class="upperLogin">
+                                                <div class="userName in">
+                                                    <i class="far fa-user i"></i>
+                                                    <input type="text" placeholder="Email" name="email">
+                                                </div>
+                                                <div class="password in">
+                                                    <i class="fas fa-key i"></i>
+                                                    <input type="password" name="password" id="" placeholder="Password">
+                                                    <i class="fas fa-eye" onclick="showpassword(this)" style="margin: auto;"></i>
+                                                </div>
+                                                <div class="loginOtp">
+                                                    <a class="forgot forgotPass"><b>Forget Password</b></a>
+                                                    <div class="o loginOtpButton"><b>Login With OTP</b></div>
+                                                </div>
+                                            </div>
+                                            <div class="mostLowerLogin">
+                                                <button class="nextOtp"><b>Sign In</b></button>
+                                            </div>
+                                            <div class="loginsignup">
+                                                    <button class="UserLogin" type="button">SignUp as CUSTOMER</button>
+                                                    <button class="BusinessLogin" type="button">SignUp as BUSINESS</button>
+                                               </div>
+                                </div>
+                               </form>
+                            <form action="/auth/phone-login" method="POST">
+                                    <div class="enterOtp mobileLoginOtp">
+                                            <h3><b>Login With OTP</b></h3>
+                                            <input type="tel" name="number" id="" inputmode="numeric" class="mobileInput" placeholder="Mobile Number" autofocus>
+                                            <button class="submit">Verify</button>
+                                            <div class="goback mobilegoback">
+                                                <div><i class="fas fa-arrow-right i"></i><h5>Go Back</h5></div>
+                                            </div>
+                                        </div>
+                            </form>
+
+                            <form action="/auth/forgot-password" method="POST">
+                                    <div class="enterOtp forgotPasswordOtp">
+                                            <h3><b>Forgot Password</b></h3>
+                                            <input type="email" name="email" id="" class="mobileInput in" placeholder="Email">
+                                            <button class="submit">Submit</button>
+                                            <div class="goback emailgoback">
+                                                <div><i class="fas fa-arrow-right i"></i><h5>Go Back</h5></div>
+                                            </div>
+                                        </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+    </div>
+     <% include ../partials/footer.ejs%> 

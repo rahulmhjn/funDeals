@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>happinessdeals</title>
+<style>
+ 
+.mostLowerLogin button,.signup button,.paynow{
+    border: 1px solid #a72276;
+    color: white;
+    background-color: #5b2949;
+    border-radius: 10px;
+    width: 30%;
+    padding: 8px 0px;
+    margin: 20px auto;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.button{
+    width: 300px;
+    border-radius: 5px;
+    top: 40%;
+    left: 38%;
+}
+@media screen and (max-width: 600px){
+    .button{
+        top: 40%;
+        left: 10%;
+    }
+}
+.mostLowerLogin button:before,.signup button:before,.button:before{
+    content: '';
+    position: absolute;
+    background-color: #fffeff;
+    border: 1px solid #faf9fa;
+    width: 10px;
+    height: 70px;
+    margin-top: -20px;
+    margin-left: -100%;
+    transform: rotate(-30deg);
+    transition: all 0.8s;
+}
+.mostLowerLogin button:hover:before,.signup button:hover:before,.button:hover:before{
+    margin-left: 100%;
+}
+ 
+.razorpay-payment-button {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+    background-color: #227ab3;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 0px;
+    border: none;
+    transition: all 0.5s;
+}
+ 
+.razorpay-payment-button:hover {
+    background-color: white;
+    color: #227ab3;
+    border: 1px solid #227ab3;
+}
+.upperpaynow{
+    background: url('/images/doodle.jpg');
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: fixed;
+}
+@media screen and (min-width: 769px){
+    .top_1{
+        padding-top: 20%;
+    }
+}
+ 
+</style>
+  </head>
+  <body>
+    <div class="container-fluid upperpaynow">
+      <div class="row ">
+      <div class="col-md-6">
+          <img src="/images/Mia-02.png" width="100%">
+      </div>
+      <div class="col-md-6 top_1">
+      <div class="button">
+        <form action="/auth/merchant-payment" method="POST">
+          <!-- prettier-ignore -->
+          <script
+                        src="https://checkout.razorpay.com/v1/checkout.js"
+                          data-key= "<%=process.env.razorpayKeyId%>"
+                          data-amount= <%=200*100%> 
+                          data-currency="INR"
+                          data-buttontext="Pay Now"
+                          data-name="www.happinessdeal.com"
+                          data-description="A Deal That Brings Happiness"
+                          data-prefill.name=" "
+                          data-prefill.email= <%=currentUser.email%>
+                          data-prefill.contact= <%=currentUser.number%>
+                          data-theme.color="#64a2df"
+                        >
+                      </script>
+          <input type="hidden" custom="Hidden Element" name="hidden" />
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5dd1320c43be710e1d1db019/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  </body>
+</html>

@@ -1,0 +1,92 @@
+ <% include ../partials/header.ejs%>
+ <section class="hdpointOuter">
+           <div class="upperuserProf">
+            <a href="/user/profile" >Profile</a>
+            <a href="/wish-list">Wishlist</a>
+            <a href="/myorder">Orders</a>
+             <a href="/buy/hdPoint" class="active">HD Points</a>
+             <a data-toggle="modal" data-target="#exampleModal1b" href="">Benefits</a>
+             <a data-toggle="modal" data-target="#exampleModal1r" href="">Refer A Friend</a>
+        </div>
+        <div class="hdpointContainer">
+            <h3>HD Points <hr class="hrhead"></h3>
+            <div class="hdtotal">
+                    <h3>Your HDPoints</h3>
+                    <div class="hdprice">&#8377; <%=currentUser.HdPoints%></div>
+                </div>
+            <div class="hdpoint">
+                <div class="hdpointimgupper">
+                    <img src="/images/myntra_credit_logo.png" alt="">
+                    <div class="hdimgdetail">A Quick And Convenient Way To Pay And Refund</div>
+                </div>
+                <div class="hdimgbenefits">
+                    <div class="rowhdimg">
+                        <div class="imgupperhd">
+                            <img src="/images/instant_cashback.svg" alt="">
+                            <div class="hdimgheading">INSTANT CHECKOUT</div>
+                            <div class="hdimgdetail">One-click,Fash and easy checkout</div>
+                        </div>
+                        <div class="imgupperhd">
+                            <img src="/images/faster_refunds.svg" alt="">
+                            <div class="hdimgheading">FASTER REFUND</div>
+                            <div class="hdimgdetail">Get instant refund as HD Points</div>
+                        </div>
+                    </div>
+                    <div class="rowhdimg">
+                        <div class="imgupperhd">
+                            <img src="/images/consolidated_money.svg" alt="">
+                            <div class="hdimgheading">CONSOLIDATED MONEY</div>
+                            <div class="hdimgdetail">Refund,money at a same place</div>
+                        </div>
+                        <div class="imgupperhd">
+                            <img src="/images/mode_benifits.svg" alt="">
+                            <div class="hdimgheading">MORE BENEFITS</div>
+                            <div class="hdimgdetail">Many more offers on using HDPoints</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hdterms">
+                <h4>PLEASE NOTE</h4>
+                <ul>
+                    <li>HDPoints can't be cancelled or transfer to another account</li>
+                    <li>It can't be withdrawn in form of cash or transfer to bank</li>
+                    <li>Credit have an expire</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="exampleModal1r" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog width700" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  
+                </div>
+                <div class="modal-body">
+                  
+                    <img src="/images/coming.jpg" width="100%">
+                      </div> 
+              </div>
+            </div>
+          </div>
+        
+          <div class="modal fade" id="exampleModal1b" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog width700" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                  </div>
+                  <div class="modal-body">
+                    
+                      <img src="/images/coming.jpg" width="100%">
+                   </div>      
+                </div>
+              </div>
+            </div>
+    <% include ../partials/footer.ejs%>

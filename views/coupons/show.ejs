@@ -1,0 +1,318 @@
+<% include ../partials/header.ejs%>
+<!-- calculating rating for coupon -->
+<%var cr1=0%>
+<%var cr2=0%>
+<%var cr3=0%>
+<%var cr4=0%>
+<%var cr5=0%>
+<%var ctotal=0%>
+
+  <% coupon.reviews.forEach(function(review) { %>
+  
+    <%if(review.rating==1){%>
+      <% cr1=cr1+1%>
+      <% ctotal=ctotal+1%>
+      <%}else if(review.rating==2){%>
+      <% cr2=cr2+1%>
+      <% ctotal=ctotal+1%>
+      <%}else if(review.rating==3){%>
+      <% cr3=cr3+1%>
+      <% ctotal=ctotal+1%>
+      <%}else if(review.rating==4){%>
+      <% cr4=cr4+1%>
+      <% ctotal=ctotal+1%>
+      <%}else if(review.rating==5){%>
+      <% cr5=cr5+1%>
+      <% ctotal=ctotal+1%>
+      <%}%>
+  
+  <% })%>
+
+   <div class="couponMainDetails">
+                <div class="couponDetailsUpper">
+              <div class="couponDetails">
+                      <div class="couponImage">
+                          <img src="<%=coupon.image.url%>" alt="">
+                      </div>
+                      <div class="couponSideDetails">
+                          <h3><%=coupon.offerName%></h3>
+                          <h3 class="quantity">Only <span><%=coupon.quantity%></span> Units(s) in Left</h3>
+                          <h3 class="couponMerchant">HappyDeal by<a href="/show-merchant/<%=coupon.author%>"><i class="fas fa-store-alt i" aria-hidden="true"></i><%=coupon.businessName%></a></h3>
+                    
+                          <h3 class="dealtype">Deal Type- <b><%=coupon.couponType%></b></h3>
+
+                          <h3 class="till">Start-<br><i>
+                            <%=coupon.startDate.toDateString()%>
+                            <%if(coupon.startTime){%> 
+                                -
+                              <span class="happyHour"><%=coupon.startTime%></span>
+                              
+                            <%}%>
+                           </i></h3>
+                          <h3 class="till">Expire- <br><i><%=coupon.expireDate.toDateString()%>
+                            
+                            <%if(coupon.expireTime){%> 
+                                -
+                                <span class="happyHour"><%=coupon.expireTime%></span>
+                              
+                            <%}%>
+
+
+                          </i></h3>
+
+
+
+
+                          <div class="buttonCoupon">
+                            <form action="/cart/add-to-cart-back/<%=coupon._id%>" method="GET">
+                              <button><i class="fas fa-cart-plus"></i>Add To Cart</button>
+                            </form>
+                              <form action="/wish-list/add-to-wishList/<%=coupon._id%>" method="GET">
+                              <button>Add To WishList</button>  
+                              </form>
+                              
+                          </div>
+                      </div>
+                  </div>
+                    <div class="couponRating">
+                        <h3 class="ratingHeading">Rating <hr class="hr1"></h3>
+                            <div class="inner">
+                                    <div class="rating">
+                                      <span class="rating-num"><%=coupon.avgRating%></span>
+                                      <div class="rating-stars">
+                        <%floorRating=Math.floor(coupon.avgRating)%>   
+                        <%for(i=0;i<5;i++){ %>
+                          <%if(i<floorRating){%>
+                          <span class="fa fa-star checked"></span>
+                          <%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+                            <span class="fa fa-star checked"></span>
+                        <%}else{%>
+                        <span class="fa fa-star"></span>
+                        <%}%>
+                        <% }%>
+                                      </div>
+                                      <div class="rating-users">
+
+                                        <i class="icon-user"></i> <%=coupon.reviews.length%> total
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="histo">
+                                      <div class="five histo-rate">
+                                        <span class="histo-star">
+                                            <i class="fas fa-star"></i> 5          
+                                             </span>
+                                        <span class="bar-block">
+                                          <span id="bar-five" class="bar">
+                                            <span><%=cr5%></span>&nbsp;
+                                          </span> 
+                                        </span>
+                                      </div>
+                                      
+                                      <div class="four histo-rate">
+                                        <span class="histo-star">
+                                            <i class="fas fa-star"></i> 4          
+                                             </span>
+                                        <span class="bar-block">
+                                          <span id="bar-four" class="bar">
+                                            <span><%=cr4%></span>&nbsp;
+                                          </span> 
+                                        </span>
+                                      </div> 
+                                      
+                                      <div class="three histo-rate">
+                                        <span class="histo-star">
+                                            <i class="fas fa-star"></i> 3          
+                                             </span>
+                                        <span class="bar-block">
+                                          <span id="bar-three" class="bar">
+                                            <span><%=cr3%></span>&nbsp;
+                                          </span> 
+                                        </span>
+                                      </div>
+                                      
+                                      <div class="two histo-rate">
+                                        <span class="histo-star">
+                                            <i class="fas fa-star"></i> 2          
+                                             </span>
+                                        <span class="bar-block">
+                                          <span id="bar-two" class="bar">
+                                            <span><%=cr2%></span>&nbsp;
+                                          </span> 
+                                        </span>
+                                      </div>
+                                      
+                                      <div class="one histo-rate">
+                                        <span class="histo-star">
+                                            <i class="fas fa-star"></i> 1          
+                                             </span>
+                                        <span class="bar-block">
+                                          <span id="bar-one" class="bar">
+                                            <span><%=cr1%></span>&nbsp;
+                                          </span> 
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                    </div>
+                </div>
+
+
+<%if(similarCoupon.length>0){%>
+                <div class="suggestedCouponUpper">
+                        <h3 class="heading">“Other Fun Deals by the same business”<hr class="hr5"></h3>
+
+  <div class="suggestedupper">
+  
+                        <div class="suggestedCoupon">
+                <%similarCoupon.forEach(coupon=>{%>
+
+                                <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    <!-- <p class="qty">Qty: <span class="qty_count"><%=coupon.quantity%></span></p> -->
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author%>"><%=coupon.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                      <%})%> 
+                   
+                        </div>
+  </div>
+                    </div>
+
+              <%}%>
+
+
+                <div class="couponReviews">
+                    <div class="couponHeading"><i><h2>Reviews <hr class="hr2">
+                      <hr>
+                    </h2>
+                  </i>
+                    </div>
+                  
+                  <%if(coupon.reviews.length<=0){%>
+                  
+                    <div class="noreviews">
+                        <img src="/images/Thinking.gif" alt="">
+                    </div>
+                
+
+
+                  <%}%>
+
+
+                    <% coupon.reviews.forEach(function(review) { %>
+                      <div class="row"><br>
+                        <div class="col-md-1">
+                          <%if(!review.author.logo.secure_url){%>
+                          <img src="/images/images.png" class="dp_customer">
+                          <%}else{%>
+                          <img src="<%=review.author.logo.secure_url%>" class="dp_customer">
+
+                          <%}%>
+                        </div>
+                        <div class="col-md-11 hr_b">
+                          <p > 
+                            <span class="rev_name"><%=review.author.username%></span><br>
+                            <span class="rev_date"> <%=review.date.toDateString()%></span><br>
+                            <div class="rating-stars1">
+                                <%for(i=0;i<5;i++){ %>
+                                  <%if(i<review.rating){%>
+                                    <span><i class="active fas fa-star"></i></span>
+                                  <%}else{%>
+                                      <span><i class="fas fa-star"></i></span>
+                                  <%}%>
+                                <% }%>
+                               </p>
+                              </div>
+                            <span class="rev_comment"><%=review.body%></span><br>
+                          </p>
+                          
+                        </div>
+                      </div>
+
+
+                      <%})%>
+                </div>
+            </div>
+
+
+<script>
+    var cr1=<%-JSON.stringify(cr1)%>;
+    var cr2=<%-JSON.stringify(cr2)%>;
+    var cr3=<%-JSON.stringify(cr3)%>;
+    var cr4=<%-JSON.stringify(cr4)%>;
+    var cr5=<%-JSON.stringify(cr5)%>;
+    const totall=cr1+cr2+cr3+cr4+cr5;
+    const onepercentt=(100/totall);
+    const cr11=`${cr1*onepercentt}%`;
+    const cr22=`${cr2*onepercentt}%`;
+    const cr33=`${cr3*onepercentt}%`;
+    const cr44=`${cr4*onepercentt}%`;
+    const cr55=`${cr5*onepercentt}%`;
+      $(document).ready(function() {
+        
+        $('.bar span').hide();
+        $('#bar-five').animate({
+           width: cr55}, 1000);
+        $('#bar-four').animate({
+           width: cr44}, 1000);
+        $('#bar-three').animate({
+           width: cr33}, 1000);
+        $('#bar-two').animate({
+           width: cr22}, 1000);
+        $('#bar-one').animate({
+           width: cr11}, 1000);
+        
+        setTimeout(function() {
+          $('.bar span').fadeIn('slow');
+        }, 1000);
+        
+      });</script>
+
+      
+<% include ../partials/footer.ejs%>

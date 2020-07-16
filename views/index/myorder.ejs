@@ -1,0 +1,227 @@
+<% include ../partials/header.ejs%>
+<section class="orderOuter">
+  <div class="reviewPopUp">
+    <div class="mainReview">
+      <h3><%=currentUser.username%></h3>
+      <div class="name">
+        <div class="in">
+          <%if(!currentUser.logo.secure_url){%>
+          <img src="/images/images.png" alt="" />
+          <%}else{%>
+          <img src="<%=currentUser.logo.secure_url%>" alt="" />
+          <%}%>
+        </div>
+        <div class="re">
+          <h5><%=currentUser.userName%></h5>
+          <p>Your review will be posted publically on web</p>
+        </div>
+      </div>
+      <form action="" method="POST" name="reviewuserform">
+        <div class="ratingstar orderratingstar">
+          <fieldset class="starability-basic">
+            <input
+              type="radio"
+              id="rate0"
+              class="input-no-rate"
+              name="review[rating]"
+              value="0"
+              checked
+              aria-label="No rating."
+            />
+            <input type="radio" id="rate1" name="review[rating]" value="1" />
+            <label for="rate1" title="Terrible">1 star</label>
+            <input type="radio" id="rate2" name="review[rating]" value="2" />
+            <label for="rate2" title="Not good">2 stars</label>
+            <input type="radio" id="rate3" name="review[rating]" value="3" />
+            <label for="rate3" title="Average">3 stars</label>
+            <input type="radio" id="rate4" name="review[rating]" value="4" />
+            <label for="rate4" title="Very good">4 stars</label>
+            <input type="radio" id="rate5" name="review[rating]" value="5" />
+            <label for="rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
+        <div class="input">
+          <input type="text" name="review[body]" />
+        </div>
+        <div class="submit">
+          <button class="sub" type="button">Cancel</button>
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<div class="upperuserProf">
+            <a href="/user/profile" >Profile</a>
+            <a href="/wish-list" >Wishlist</a>
+            <a href="/myorder" class="active">Orders</a>
+             <a href="/buy/hdPoint" >HD Points</a>
+            <a data-toggle="modal" data-target="#exampleModal1b" href="">Benefits</a>
+            <a data-toggle="modal" data-target="#exampleModal1r" href="">Refer A Friend</a>
+        </div>
+
+  <div class="orderContainer">
+    <div class=" flex">
+                <h3 class="heading_1">My Orders <hr class="hrhead"></h3>
+                <div class="ordercardstatus" style="float: right;">
+                    <h4 class="orderactive">Active</h4>
+                    <h4 class="orderused">Used</h4>
+                </div>
+                </div>
+    <div class="mainOrders">
+      <%if(!unusedcouponData||unusedcouponData.length<=0){%>
+      <div id="activeordercontainer">
+        <div class="emptycart" style="margin:auto;text-align: center;">
+          <img
+            src="/images/GIrft_Wrap.gif" width="100%"
+            alt=""
+          />
+          <p class="text_12">"Your order list is empty. We have a ton of exciting deals to get you started"
+            </p>
+        </div>
+      </div>
+      <%}else{%>
+
+      <div id="activeordercontainer">
+        <%if(unusedcouponData){%> <%unusedcouponData.forEach((coupon)=>{%>
+        <div class="ordercard mt-5">
+          <div class="orderdetail">
+            <div class="ordersidedetail">
+              <h3>
+                <%=coupon.offerName%>(<%if(currentUser.unusedCoupon[coupon._id]){%><%=currentUser.unusedCoupon[coupon._id].qty%><%}%>)
+              </h3>
+              
+              <h4>HappyDeal by <br><a href="/show-merchant/<%=coupon.author%>"><span><i class="fas fa-store-alt blk"></i> <%=coupon.businessName%></span><b class="name_view"> (View Details)</b></a></h4>
+
+              <% if(coupon.couponType=="Happy Hour"){ %>
+              <h6>Valid From <br /><span><%=coupon.startTime%> To <%=coupon.expireTime%></span></h6>
+              <div class="couponcode ">
+                <input
+                  type="text"
+                  value="<%=currentUser.unusedCoupon[coupon._id].code%>"
+                  id="couponcod"
+                />
+                <button onclick="couponcodesel(this)">Copy</button>
+              </div>
+              <% } else {%>
+              <div class="couponcode day">
+                <input
+                  type="text"
+                  value="<%=currentUser.unusedCoupon[coupon._id].code%>"
+                  id="couponcod"
+                />
+                <button onclick="couponcodesel(this)">Copy</button>
+              </div>
+              <% }%>
+            </div>
+
+            <div class="orderimage">
+              <img src="<%=coupon.image.url%>" alt="" />
+            </div>
+          </div>
+          <div class="ordercardvalid">
+            <h4>
+               <h4><b> <%=coupon.startDate.toDateString()%></b> - <b><%=coupon.expireDate.toDateString()%></b> 
+                <%if(!coupon.startTime){%>
+                    <span>Day Deal</span>
+                <%}else{%>
+                  <span>Happy Hour Deal</span>
+                  <%}%>  
+            </h4>
+          </div>
+        </div>
+
+        <%})%> <%}%>
+      </div>
+      <%}%> <%if(!usedcouponData||usedcouponData.length<=0){%>
+      <div id="usedordercontainer">
+        <div class="emptycart" style="margin:auto;text-align: center;">
+          <img
+            src="/images/GIrft_Wrap.gif" width="100%"
+            alt=""
+          />
+          <p class="text_12">"Your order list is empty. We have a ton of exciting deals to get you started"
+            </p>
+        </div>
+      </div>
+      <%}else{%>
+      <div id="usedordercontainer">
+        <%if(usedcouponData){%> <%usedcouponData.forEach((coupon)=>{%>
+
+        <div class="ordercard mt-5">
+          <div class="orderdetail">
+            <div class="ordersidedetail">
+              <h3>
+                <%=coupon.offerName%>(<%if(currentUser.usedCoupon[coupon._id]){%><%=currentUser.usedCoupon[coupon._id].qty%><%}%>)
+              </h3>
+              <h4>HappyDeal by <br><a href="/show-merchant/<%=coupon.author%>"><span><i class="fas fa-store-alt blk"></i> <%=coupon.businessName%></span><b class="name_view"> (View Details)</b></a></h4>
+
+              <div class="writereviewh5">
+                <h5 data-targetid="/coupons/<%= coupon.id%>/reviews">
+                  <i class="fas fa-comment-dots dots i"></i>Write Review<i
+                    class="fas fa-angle-double-right forw i"
+                  ></i>
+                </h5>
+              </div>
+            </div>
+
+            <div class="orderimage">
+              <img src="<%=coupon.image.url%>" alt="" />
+            </div>
+          </div>
+            <div class="ordercardvalid">
+                                <h4>
+                                  Used On <%=currentUser.usedCoupon[coupon._id].usedDate.toDateString()%>
+                                  
+                                  
+              <%if(!coupon.startTime){%>
+                    <span>Day Deal</span>
+              <%}else{%>
+                  <span>Happy Hour Deal</span>
+              <%}%>  
+                  </h4>
+              </div>
+        </div>
+
+        <%})%> <%}%>
+      </div>
+
+      <%}%>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="exampleModal1r" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog width700" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        <div class="modal-body">
+          
+            <img src="/images/coming.jpg" width="100%">
+               
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="modal fade" id="exampleModal1b" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog width700" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            
+          </div>
+          <div class="modal-body">
+            
+              <img src="/images/coming.jpg" width="100%">
+              </div>  
+        </div>
+      </div>
+    </div>
+<!-- Footer -->
+
+<%include ../partials/footer.ejs%>

@@ -1,0 +1,664 @@
+<% include ../adminPartials/header.ejs%>
+
+
+  <!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+    <ul id="js-menu" class="menu">
+      <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+        <img src="/images/logo.png" width="60%;" />
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/coupon"
+          class="active menu--link tablinks1"
+          title="Customer coupon list"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-tags"></i>
+          <span class="top">Deal Requests</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a href="/adminDashboard/couponType" class=" menu--link tablinks1" 
+            title="Customer coupon list" style="text-decoration: none;">
+            <i class="fas fa-tags"></i>
+            <span class="top">HappyDeal Type</span>
+        </a>
+    </li>
+    <li class="menu--item">
+        <a href="/adminDashboard/couponList" class=" menu--link tablinks1" 
+            title="Customer coupon list" style="text-decoration: none;">
+            <i class="fas fa-tags"></i>
+            <span class="top">HappyDeal List</span>
+        </a>
+    </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/merchant"
+          class="menu--link tablinks1"
+          title="create coupon"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-store"></i>
+          <span class="top">Merchants</span>
+        </a>
+      </li>
+  
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/customer"
+          class="menu--link tablinks1"
+          title="Your profile"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Customers</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a href="/adminDashboard/analytics" class="menu--link tablinks1"  title="analytics"
+            style="text-decoration: none;">
+            <i class="fas fa-user-circle"></i>
+            <span class="top">Analytics</span>
+        </a>
+    </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/benefits"
+          class="menu--link tablinks1"
+          title="Reviews"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-gifts "></i>
+          <span class="top">Benefits</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/setting"
+          class="menu--link tablinks1"
+          title="Reviews"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-cogs "></i>
+          <span class="top">Settings</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">HD points</span>
+        </a>
+    </li>
+      <li class="menu--item">
+        <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">Special signup</span>
+        </a>
+    </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/gallery"
+          class="menu--link tablinks1"
+          title="Gallery"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-image "></i>
+          <span class="top">Slider Images</span>
+        </a>
+      </li>
+    </ul>
+  
+    <button id="collapse_menu" class="collapse_menu">
+      <i class="collapse_menu--icon  fas fa-fw"></i>
+      <span class="collapse_menu--label"></span>
+    </button>
+  </nav>
+  
+  <!-----============================== end side bar ===========================================-->
+
+
+  <!-----==============================  body  ===========================================-->
+
+
+  <!-----============== customer body========================-->
+
+  <div class="wrapper" id="main">
+
+    
+
+
+
+    <!-----============== coupon body========================-->
+    <section class="tabcontent1" id="customers"><br>
+      <div class="tab100">
+        <div class="tab1 topnav" >
+          <button class="tablinks2" onclick="openCity2(event, 'Pending1')" id="defaultOpen2" auto>Pending</button>
+          <button class="tablinks2" onclick="openCity2(event, 'Approved1')">Approved</button>
+          <button class="tablinks2" onclick="openCity2(event, 'Rejected1')">Rejected</button>
+        </div>
+      </div>
+
+
+      <!-----============== coupon pending body========================-->
+
+
+      <div id="Pending1" class="tabcontent2">
+        <!--========================= Coupons pending list ===========================-->
+        <div class="coupons_list">
+            <% coupons.forEach(function(coupon){ %>
+                <!--  -->
+                <%if(coupon.isPending){%>
+          <div class="card mb-3 mt-5 card-width12">
+            <div class="row no-gutters">
+              <div class="col-md-6 card-col1">
+                <img src="<%=coupon.image.url%>" class="card-img" alt="">
+              </div>
+              <div class="col-md-6 zero-left-padding zero-right-padding ">
+                <div class="card-body">
+                  <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%>(<%=coupon.quantity%>)</h5>
+                  <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                    <%=coupon.couponType%> </b></p>
+                  <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                    <%=coupon.businessName%></span></p>
+                    <%if(coupon.startDate.getDate()<10){%>
+                        <% var sdate=`0${coupon.startDate.getDate()}`%>
+                        <%} else {%>
+                          <% var sdate=coupon.startDate.getDate()%>
+                        <%}%>
+                      <%if(coupon.startDate.getMonth()<9){%>
+                          <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                          <%} else {%>
+                            <% var smonth =coupon.startDate.getMonth()+1%>
+                        <%}%>
+                      
+                      <% var syear=coupon.startDate.getFullYear()%>
+                      <% startDate=`${sdate}/${smonth}/${syear}`%>
+                      
+                      <%if(coupon.expireDate.getDate()<10){%>
+                          <% var edate=`0${coupon.expireDate.getDate()}`%>
+                          <%} else {%>
+                            <% var edate=coupon.expireDate.getDate()%>
+                          <%}%>
+                        <%if(coupon.expireDate.getMonth()<9){%>
+                            <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                            <%} else {%>
+                              <% var emonth =coupon.expireDate.getMonth()+1%>
+                          <%}%>
+                        
+                        <% var eyear=coupon.expireDate.getFullYear()%>
+                        <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                        <br>
+                        <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                      </p>
+                    </div>
+                    <%if(coupon.startTime){%>
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        &nbsp;<span>Timing
+                          <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                        <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                      </p>
+                    </div>
+                    <%}%>
+                  </div>
+                </div>
+                <div class="card-bottom card-base flex1">
+                  <button class="btn card-button" data-toggle="modal" data-target="#myModal<%=coupon._id%>" id="addRow"
+                    ><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-primary d-inline card-button" data-toggle="modal"
+                  data-target="#myModall<%=coupon._id%>" id="addRow" >Approve</button>
+                    <form action="/adminDashboard/<%=coupon.id%>/reject?_method=PUT" method="POST">
+                  <button type="submit" value="Reject" class="btn btn-danger d-inline card-button">Reject</button>
+                </form>
+                  
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <%}%>
+          <!--  -->
+          <% })%>
+          
+          <% coupons.forEach(function(coupon){ %>
+            <%if(coupon.isPending){%>
+          <!-- Modal -->
+          <div class="modal fade" id="myModal<%=coupon._id%>" role="dialog">
+            <div class="modal-dialog x2 modal-dialog-centred">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                  <h4 class="modal-title"><b>Edit Fun Deal voucher</b></h4>
+                </div>
+                <!--========================= new Coupons format ===========================-->
+                <div class="modal-body">
+                    <form action="/coupons/<%= coupon.id %>?_method=PUT" method="POST" id="couponEditForm" enctype="multipart/form-data">
+                        
+                        <div class="row">
+                          <div class="col-md-11 col-xs-11" style="padding-right: 0px;">
+                              <div class="form-group x1">
+                                  <input type="text" name="coupon[offerName]" value="<%= coupon.offerName%>" id="name" class="form-control" required>
+                                  <label class="form-control-placeholder" for="name">Name</label>
+                              </div> 
+                          </div>
+                          <div class="col-md-1 col-xs-1" style="padding-left: 0px;">
+                              <div class="tooltip1">?
+                                  <span class="tooltiptext">Write here the happiness name</span>
+                              </div>
+                          </div>
+                      </div>
+                     
+                      <div class="row">
+                          <div class="col-md-6 col-xs-12">
+                              <div class="form-group x1">
+                                  <select type="text" name="coupon[offerType]" value="<%= coupon.offerType%>" id="name" class="form-control" required>
+                                      <option value="<%=coupon.offerType%>">Offer Type</option>
+                                    <option value="food" <%if(coupon.offerType=="food"){%>selected<%}%> >Food</option>
+                                    <option value="fashion" <%if(coupon.offerType=="fashion"){%>selected<%}%> >Fashion</option>
+                                    <option value="others" <%if(coupon.offerType=="others"){%>selected<%}%> >Activity / other</option>
+                                  </select>
+                                
+                                  </div>
+                          </div>
+                          <div class="col-md-6 col-xs-12">
+                              <div class="form-group x1">
+                                  <input type="text"  name="coupon[quantity]" id="qty" value="<%= coupon.quantity%>" inputmode="numeric"  class="form-control" required>
+                                  <label class="form-control-placeholder" for="qty">Quantity </label>
+                                  
+                                
+                                  </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-5 col-xs-12" style="padding-right: 0px;">
+                              <p class="start_">HappyDeal Keywords :</p>
+                          </div>
+                          <div class="col-md-6 col-xs-11" style="padding-right: 0px;">
+                              <div class="form-group x1">
+                                  <input type="text" name="coupon[exactSearch]" value="<%=coupon.exactSearch%>" id="keyword" class="form-control" required>
+                                  <label class="form-control-placeholder" for="keyword">cake,</label>
+                              </div>
+                          </div>
+                          <div class="col-md-1 col-xs-1" style="padding-left: 0px;">
+                              <div class="tooltip1">?
+                                  <span class="tooltiptext">keywords for filter and search (name,thing,place or anything you want)</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row ul">
+                         <div class="col-md-6 col-xs-6 li" style="padding:0px;">
+                            <input type="radio" name="coupon[couponType]" value="Happy Hour" onclick="javascript:yesnoCheck();" id="yesCheck" <%if(coupon.couponType=="Happy Hour"){%>checked<%}%> >
+                            <label for="yesCheck"><h2 class="happy">Happy Hour</h2></label>
+                            <div class="check"></div>
+                         </div>
+                         <div class="col-md-6 col-xs-6 li" style="padding:0px;">
+                            <input type="radio" name="coupon[couponType]" value="Full Day" checked id="noCheck" onclick="javascript:yesnoCheck();" id="noCheck" <%if(coupon.couponType=="Full Day"){%>checked<%}%>>
+                            <label for="noCheck"><h2 class="happy">Full Time</h2></label>
+                            <div class="check"><div class="inside"></div></div>
+                         </div>
+                      </div>
+                      <div class="row ">
+                          <div class="col-md-6 col-xs-12">
+                            <p class="start_">Start Date :</p>
+
+                            <%if(coupon.startDate.getDate()<10){%>
+                                <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                <%} else {%>
+                                  <% var sdate=coupon.startDate.getDate()%>
+                                <%}%>
+                              <%if(coupon.startDate.getMonth()<9){%>
+                                  <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                  <%} else {%>
+                                    <% var smonth =coupon.startDate.getMonth()+1%>
+                                <%}%>
+                              
+                              <% var syear=coupon.startDate.getFullYear()%>
+                              <% startDate=`${syear}-${smonth}-${sdate}`%>
+                              
+                              <%if(coupon.expireDate.getDate()<10){%>
+                                  <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                  <%} else {%>
+                                    <% var edate=coupon.expireDate.getDate()%>
+                                  <%}%>
+                                <%if(coupon.expireDate.getMonth()<9){%>
+                                    <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                    <%} else {%>
+                                      <% var emonth =coupon.expireDate.getMonth()+1%>
+                                  <%}%>
+                                
+                                <% var eyear=coupon.expireDate.getFullYear()%>
+                                <% expireDate=`${eyear}-${emonth}-${edate}`%>
+
+                            <div class="input-group x1" style="width: 100%;margin-top: -15px;">
+                                <input type="date" name="coupon[startDate]" value="<%=startDate%>" id="date1" class="form-control" onclick="(this.type='date')" required>
+                        
+                            </div>
+                          </div>
+                          <div class="col-md-6 col-xs-12">
+                              <p class="start_">Expire Date :</p>
+                              <div class="input-group x1" style="width: 100%;margin-top: -15px;">
+                                  <input type="date" name="coupon[expireDate]" value="<%=expireDate%>" id="date2" class="form-control" onclick="(this.type='date')" required>
+                                  
+                              </div>
+                          </div>
+                         
+                       </div>
+                       <div class="row" id="ifYes" style="display:none"><br>
+                          <div class="col-md-5 col-xs-11" style="padding-right: 0px;">
+                            <p class="start_">Start Time :</p>
+                                <div class="input-group x1" style="width: 100%;margin-top: -15px; ">
+                                    <input type="text" name="coupon[startTime]" value="<%= coupon.startTime%>" id="time1" class="form-control" onclick="(this.type='time')"  style="z-index: unset;">
+                                    
+                                </div>
+                          </div>
+                          <div class="col-md-1 col-xs-1" style="padding-left: 0px;"><p></p>
+                              <div class="tooltip1">?
+                                  <span class="tooltiptext">opening timing of Deals</span>
+                              </div>
+                          </div>
+                          <div class="col-md-5 col-xs-11 margin-l_0" style="padding-right: 0px;">
+                              <p class="start_">End Time :</p>
+                              <div class="input-group x1" style="width: 100%; margin-top: -15px;">
+                                  <input type="text" name="coupon[expireTime]" value="<%= coupon.expireTime%>" id="time2" class="form-control" onclick="(this.type='time')" style="z-index: unset;">
+                                  
+                              </div>
+                          </div>
+                          <div class="col-md-1 col-xs-1" style="padding-left: 0px;"><p></p>
+                              <div class="tooltip1">?
+                                  <span class="tooltiptext">Closing time of Deals</span>
+                              </div>
+                          </div>
+                       </div>
+                       <div class="row">
+                         <div class="col-md-12">
+                            <div class="logoupload">
+                                <label for="imagechoose"><i class="fas fa-upload i"></i>Choose Logo</label>
+                                <input type="file" accept="image/*" name="image" value="<%coupon.image.url%>" class="hide_" id="imagechoose" onchange="readURL(this);" style="display: none;">
+                            </div>
+                            <center><img id="blah" class="img_demo1" src="" alt="" /></center>
+                         </div>
+                       </div>
+                       <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary pull-left" >Update</button>
+                          <button  class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                  </form>
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Update</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <%}%>
+          <!--  -->
+          <% })%>
+
+          <!-- model11 -->
+          <% coupons.forEach(function(coupon){ %>
+            <%if(coupon.isPending){%>
+          <div class="modal fade" id="myModall<%=coupon._id%>" role="dialog">
+            <div class="modal-dialog x2 modal-dialog-centred">
+              <!-- Modal1 content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                  <h4 class="modal-title"><b>HappyDeal Price</b></h4>
+                </div>
+                <!--========================= new Coupons format ===========================-->
+                <div class="modal-body">
+                    <form action="/adminDashboard/<%=coupon.id%>/approve?_method=PUT" method="POST">
+
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group x1">
+                          <input type="number" name="adminAmount" min="1" max="100000"  id="name" class="form-control" inputmode="numeric"  required>
+                          <label class="form-control-placeholder" for="name">HappyDeal Price</label>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <div class="form-group x1">
+                                <select type="text" name="homeField" id="name" class="form-control" required>
+                                        <option value="none">Offer Type</option>
+                                        <option value="todayDeals">Todays Offers</option>
+                                        <option value="topDeals">Top Offers</option>
+                                        <option value="majorDiscount"  >SaveXTRA</option>
+                                        <option value="happyHours">Happy Hour</option>
+                                        <option value="none">none</option>
+                                      </select>
+
+                        </div>
+                        <div class="modal-footer">
+                                <button type="submit" value="Approve" class="btn btn-primary pull-left" >Approve</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                              </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Approve</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <%}%>
+            
+          <% })%>
+        </div>
+      </div>
+
+      <!--========================= end Coupons pending list ===========================-->
+
+      <!-----======== end pending body===========-->
+
+
+      <!-----======== Approved body===========-->
+      <div id="Approved1" class="tabcontent2">
+        <div class="coupons_list">
+                <% coupons.forEach(function(coupon){ %>
+                    <!--  -->
+                    <%if(coupon.isApproved){%>
+          <div class="card mb-3 mt-5 card-width12">
+            <div class="row no-gutters">
+              <div class="col-md-6 card-col1">
+                <img src="<%=coupon.image.url%>" class="card-img" alt="">
+              </div>
+              <div class="col-md-6 zero-left-padding zero-right-padding ">
+                <div class="card-body">
+                  <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%>(<%=coupon.quantity%>)</h5>
+                  <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                        <%=coupon.couponType%> </b></p>
+                  <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                        <%=coupon.businessName%></span></p>
+
+                  <div class="row">
+                        <%if(coupon.startDate.getDate()<10){%>
+                                <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                <%} else {%>
+                                  <% var sdate=coupon.startDate.getDate()%>
+                                <%}%>
+                              <%if(coupon.startDate.getMonth()<9){%>
+                                  <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                  <%} else {%>
+                                    <% var smonth =coupon.startDate.getMonth()+1%>
+                                <%}%>
+                              
+                              <% var syear=coupon.startDate.getFullYear()%>
+                              <% startDate=`${sdate}/${smonth}/${syear}`%>
+                              
+                              <%if(coupon.expireDate.getDate()<10){%>
+                                  <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                  <%} else {%>
+                                    <% var edate=coupon.expireDate.getDate()%>
+                                  <%}%>
+                                <%if(coupon.expireDate.getMonth()<9){%>
+                                    <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                    <%} else {%>
+                                      <% var emonth =coupon.expireDate.getMonth()+1%>
+                                  <%}%>
+                                
+                                <% var eyear=coupon.expireDate.getFullYear()%>
+                                <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                        <br>
+                        <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                      </p>
+                    </div>
+                    <%if(coupon.startTime){%>
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        &nbsp;<i>Timing
+                          <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></i><br>
+                        <i> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></i>
+                      </p>
+                    </div>
+                    <%}%>
+                  </div>
+                </div>
+                <div class="card-bottom card-base">
+                  <p class="text-left timing zero-bottom-margin padding-left"><b>Status :</b><button type="button"
+                      class="btn btn-primary d-inline card-button card-status">Approved</button></p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <%}%>
+          <!--  -->
+          <% })%>
+
+        </div>
+      </div>
+
+      <!-- End of approved body -->
+      <!-- Rejected body -->
+
+
+      <div id="Rejected1" class="tabcontent2">
+        <div class="coupons_list">
+                <% coupons.forEach(function(coupon){ %>
+                    <!--  -->
+                    <%if(coupon.isRejected){%>
+
+          <div class="card mb-3 mt-5 card-width12">
+            <div class="row no-gutters">
+              <div class="col-md-6 card-col1">
+                <img src="<%=coupon.image.url%>" class="card-img" alt="">
+              </div>
+              <div class="col-md-6 zero-left-padding zero-right-padding ">
+                <div class="card-body">
+                  <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%>(<%=coupon.quantity%>)</h5>
+                  <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                        <%=coupon.couponType%> </b></p>
+                  <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                        <%=coupon.businessName%></span></p>
+                  <div class="row">
+                        <%if(coupon.startDate.getDate()<10){%>
+                                <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                <%} else {%>
+                                  <% var sdate=coupon.startDate.getDate()%>
+                                <%}%>
+                              <%if(coupon.startDate.getMonth()<9){%>
+                                  <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                  <%} else {%>
+                                    <% var smonth =coupon.startDate.getMonth()+1%>
+                                <%}%>
+                              
+                              <% var syear=coupon.startDate.getFullYear()%>
+                              <% startDate=`${sdate}/${smonth}/${syear}`%>
+                              
+                              <%if(coupon.expireDate.getDate()<10){%>
+                                  <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                  <%} else {%>
+                                    <% var edate=coupon.expireDate.getDate()%>
+                                  <%}%>
+                                <%if(coupon.expireDate.getMonth()<9){%>
+                                    <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                    <%} else {%>
+                                      <% var emonth =coupon.expireDate.getMonth()+1%>
+                                  <%}%>
+                                
+                                <% var eyear=coupon.expireDate.getFullYear()%>
+                                <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                        <br>
+                        <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                      </p>
+                    </div>
+                    <%if(coupon.startTime){%>
+                    <div class="col-md-6 col-xs-6">
+                      <p>
+                        &nbsp;<span>Timing
+                          <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                        <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                      </p>
+                    </div>
+                    <%}%>
+                  </div>
+                </div>
+                <div class="card-bottom card-base">
+                  <p class="text-left timing zero-bottom-margin padding-left"><b>Status :</b><button type="button"
+                      class="btn btn-danger d-inline card-button card-status">Rejected</button></p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <%}%>
+          <!--  -->
+          <% })%>
+        </div>
+      </div>
+  </div>
+  <!-----======== end rejected body===========-->
+
+  <!-----======== end all body===========---->
+  </section>
+  <!--============== end coupon body========================-->
+<!-----============================== js files  ===========================================-->
+<script type="text/javascript">
+
+    function yesnoCheck() {
+        if (document.getElementById('yesCheck').checked) {
+            document.getElementById('ifYes').style.display = 'block';
+        }
+        else document.getElementById('ifYes').style.display = 'none';
+    
+    }
+    
+    </script>
+  <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }</script>
+  <% include ../adminPartials/footer.ejs%>

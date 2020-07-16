@@ -1,0 +1,245 @@
+
+<% include ../partials/header.ejs%>
+
+
+
+ <section class="filterUpper">
+        <div class="filterUpperImage">
+            <div class="filterUpperFirst">
+
+              <% if(admin&&admin.couponPageAd[0]){ %>
+              <a href="<%=admin.couponPageAd[0].link%>"><img src="<%=admin.couponPageAd[0].url%>" alt=""></a>
+                      
+                      
+                
+                <% } else{%>
+                 <img src="/images/coupon.jpg" alt="">
+                <%}%>
+            </div>
+            <div class="filterUpperSecond">
+              <% if(admin&&admin.couponPageAd[1]){ %>
+                  
+                      <a href="<%=admin.couponPageAd[1].link%>"><img src="<%=admin.couponPageAd[1].url%>" alt=""></a>
+                      
+              
+                <% } else{%>
+                 <img src="/images/coupons.jpg" alt="">
+                  <%}%>
+            </div>
+        </div>
+
+
+                <%if(query&&query.homeField&&query.homeField==="todayDeals"){%>
+                          <div class="topDeals1"><br>
+
+                <div class="headingUpper">
+                        <h3 class="heading">Today Deals <hr class="hr_"></h3>
+                </div>
+                </div>
+                  <%}%>
+
+
+
+                  <%if(query&&query.homeField&&query.homeField==="topDeals"){%>
+                          <div class="topDeals1"><br>
+
+                <div class="headingUpper">
+                        <h3 class="heading">Top Deals <hr class="hr_"></h3>
+                </div>
+                </div>
+                  <%}%>
+
+
+
+                  <%if(query&&query.homeField&&query.homeField==="majorDiscount"){%>
+                  <div class="topDeals1"><br>
+
+                  <div class="headingUpper">
+                          <h3 class="heading">SaveXTRA <hr class="hr_"></h3>
+                  </div>
+                  </div>
+                            <%}%>
+
+
+                  <%if(query&&query.homeField&&query.homeField==="happyHours"){%>
+                  <div class="topDeals1"><br>
+
+                  <div class="headingUpper">
+                          <h3 class="heading">Happy Hours <hr class="hr_"></h3>
+                  </div>
+                  </div>
+                  <%}%>
+
+
+                  <%if(query&&query.offerType&&query.offerType==="food"){%>
+                  <div class="topDeals1"><br>
+
+                <div class="headingUpper">
+                  <h3 class="heading">Food <hr class="hr_"></h3>
+                </div>
+                  </div>
+                  <%}%>
+
+                  <%if(query&&query.offerType&&query.offerType==="fashion"){%>
+                  <div class="topDeals1"><br>
+
+                <div class="headingUpper">
+                  <h3 class="heading">Fashion <hr class="hr_"></h3>
+                </div>
+                  </div>
+                  <%}%>
+
+
+                  <%if(query&&query.offerType&&query.offerType==="others"){%>
+                  <div class="topDeals1"><br>
+
+                <div class="headingUpper">
+                  <h3 class="heading">Others <hr class="hr_"></h3>
+                </div>
+                  </div>
+                  <%}%>
+
+
+
+
+
+
+        <%if(!query&&!coupons){%>
+          <div class="filterLower">
+            <div class="filterLowerMain nofilter nocouponupper">
+                  <div class="nocoupon">
+                      <img src="/images/GIrft_Wrap.gif" alt="">
+                      <br><br><br>
+                      <p class="text_12">"There are no Deals currently. We are working on getting more.<br>
+                            Meanwhile, continue Shopping."
+                           </p>
+                  </div>      
+            </div>
+            
+        </div>
+ 
+        <%}else{%>
+        <div class="filterLower">
+
+          <!-- Filter Logic -->
+            
+            <%if(query.offerType==="food"){%>
+              <% include ../partials/foodFilter.ejs%>
+            <%}%>
+
+            <%if(query.offerType==="fashion"){%>
+
+              <% include ../partials/fashionFilter.ejs%>
+
+            <%}%>
+
+            <%if(query.offerType==="others"){%>
+              <% include ../partials/othersFilter.ejs%>
+            <%}%>
+
+
+            <%if(query&&!coupons){%>
+              <div class="filterLowerMain nofilter nocouponupper">
+                  <div class="nocoupon">
+                      <img src="/images/GIrft_Wrap.gif" alt="">
+                      <br><br><br>
+                      <p class="text_12">"There are no Deals currently. We are working on getting more.<br>
+                            Meanwhile, continue Shopping."
+                           </p>
+                  </div>      
+            </div>
+            
+              <%}else{%>
+                            <div class="filterLowerMain">
+                   <%coupons.docs.forEach(coupon=>{%>
+<div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    <!-- <p class="qty">Qty: <span class="qty_count"><%=coupon.quantity%></span></p> -->
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author%>"><%=coupon.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                          
+                      <%})%> 
+                        
+            </div>
+
+             
+            
+        </div>
+        <div class="container-fluid">
+            <div class="row text-center">
+        <div class="col-md-12 top_page">
+          <%if(coupons.page-1){%>
+            <a href="<%=paginateUrl%><%=coupons.page-1%>" class="previous1"><i class="fa fa-arrow-left"></i> Prev</a>
+          <%}%>
+          
+          
+
+          <%if(coupons.page<coupons.pages){%>
+          <a href="<%=paginateUrl%><%=Number(coupons.page)+1%>" class="previous1">Next <i class="fa fa-arrow-right"></i></a>
+          <%}%>
+
+             </div>
+          </div>
+          </div>
+          <%}%>
+          <%}%>
+    </section>
+
+     <!-- Custom js -->
+      <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable .checkOtp").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
+<% include ../partials/footer.ejs%>

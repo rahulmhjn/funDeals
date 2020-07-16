@@ -1,0 +1,64 @@
+<div class="mobileFilter"><i style="color: #fbd63e;" class="fas fa-sort-amount-up-alt sort"></i>Filter<i class="fas fa-sort-down i"></i></div>
+<%x=food.length%>
+            <div class="filterLowerSide transformFull">
+                <form action="/coupons" method='GET'>
+                <div class="applyfilter">
+                    <h3>Filters</h3>
+                    <button>Apply</button>
+                </div>
+                <div class="filterSelected">
+                    
+                    <h3>Applied Filters</h3>
+                    
+                </div>
+                <div class="section">
+                </div>
+                <div class="allKeyword">
+                
+                        <div class="morefilterupper">
+                                <div class="morefilterpopupper">
+                                    <div class="morefiltersearch"><input type="text" id="myInput" placeholder="Search Keyword" autocomplete="off"><i class="fas fa-search i"></i></div>
+                                    <i class="fas fa-times morefilterclose"></i>
+                                </div>
+                                <div class="morefilterpoplower" id="myTable">
+                     <%food.forEach((food,index)=>{%>      
+                        <div class="checkOtp">
+                            
+                            <label for="checkbox <%=index%>"  class=                     
+        <%=query.filter&&query.filter.includes(food)?"backPurple":''%>
+                                ><i class="fas fa-check i"></i></label><b><%=food%></b>
+                            <input type="checkbox" name="filter[]" value="<%=food%>" 
+                            <%=query.filter&&query.filter.includes(food)?"checked":''%> id="checkbox <%=index%>" >
+ 
+                        </div>
+                        
+                    <%})%>  
+                                    
+                                </div>
+                            </div>
+                            <%let i=0;%>
+                      <%for(food of food){%> 
+                           
+                        <div class="checkOtp">
+                            
+         <label for="checkbox <%=i%>"  class=                     
+        <%=query.filter&&query.filter.includes(food)?"backPurple":''%>
+                                ><i class="fas fa-check i"></i></label><b><%=food%></b>
+                            <input type="checkbox" name="filter[]" value="<%=food%>" 
+                            <%=query.filter&&query.filter.includes(food)?"checked":''%> id="checkbox <%=i%>" >
+                        </div>
+
+                        <%if(i==8) break%>
+                        <%i++%> 
+                    <%}%>
+                     
+                    <div class="morefilter">
+                        <%if(x>8){%>
+                            + <%=x%> more
+                            <%}%>
+                    </div>
+                    
+  <input type="hidden" name="offerType" value="<%=query.offerType%>" />
+                </form>
+                </div>
+            </div>

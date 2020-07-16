@@ -1,0 +1,260 @@
+<!-----============================== js files  ===========================================-->
+<script>
+  $(()=>{
+    $('.preloading').fadeOut(10);
+});</script>
+
+
+<script>
+  window.addEventListener('load', (event) => {
+ 
+  button1=document.getElementById("defaultOpen2");
+  button1.click();
+
+});
+</script>
+
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }</script>
+
+  <script>
+    $(document).ready(function () {
+      $('.bar span').hide();
+      $('#bar-five').animate({
+        width: '75%'
+      }, 1000);
+      $('#bar-four').animate({
+        width: '35%'
+      }, 1000);
+      $('#bar-three').animate({
+        width: '20%'
+      }, 1000);
+      $('#bar-two').animate({
+        width: '15%'
+      }, 1000);
+      $('#bar-one').animate({
+        width: '30%'
+      }, 1000);
+
+      setTimeout(function () {
+        $('.bar span').fadeIn('slow');
+      }, 1000);
+
+    });</script>
+  <!--================== menu icon toogle ==================-->
+  <script>
+       $(document).ready(function () {
+     $("#close-add").on("click",function(){
+            $("#add-shipping-modal").hide();
+          });
+          
+          $("#new-shipping").on("click",function(e){
+            $("#add-shipping-modal").show();
+             e.stopPropagation();
+          });
+          
+$("#add-shipping-modal").click(function(e){
+    e.stopPropagation();
+});
+
+$(document).click(function(){
+    $("#add-shipping-modal").hide();
+});
+
+});</script>
+ <!--================== side menu bar toggle ==================-->
+<script>
+        var toggle=document.getElementById('toggleBar');
+        toggle.addEventListener('click',function(e){
+          toggle.classList.toggle('fa-times');
+        });
+        
+      </script>
+  <!--================== side menu active ==================-->
+  <script>
+    $('ul li a').click(function () {
+
+      if ($('ul li a').hasClass("active")) {
+        $('ul li a').removeClass("active");
+      }
+
+      $(this).addClass("active");
+
+    });</script>
+
+  <!--================== customer search ==================-->
+  <script>
+    $(document).ready(function () {
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+  <!--================== coupon search ==================-->
+  <script>
+    $(document).ready(function () {
+      $("#myInput1").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable1 tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+  <!--================== side menu toogle ==================-->
+  <script>
+    function openCity1(evt, cityName1) {
+      var i, tabcontent1, tablinks1;
+      tabcontent1 = document.getElementsByClassName("tabcontent1");
+      for (i = 0; i < tabcontent1.length; i++) {
+        tabcontent1[i].style.display = "none";
+      }
+      tablinks1 = document.getElementsByClassName("tablinks1");
+      for (i = 0; i < tablinks1.length; i++) {
+        tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName1).style.display = "block";
+      evt.currentTarget.className1 += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen1").click();
+  </script>
+
+  <!--================== inner customers toogle areas==================-->
+  <script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+
+  <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+
+
+  <!--================== inner coupons toogle areas==================-->
+  <script>
+    function openCity2(evt, cityName2) {
+      var i, tabcontent2, tablinks2;
+      tabcontent2 = document.getElementsByClassName("tabcontent2");
+      for (i = 0; i < tabcontent2.length; i++) {
+        tabcontent2[i].style.display = "none";
+      }
+      tablinks2 = document.getElementsByClassName("tablinks2");
+      for (i = 0; i < tablinks2.length; i++) {
+        tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName2).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen2").click();
+  </script>
+
+<script>
+  function openupload(el){
+    console.log(document.getElementsByClassName('uploadImagepop'));
+    document.getElementsByClassName('uploadImagepop')[0].style.transform = "scale(1)";
+  }
+  function closeupload(){
+    document.getElementsByClassName('uploadImagepop')[0].style.transform = "scale(0)";
+  }
+  </script>
+  
+  <script>
+  $('#firstSlideadminRight').on('click',function(){
+    $('#firstSlideadmin').animate({
+      scrollLeft: "+=250px"
+    });
+  });
+  $('#secondSlideadminRight').on('click',function(){
+    $('#secondSlideadmin').animate({
+      scrollLeft: "+=250px"
+    });
+  });
+  $('#thirdSlideadminRight').on('click',function(){
+    $('#thirdSlideadmin').animate({
+      scrollLeft: "+=250px"
+    });
+  });
+  </script>
+  
+  <script>
+  
+//state dropdown
+for(state in settings){
+    $(`.${state}`).css('display', 'none');
+}
+
+function statemerchantchange(el){
+    for(state in settings){
+        if(el.value===state){
+            $(`.${state}`).css('display', 'block');
+        }
+    }
+    for (state in settings) {
+      if (el.value !== state) {
+        $(`.${state}`).css('display', 'none');
+      }
+    }
+    
+    
+}
+
+function districtmerchantchange(el){
+    for (state in settings) {
+        for (city in settings[state]) {
+            if (el.value === city) {
+            $(`.${city}`).css('display', 'block');
+            }
+        }
+    }
+   
+    for (state in settings) {
+        for (city in settings[state]) {
+            if (el.value !== city) {
+            $(`.${city}`).css('display', 'none');
+            }
+        }
+    }
+   
+}
+
+
+  </script>
+  <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+  <script src="/javascripts/jquery-3.4.1.min.js"></script>
+  <script src="/javascripts/custom.js"></script>
+
+</body>
+
+</html>

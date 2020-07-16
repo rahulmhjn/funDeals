@@ -1,0 +1,448 @@
+<% include ../adminPartials/header.ejs%> 
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+        <a
+          href="/adminDashboard/setting"
+          class="active menu--link tablinks1"
+          title="Reviews"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-cogs "></i>
+          <span class="top">Settings</span>
+        </a>
+      </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/coupon"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Deal Requests</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponType"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal Type</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponList"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal List</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/merchant"
+        class="menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-store"></i>
+        <span class="top">Merchants</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/customer"
+        class=" menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/analytics"
+        class="menu--link tablinks1"
+        title="analytics"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Analytics</span>
+      </a>
+    </li>
+    <li class="menu--item">
+        <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">HD points</span>
+        </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/benefits"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-gifts "></i>
+        <span class="top">Benefits</span>
+      </a>
+    </li>
+   
+    <li class="menu--item">
+        <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">Special signup</span>
+        </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Slider Images</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+ <!-----============== customer body========================-->
+
+    <div class="wrapper" id="main">
+
+
+        <!-----============== coupon body========================-->
+        <section class="tabcontent1" id="reviews"><br>
+            <div class="tab100">
+                <div class="tab122 topnav">
+                    <button class="tablinks2" onclick="openCity2(event, 'coupons11')" id="defaultOpen2"
+                        auto>Quotes</button>
+                    <button class="tablinks2" onclick="openCity2(event, 'All11')"> Address</button>
+                    <button class="tablinks2" onclick="openCity2(event, 'All12')"> Other Settings</button>
+                    <!-- <div class="form-group search_">
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    </div> -->
+                </div>
+            </div>
+
+
+
+            <div id="coupons11" class="tabcontent2 full-height">
+                <table class="table">
+
+                    <tbody id="myTable">
+                        <tr>
+                            <div class="quote-table" id="display">
+
+                                <%=quotes%>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="writeReview">
+                    <form class=" bottom-text2" action="/adminDashboard/quotes?_method=PUT" method="POST">
+                       <div class="col-md-2">
+                        <p class="quote_">Enter Quotes</p>
+                        </div>
+                        <div class="col-md-8">
+                        <input class="quote-input form-control" id="quotes" type="text" placeholder="Quote" name="quotes"/>
+                        </div>
+                        <div class="col-md-2">
+                        <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="All11" class="tabcontent2">
+                <div class="card33">
+                    <address> Existing Address</address>
+                    <div class=" deals-card ">
+                        <div class="col-md-4 col-xs-12">
+                            <div class="form-group2 x1">
+                                <select type="text" id="name" class="form-control" required style="margin-top: 8px;" onchange="statemerchantchange(this)">
+                                        <option value="0">State</option>
+                                            <%for(state in settings){%>
+                                                        <option value="<%=state%>"><%=state%></option>
+                                                    <%}%>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="form-group2 x1">
+                                <select type="text" id="name" class="form-control" required style="margin-top: 8px;" onchange="districtmerchantchange(this)">
+                                        <option value="0">City</option>
+                                        <%for(state in settings){%>
+                                                        <%for(city in settings[state]){%>
+                                                            <option value="<%=city%>" class="<%=state%>"><%=city%></option>    
+                                                        <%}%>
+                                                        
+                                                   <%}%>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="form-group2 x1">
+                                <select type="text" id="name" class="form-control" required style="margin-top: 8px;">
+                                        <option value="0">Area</option>
+                                       <%for(state in settings){%>
+                                                <%for(city in settings[state]){%>
+                                                <%for(area of settings[state][city]){%>
+                                                            <option value="<%=area%>" class="<%=city%>"><%=area%></option>    
+                                                <%}%>  
+                                                    <%}%>
+                                                        
+                                                    <%}%>
+                                </select>
+                            </div>
+
+                        </div>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card34">
+                    <div class=" deals-card ">
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" class="btn btn-primary d-inline card-button setting-btn"
+                                data-toggle="modal" data-target="#myModal11" id="addRow" onclick="addRow()">Add
+                                State</button>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" class="btn btn-primary d-inline card-button setting-btn"
+                                data-toggle="modal" data-target="#myModal12" id="addRow" onclick="addRow()">Add
+                                City</button>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" class="btn btn-primary d-inline card-button setting-btn"
+                                data-toggle="modal" data-target="#myModal13" id="addRow" onclick="addRow()">Add
+                                Area</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- model11 -->
+                <div class="modal fade" id="myModal11" role="dialog">
+                    <div class="modal-dialog x2 modal-dialog-centred">
+                        <!-- Modal1 content-->
+                        <div class="modal-content">
+                            <form action="/adminDashboard/state/new" method="POST">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="font-size: 25px;">&times;</button>
+                                <h4 class="modal-title"><b>Add new State with a city </b></h4>
+                            </div>
+                            <!--========================= new Coupons format ===========================-->
+                            <div class="modal-body">
+                                
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="form-group x1">
+                                                <input type="text" id="name" 
+                                                name="state" class="form-control" required>
+                                                <label class="form-control-placeholder" for="name">State</label>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                                <div class="form-group x1">
+                                                    <input type="text" id="name" 
+                                                    name="city" class="form-control" required>
+                                                    <label class="form-control-placeholder" for="name">City</label>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary pull-left"
+                                    >Add</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- model12 -->
+                <div class="modal fade" id="myModal12" role="dialog">
+                    <div class="modal-dialog x2 modal-dialog-centred">
+                        <!-- Modal1 content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="font-size: 25px;">&times;</button>
+                                <h4 class="modal-title"><b>Add new City of Existing state </b></h4>
+                            </div>
+                            <!--========================= new Coupons format ===========================-->
+                            <div class="modal-body">
+                                <form action="/adminDashboard/city/new" method="POST">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="form-group x1">
+
+                                                <select type="text" class="select_" placeholder="state" class="form-control" name="state">
+            <option value="0" selected>State</option>
+                <%for(state in settings){%>
+                    <option value="<%=state%>"><%=state%></option>
+                <%}%>
+                                                                                      
+    </select>                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="form-group x1">
+                                                <input type="text" id="name" 
+                                                name="city" class="form-control" required>
+                                                <label class="form-control-placeholder" for="name">City</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                              
+
+                            </div>
+                            <div class="modal-footer">
+                                <button  class="btn btn-primary pull-left"
+                                    >Add</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- model13 -->
+                <div class="modal fade" id="myModal13" role="dialog">
+                    <div class="modal-dialog x2 modal-dialog-centred">
+                        <!-- Modal1 content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    style="font-size: 25px;">&times;</button>
+                                <h4 class="modal-title"><b>Add new Area of existing city</b></h4>
+                            </div>
+                            <!--========================= new Coupons format ===========================-->
+                            <div class="modal-body">
+                                <form action="/adminDashboard/area/new" method="POST">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="form-group x1">
+                                                <select type="text" class="form-control" placeholder="Buiseness Name" onchange="statemerchantchange(this)"
+                                                    name="state"
+                                                    ></h3>
+                                                    <option value="0" selected>State</option>
+                                                    <%for(state in settings){%>
+                                                        <option value="<%=state%>"><%=state%></option>
+                                                    <%}%>
+                                                    
+                                                   
+        
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12">
+                                                <div class="form-group x1">
+                                                    <select type="text" class="form-control" placeholder="Buiseness Name"
+                                                        name="city"
+                                                        onchange="districtmerchantchange(this)"></h3>
+                                                        <option value="0" selected>City</option>
+
+                                                    <%for(state in settings){%>
+                                                        <%for(city in settings[state]){%>
+                                                            <option value="<%=city%>" class="<%=state%>"><%=city%></option>    
+                                                        <%}%>
+                                                        
+                                                   <%}%>
+            
+                                                    </select>
+    
+                                                </div>
+                                            </div>
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="form-group x1">
+                                                <input type="text" id="name"
+                                                name="area" class="form-control" required>
+                                                <label class="form-control-placeholder" for="name">Area</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                
+
+                            </div>
+                            <div class="modal-footer">
+                                <button  class="btn btn-primary pull-left"
+                                    >Add</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="All12" class="tabcontent2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center;"><br><br>
+                                <img class="floppy" src="../img/coming.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--============== end reviews body========================-->
+    </div>
+
+
+
+
+
+    <!-----============================== end body  ===========================================-->
+
+
+
+<script>
+	var settings=<%-JSON.stringify(settings)%>
+	
+</script>
+
+
+
+<% include ../adminPartials/footer.ejs%>

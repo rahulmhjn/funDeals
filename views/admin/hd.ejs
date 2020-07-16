@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vertical Responsive Menu - Demonstration</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/stylesheets/adminStyleSheets/specialcss.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Rubik|Ubuntu&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-----==============================header nav bar ===========================================-->
+    
+    <header class="header clearfix">
+      <button type="button" id="toggleMenu" class="toggle_menu">
+        <i onclick="myFunction(this)" class="fas fa-bars"></i>
+      </button>
+
+      <h1>Admin</h1>
+      <div class="dropdown">
+        <button class="dropbtn"><b>Admin</b></button>
+        <div class="dropdown-content">
+          <a href="/auth/logout" style="text-decoration: none;"
+            ><b>
+              Logout &nbsp;&nbsp;
+              <i class="fas fa-sign-out-alt" style="font-size: px;"></i></b
+          ></a>
+        </div>
+      </div>
+      <img class="profile" src="/images/images.png" />
+    </header>
+    <!-----==============================end header nav bar ===========================================-->
+
+
+<nav class="vertical_nav">
+    <ul id="js-menu" class="menu">
+      <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+        <img src="/images/logo.png" width="60%;" />
+      </li>
+  
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/analytics"
+          class=" menu--link tablinks1"
+          title="analytics"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/coupon"
+          class=" menu--link tablinks1"
+          title="Customer coupon list"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-tags"></i>
+          <span class="top">Deal Requests</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/couponType"
+          class=" menu--link tablinks1"
+          title="Customer coupon list"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal Type</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/couponList"
+          class=" menu--link tablinks1"
+          title="Customer coupon list"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal List</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/merchant"
+          class="menu--link tablinks1"
+          title="create coupon"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-store"></i>
+          <span class="top">Merchants</span>
+        </a>
+      </li>
+  
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/customer"
+          class="menu--link tablinks1"
+          title="Your profile"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Customers</span>
+        </a>
+      </li>
+      
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/benefits"
+          class=" menu--link tablinks1"
+          title="Reviews"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-gifts "></i>
+          <span class="top">Benefits</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/setting"
+          class="menu--link tablinks1"
+          title="Reviews"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-cogs "></i>
+          <span class="top">Settings</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a href="/adminDashboard/hd" class="active menu--link tablinks1"  title="special signup"
+            style="text-decoration: none;" >
+            <i class="fas fa-image "></i>
+            <span class="top">HD points</span>
+        </a>
+    </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/specialSignup"
+          class=" menu--link tablinks1"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-image "></i>
+          <span class="top">Special signup</span>
+        </a>
+      </li>
+      <li class="menu--item">
+        <a
+          href="/adminDashboard/gallery"
+          class="menu--link tablinks1"
+          title="Gallery"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-image "></i>
+          <span class="top">Slider Images</span>
+        </a>
+      </li>
+    </ul>
+  
+    <button id="collapse_menu" class="collapse_menu">
+      <i class="collapse_menu--icon  fas fa-fw"></i>
+      <span class="collapse_menu--label"></span>
+    </button>
+  </nav>
+
+
+    <!-----==============================side bar ===========================================-->
+
+
+    
+    <!-----============================== end side bar ===========================================-->
+
+
+    <!-----==============================  body  ===========================================-->
+
+
+    <!-----============== customer body========================-->
+
+    <div class="wrapper" id="main">
+
+
+        <!-----============== coupon body========================-->
+            <section class="tabcontent1" id="gallery1"><br>
+            <style>
+            .p00p{
+                margin-top: 50px;
+            
+            }</style>
+                <div class="container p00p">
+                    <div class="col-md-12">
+                       
+                <form  action="/adminDashboard/hd" method="POST">
+                    <div class="row" style="padding: 0px 15px;">
+                        <div class="col-md-5" style="padding:0px 0px; margin: 0px;" >
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Customer Emails of existing users.</label>
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="abc@xyz.com,bcd@pqr.com" style="width: 100% !important;">
+                                </div>
+                        </div>
+                        <div class="col-md-5" style="padding:0px 0px 0px 10px; margin: 0px;" >
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">HD Points</label>
+                            <input type="number" name="hd" inputmode="numeric"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="20" style="width: 100% !important;">
+                            </div>
+                        </div>
+                        
+                     
+                    <div class="col-md-2">
+                        <label for="exampleInputEmail1" style="color: white;">.</label>
+<br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                  </form>
+
+                  <div class="row">
+                      <hr>
+                      <div class="col-md-12" style="padding: 0px;"><br>
+                        <div class="form-group search_">
+                            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        </div>
+                      </div>
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th style="padding: 15px 0px; width: 25%; background: rgb(192, 192, 192); font-weight: 900 !important;"> &nbsp; Name</th>
+                                <th style="padding: 15px 0px; width: 25%;background: rgb(192, 192, 192); font-weight: 900 !important;"> &nbsp; Email</th>
+                                <th style="padding: 15px 0px; width: 25%;background: rgb(192, 192, 192); font-weight: 900 !important;"> &nbsp; Mobile no.</th>
+                                <th style="padding: 15px 0px; width: 25%;background: rgb(192, 192, 192); font-weight: 900 !important;"> &nbsp; City</th>
+                               
+    
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <%user.forEach(function(user){%>
+                                <tr>
+                                    <td> <%=user.username%></td>
+                                    <td> <%=user.email%></td>
+                                    <td><%=user.number%></td>
+                                    <td><%=user.city%></td>
+                                   
+        
+                                </tr>
+                            <%})%>
+                            
+                            
+                           
+                        </tbody>
+                    </table>
+                </div>
+        
+                    </div>
+        
+                 
+        
+            </section>
+
+        <!--============== end reviews body========================-->
+    </div>
+
+
+
+    <!-----============================== end body  ===========================================-->
+
+
+
+
+
+    <!-----============================== js files  ===========================================-->
+
+    <script>
+       document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboard(document.getElementById("copyTarget"));
+});
+
+function copyToClipboard(elem) {
+	  // create hidden text element, if it doesn't already exist
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        // can just use the original source element for the selection and copy
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        // must use a temporary form element for the selection and copy
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    
+    // copy the selection
+    var succeed;
+    try {
+    	  succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    
+    if (isInput) {
+        // restore prior selection
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        // clear temporary content
+        target.textContent = "";
+    }
+    return succeed;
+}
+        </script>
+
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }</script>
+
+    <script>
+        $(document).ready(function () {
+            $('.bar span').hide();
+            $('#bar-five').animate({
+                width: '75%'
+            }, 1000);
+            $('#bar-four').animate({
+                width: '35%'
+            }, 1000);
+            $('#bar-three').animate({
+                width: '20%'
+            }, 1000);
+            $('#bar-two').animate({
+                width: '15%'
+            }, 1000);
+            $('#bar-one').animate({
+                width: '30%'
+            }, 1000);
+
+            setTimeout(function () {
+                $('.bar span').fadeIn('slow');
+            }, 1000);
+
+        });</script>
+    <!--================== menu icon toogle ==================-->
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("fa-times");
+        }
+    </script>
+
+    <!--================== side menu active ==================-->
+    <script>
+        $('ul li a').click(function () {
+
+            if ($('ul li a').hasClass("active")) {
+                $('ul li a').removeClass("active");
+            }
+
+            $(this).addClass("active");
+
+        });</script>
+
+    <!--================== customer search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== coupon search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput1").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable1 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== side menu toogle ==================-->
+    <script>
+        function openCity1(evt, cityName1) {
+            var i, tabcontent1, tablinks1;
+            tabcontent1 = document.getElementsByClassName("tabcontent1");
+            for (i = 0; i < tabcontent1.length; i++) {
+                tabcontent1[i].style.display = "none";
+            }
+            tablinks1 = document.getElementsByClassName("tablinks1");
+            for (i = 0; i < tablinks1.length; i++) {
+                tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName1).style.display = "block";
+            evt.currentTarget.className1 += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen1").click();
+    </script>
+
+    <!--================== inner customers toogle areas==================-->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    
+
+
+    <!--================== inner coupons toogle areas==================-->
+    <script>
+        function openCity2(evt, cityName2) {
+            var i, tabcontent02, tablinks2;
+            tabcontent02 = document.getElementsByClassName("tabcontent02");
+            for (i = 0; i < tabcontent02.length; i++) {
+                tabcontent02[i].style.display = "none";
+            }
+            tablinks2 = document.getElementsByClassName("tablinks2");
+            for (i = 0; i < tablinks2.length; i++) {
+                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName2).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen2").click();
+    </script>
+
+    <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+
+
+    <% include ../adminPartials/footer.ejs%>

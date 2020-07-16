@@ -1,0 +1,188 @@
+<!-----============================== js files  ===========================================-->
+<script>
+  $(()=>{
+    $('.preloading').fadeOut(10);
+});</script>
+
+
+<script>
+  window.addEventListener('load', (event) => {
+  button=document.getElementById("defaultOpen");
+  button.click();
+});
+</script>
+
+<script>
+    function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+
+               reader.onload = function (e) {
+                   $('#blah')
+                       .attr('src', e.target.result);
+               };
+
+               reader.readAsDataURL(input.files[0]);
+           }
+       }</script>
+
+
+<!--================== menu icon toogle ==================-->
+<script>
+function myFunction(x) {
+  x.classList.toggle("fa-times");
+}
+</script>
+
+<!--================== side menu active ==================-->
+<script>
+$('ul li a').click(function(){
+
+if ($('ul li a').hasClass("active")){
+      $('ul li a').removeClass("active");
+      }
+
+ $(this).addClass("active");
+
+});</script>
+
+<!--================== customer search ==================-->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+<!--================== coupon search ==================-->
+<script>
+    $(document).ready(function(){
+      $("#myInput1").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable1 tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+<!--================== side menu toogle ==================-->
+<script>
+    function openCity1(evt, cityName1) {
+      var i, tabcontent1, tablinks1;
+      tabcontent1 = document.getElementsByClassName("tabcontent1");
+      for (i = 0; i < tabcontent1.length; i++) {
+        tabcontent1[i].style.display = "none";
+      }
+      tablinks1 = document.getElementsByClassName("tablinks1");
+      for (i = 0; i < tablinks1.length; i++) {
+        tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName1).style.display = "block";
+      evt.currentTarget.className1 += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen1").click();
+    </script>
+
+<!--================== inner customers toogle areas==================-->
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  </script>
+
+  <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+
+
+  <!--================== inner coupons toogle areas==================-->
+<script>
+    function openCity2(evt, cityName2) {
+      var i, tabcontent2, tablinks2;
+      tabcontent2 = document.getElementsByClassName("tabcontent2");
+      for (i = 0; i < tabcontent2.length; i++) {
+        tabcontent2[i].style.display = "none";
+      }
+      tablinks2 = document.getElementsByClassName("tablinks2");
+      for (i = 0; i < tablinks2.length; i++) {
+        tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName2).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen2").click();
+    </script>
+    <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+      </script>
+      <script>
+          function openCity3(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent3");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+          
+          // Get the element with id="defaultOpen" and click on it
+          document.getElementById("defaultOpen").click();
+          </script>
+
+    <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+  
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5dd1320c43be710e1d1db019/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+</body>
+</html>

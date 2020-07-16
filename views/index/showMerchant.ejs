@@ -1,0 +1,292 @@
+<% include ../partials/header.ejs%> 
+
+                <div class="imageLarge">
+                        <i class="fas fa-chevron-left leftImageSlide"></i>
+                        <%if(merchant.gallery&&merchant.gallery.length>0){%>
+                          <img id="imagesrc" src="<%=merchant.gallery[0].url%>" alt="">
+                        <%}%>
+                        
+                        <i class="fas fa-chevron-right rightImageSlide"></i>
+                        <a class="closeImage"><i class="fas fa-times i"></i></a>
+                        <div class="imageslider">
+                            <div class="imageInnerSlider"> 
+                              <%for(image of merchant.gallery){%>
+                                <img src="<%=image.url%>" alt="">
+                              <%}%>
+                                
+                            </div>
+                        </div>
+                    </div>
+                <section class="merchantProf">
+                        <div class="merchantUpperProfile">
+                                <div class="merchantDetails">
+                                    <h3><b><%=merchant.businessName%></b></h3>
+                                    <h3><i class="fas fa-map-marker-alt i"></i><%=merchant.address%></h3>
+                                    <h3><i class="fas fa-phone-alt i"></i>
+                                      <a href="tel:91<%=merchant.number%>">+91<%=merchant.number%>
+                                      </a>
+                                    </h3>
+                                    <h3><i class="fas fa-globe i"></i>
+
+                                     <%if(merchant.website){%>
+                                      <%if(merchant.website.includes("https://")){%>
+                                        <a target="_blank" href = "<%=merchant.website%>"><%=merchant.website%>
+                                        </a>
+                                        <%}else{%>
+                                          <a target="_blank" href = "https://<%=merchant.website%>"><%=merchant.website%>
+                                        </a>
+                                        <%}%>
+                                    <%}%> 
+                                   
+                                    </h3>
+                                    <h3><i class="fas fa-envelope i"></i>
+                        <a href = "mailto:<%=merchant.email%>"><%=merchant.email%></a></h3>
+                                    <h6>*Business in <%=merchant.businessType%>*</h6>
+                                    <h6>*Established in <%=merchant.establishedYear%>*</h6>
+                                </div>
+                                <div class="merchantUpperImage">
+                                  <div class="merchantrating">
+                                        <div><%=floorRating%></div>
+                                        <div>
+                                            <p><%=reviews.length%></p>
+                                            <h5>REVIEWS</h5>
+                                        </div>
+                                    </div>
+                                  <%if(merchant.gallery&&merchant.gallery.length>0){%>
+                                    <img class="icon" src="<%=merchant.gallery[0].url%>" alt="">
+                                  <%}%>
+                                  
+                                  <%if(merchant.gallery&&merchant.gallery.length>1){%>
+                                    <img  src="<%=merchant.gallery[1].url%>" alt="">
+                                  <%}%>
+
+                                    
+                                    
+                                    <button class="viewAllGallery">View All</button>
+                                </div>
+                            </div>
+                            
+                                <div class="location">
+                                        <h3>Branches<hr class="hr_1"></h3>
+
+                                <div class="row">
+                                  <%branch.forEach(branch=>{%>
+                                        <div class="col-md-4">
+                                                <div class="branch_1">
+                                                        <p>Branch : <span class="name_b"><%=branch.branchName%></span></p>
+                                                        <p>Address : <span class="address_b"><%=branch.address%></span></p>
+                                                        <div class="col-md-12 text-center">
+                                                                <a target="_blank" href="<%=branch.mapLink%>"><span class="keywords">view map</span> </a>
+                                                    </div>
+                                                </div>
+                                                   
+                                        </div>
+                                       <%})%>
+                                    </div> <!--  row -->
+                                    
+                                </div>
+                            <div class="merchantMain" id="merchantGallery">
+                                <div class="merchantMainHeading">
+                                    <h4>Coupons</h4>
+                                    <h4>About</h4>
+                                    <h4>Gallery</h4>
+                                    <h4>Reviews</h4>
+                                </div>
+                                <div class="merchantMainDetails">
+                                    <div class="merchantMainCoupons mainDetail">
+                                         
+                                        <div class="Allcardmerchant couponchoose">
+                                       
+               <%merchantCoupon.forEach(coupon=>{%>
+                      <div class="card">
+                                <div class="card-header text-center ">
+                                    <p class="wishlist">
+                                    <a href="/wish-list/add-to-wishList/<%=coupon._id%>">
+                                        <i class="fas fa-heart i"></i>
+                                    </a>
+                                    </p>
+                                    <p class="couponType"><%=coupon.couponType%></p>
+                                    <!-- <p class="qty">Qty: <span class="qty_count"><%=coupon.quantity%></span></p> -->
+                                    <a href="/coupons/<%=coupon._id%>">
+                                        <img src="<%=coupon.image.url%>" alt="" class="w-100">    
+                                    </a>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="coup_name text-center">
+                                        <a href="/coupons/<%=coupon._id%>">
+                                            <%=coupon.offerName%>
+                                            </a>
+                                        </h5>
+                                    <div class="row star">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                    <p class="star">
+                                                   <%floorRating=Math.floor(coupon.avgRating)%> 	
+                                                <%for(i=0;i<5;i++){ %>
+													<%if(i<floorRating){%>
+													<span class="fa fa-star checked"></span>
+													<%}else if((coupon.avgRating-i)>0&&(coupon.avgRating-i)<1){%>
+													<span class="fa fa-star checked"></span>
+													<%}else{%>
+													<span class="fa fa-star"></span>
+													<%}%>
+													<% }%>
+                                                           
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    <p class="timing">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span class="merchant_cop">
+                                <a href="/show-merchant/<%=coupon.author%>"><%=coupon.businessName%></a> </span></p>
+                                </div>
+                                <div class="bottom">
+                                        <div class="in21">
+                                                <a href="/cart/add-to-cart-back/<%=coupon._id%>" class="add_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                                               <a href="/cart/add-to-cart/<%=coupon._id%>" class="more_details"><i class="fa fa-rupee-sign"></i> Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                      <%})%>                         
+
+                                                   
+                                        </div>
+
+                                    </div>
+
+<div class="merchantMainAbout mainDetail">
+                                        <div class="about">
+                                            <h3>About  <hr></h3>
+                                            <p><%=merchant.about%></p>
+                                        </div>
+                                        <div class="aboutLower">
+                                            <div class="detailschedule">
+                                                <h3>Schedule <hr></h3>                                              
+                                                <h4>Monday <span class="store"> <i class="fa fa-door-closed"></i><%=merchant.monday%></span></h4>
+                                                <h4>Tuesday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.tuesday%></span></h4>
+                                                <h4>Wednesday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.wednesday%></span></h4>
+                                                <h4>Thrusday <span class="store"> <i class="fa fa-door-closed"></i> <%=merchant.thursday%></span></h4>
+                                                <h4>Friday <span class="store"> <i class="fa fa-door-closed"></i><%=merchant.friday%></span></h4>
+                                                <h4>Saturday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.saturday%></span></h4>
+                                                <h4>Sunday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.sunday%></span></h4>
+                                            </div>
+                                            <div>
+                                                <div class="popp">
+                                                        <p class="timing_1">Timing <hr></p>
+                                                        <p class="open_1">Open at <i><span class="open_time">&nbsp; <%=merchant.openTime%> </span></i></p>
+                                                        <p class="open_1">Close at  <i><span class="open_time">&nbsp; <%=merchant.closeTime%> </span></i> </p>
+                                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="merchantMainGallery mainDetail">
+<div>                                      
+  <%for(var i=0;i<merchant.gallery.length;i+=3) {%>
+
+     <img src="<%=merchant.gallery[i].url%>" alt="">
+
+<%}%>
+</div>
+<div>
+<%for(var i=1;i<merchant.gallery.length;i+=3) { %>
+
+     <img src="<%=merchant.gallery[i].url%>" alt="">
+
+<%}%>
+</div>
+<div>
+<%for(var i=2;i<merchant.gallery.length;i+=3) { %>
+
+     <img src="<%=merchant.gallery[i].url%>" alt="">
+
+<%}%>
+</div>
+<div>
+<%for(var i=3;i<merchant.gallery.length;i+=3) {%>
+
+     <img src="<%=merchant.gallery[i].url%>" alt="">
+
+<%}%>
+</div>
+</div>
+
+         <div class="merchantMainReviews mainDetail">
+                                      
+            <%reviews.forEach(function(review) { %>
+                      <div class="row"><br>
+                        <div class="col-md-1">
+                          <%if(!review.author.logo.secure_url){%>
+                          <img src="/images/images.png" class="dp_customer">
+                          <%}else{%>
+                          <img src="<%=review.author.logo.secure_url%>" class="dp_customer">
+
+                          <%}%>
+                        </div>
+                        <div class="col-md-11 hr_b">
+                          <p > 
+                            <span class="rev_name"><%=review.author.username%></span><br>
+                            <span class="rev_date"> <%=review.date.toDateString()%></span><br>
+                            <div class="rating-stars1">
+                                <%for(i=0;i<5;i++){ %>
+                                  <%if(i<review.rating){%>
+                                    <span><i class="active fas fa-star"></i></span>
+                                  <%}else{%>
+                                      <span><i class="fas fa-star"></i></span>
+                                  <%}%>
+                                <% }%>
+                               </p>
+                              </div>
+                            <span class="rev_comment"><%=review.body%></span><br>
+                          </p>
+                          
+                        </div>
+                      </div>
+
+
+                      <%})%>
+                                              
+                         
+
+<%if(currentUser){%>
+    <div class="reviewSubmit">
+      <form action="/show-merchant/<%= merchant._id%>/review" method="POST">
+    
+            <span class="starability-basic mt-5">
+
+    <input
+      type="radio"
+      id="rate0"
+      class="input-no-rate"
+      name="rating"
+      value="0"
+      checked
+      aria-label="No rating."
+    />
+    <input type="radio" id="rate1" name="rating" value="1" />
+    <label for="rate1" title="Terrible">1 star</label>
+    <input type="radio" id="rate2" name="rating" value="2" />
+    <label for="rate2" title="Not good">2 stars</label>
+    <input type="radio" id="rate3" name="rating" value="3" />
+    <label for="rate3" title="Average">3 stars</label>
+    <input type="radio" id="rate4" name="rating" value="4" />
+    <label for="rate4" title="Very good">4 stars</label>
+    <input type="radio" id="rate5" name="rating" value="5" />
+    <label for="rate5" title="Amazing">5 stars</label>
+  </span>
+    
+            <input type="text" name="body">
+            <input type="submit" value="Submit">
+        </div>
+
+    </form>      
+    </div>
+    <%}%>
+
+                                                </section>
+    
+
+
+<% include ../partials/footer.ejs%>

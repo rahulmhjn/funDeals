@@ -1,0 +1,304 @@
+<% include ../adminPartials/header.ejs%>
+
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/customer"
+        class="active menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/coupon"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Deal Requests</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponType"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal Type</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponList"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal List</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/merchant"
+        class="menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-store"></i>
+        <span class="top">Merchants</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/analytics"
+        class="menu--link tablinks1"
+        title="analytics"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Analytics</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/benefits"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-gifts "></i>
+        <span class="top">Benefits</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/setting"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-cogs "></i>
+        <span class="top">Settings</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/hd"
+        class="menu--link tablinks1"
+        title="special signup"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">HD points</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/specialSignup"
+        class=" menu--link tablinks1"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Special signup</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Slider Images</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+<!-----==============================  body  ===========================================-->
+
+<!-----============== customer body========================-->
+
+<div class="wrapper" id="main">
+  <!-----============== coupon body========================-->
+  <section class="tabcontent1" id="profile">
+    <br />
+    <div class="tab100">
+      <div class="tab1 topnav">
+        <button
+          class="tablinks2"
+          onclick="openCity2(event, 'coupons11')"
+          id="defaultOpen2"
+          auto
+        >
+          Coupons
+        </button>
+        <button class="tablinks2" onclick="openCity2(event, 'All11')">
+          All Customers
+        </button>
+        <div class="form-group search_">
+          <input
+            class="form-control"
+            id="myInput"
+            type="text"
+            placeholder="Search.."
+          />
+        </div>
+      </div>
+    </div>
+
+    <div id="coupons11" class="tabcontent2">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th style="padding: 15px 0px; width: 16%;">&nbsp; NAME</th>
+            <th style="padding: 15px 0px; width: 18%;">&nbsp; MOBILE NO.</th>
+            <th style="padding: 15px 0px; width: 19%;">&nbsp; EMAIL</th>
+            <th style="padding: 15px 0px; width: 15%;">&nbsp; COUPON</th>
+            <th style="padding: 15px 0px; width: 10%;">&nbsp; CODE</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <% if(coupons){ %>
+          <!--  -->
+          <% coupons.forEach(function(coupon) {%>
+          <!--  -->
+          <% if (coupon.unusedCouponCustomer) { %>
+          <!--  -->
+          <% for (customer_id in coupon.unusedCouponCustomer) {%>
+          <!--  -->
+          <% if(coupon.unusedCouponCustomer[customer_id]){%>
+          <tr>
+            <td><%= coupon.unusedCouponCustomer[customer_id].username%></td>
+            <td><%= coupon.unusedCouponCustomer[customer_id].number%></td>
+            <td><%= coupon.unusedCouponCustomer[customer_id].email%></td>
+            <td>
+              <%= coupon.offerName%>(<%=
+              coupon.unusedCouponCustomer[customer_id].qty%> unused)
+            </td>
+            <td class="c_code">
+              <%= coupon.unusedCouponCustomer[customer_id].code%>
+            </td>
+          </tr>
+          <% }%> <% } %>
+          <!--  -->
+          <% } %>
+          <!--  -->
+          <% }) %>
+          <!--  -->
+          <% } %> <% if(coupons){ %>
+          <!--  -->
+          <% coupons.forEach(function(coupon) {%>
+          <!--  -->
+          <% if (coupon.usedCouponCustomer) { %>
+          <!--  -->
+          <% for (customer_id in coupon.usedCouponCustomer) {%>
+          <!--  -->
+          <% if(coupon.usedCouponCustomer[customer_id]){%>
+
+          <tr>
+            <td><%= coupon.usedCouponCustomer[customer_id].username%></td>
+            <td><%= coupon.usedCouponCustomer[customer_id].number%></td>
+            <td><%= coupon.usedCouponCustomer[customer_id].email%></td>
+            <td>
+              <%= coupon.offerName%>(<%=
+              coupon.usedCouponCustomer[customer_id].qty%> used)
+            </td>
+            <td class="c_code">
+              <%= coupon.usedCouponCustomer[customer_id].code%>
+            </td>
+          </tr>
+          <% } %> <% } %>
+          <!--  -->
+          <% } %>
+          <!--  -->
+          <% }) %>
+          <!--  -->
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="All11" class="tabcontent2">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th style="padding: 15px 0px; width: 10%;">&nbsp; NAME</th>
+            <th style="padding: 15px 0px; width: 10%;">&nbsp; MOBILE NO.</th>
+            <th style="padding: 15px 0px; width: 17%;">&nbsp; EMAIL</th>
+            <th style="padding: 15px 0px; width: 16%;">&nbsp; STATE</th>
+            <th style="padding: 15px 0px; width: 15%;">&nbsp; CITY</th>
+            <th style="padding: 15px 0px; width: 16%;">&nbsp; AREA</th>
+            <th style="padding: 15px 0px; width: 20%;">&nbsp; ADDRESS</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <% if(users){ %>
+          <!--future refrence-  user.unusedCoupon-->
+          <% users.forEach(function(user) {%> <% if(1){ %>
+          <tr>
+            <td><%=user.username%></td>
+            <td><%=user.number%></td>
+            <td><%=user.email%></td>
+            <td><%=user.state%></td>
+            <td><%=user.city%></td>
+            <td><%=user.area%></td>
+            <td><%=user.address%></td>
+          </tr>
+          <% } %>
+          <!--  -->
+          <% }) %>
+          <!--  -->
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <!--============== end reviews body========================-->
+</div>
+
+<!-----============================== end body  ===========================================-->
+<!--================== customer search ==================-->
+<script>
+  $(document).ready(function() {
+    $('#myInput').on('keyup', function() {
+      var value = $(this)
+        .val()
+        .toLowerCase();
+      $('#myTable tr').filter(function() {
+        $(this).toggle(
+          $(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
+</script>
+<% include ../adminPartials/footer.ejs%>

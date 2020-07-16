@@ -1,0 +1,639 @@
+<% include ../adminPartials/header.ejs%>
+
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponType"
+        class="active menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal Type</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/coupon"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Deal Requests</span>
+      </a>
+    </li>
+   
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/couponList"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">HappyDeal List</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/merchant"
+        class="menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-store"></i>
+        <span class="top">Merchants</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/customer"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/analytics"
+        class="menu--link tablinks1"
+        title="analytics"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Analytics</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/benefits"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-gifts "></i>
+        <span class="top">Benefits</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/setting"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-cogs "></i>
+        <span class="top">Settings</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+          style="text-decoration: none;" >
+          <i class="fas fa-image "></i>
+          <span class="top">HD points</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+          style="text-decoration: none;" >
+          <i class="fas fa-image "></i>
+          <span class="top">Special signup</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Slider Images</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+<!-----==============================  body  ===========================================-->
+
+
+    <!-----============== customer body========================-->
+
+    <div class="wrapper" id="main">
+
+            <!-- <section class="tabcontent1" id="customers"><br>
+          
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Pending')" id="defaultOpen">Pending</button>
+            <button class="tablinks" onclick="openCity(event, 'Used')">Used</button>
+            <button class="tablinks" onclick="openCity(event, 'All')">All</button>
+          </div> -->
+    
+    
+            <!-----======== pending body===========-->
+    
+            <!-- <div id="Pending" class="tabcontent2112">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="coupons_list">
+                        <div class="card">
+                        <div class="card-header text-center ">
+                            <p class="status">Pending</p>
+                            <p class="qty">Qty: <span class="qty_count">14</span></p>
+                          <img src="mer_image/02.jpeg" alt="" class="w-100">
+                        </div>
+                        <div class="card-body">
+                          <h5 class="coup_name text-center">Flat <b class="precent"> 50%</b> off on shopping of Rs.999/-</h5>
+                          <p class="timing"><i>From <br> <span class="date">11 /09 /2019</span> &nbsp; - &nbsp; <span class="time">09:00 PM</span></i></p>
+                          <p class="timing"><i>To <br> <span class="date">11 /09 /2019</span> &nbsp; - &nbsp; <span class="time">09:00 PM</span></i></p>
+                        </div>
+                        <div class="card-footer text-center">
+                         Happy Hour
+                        </div>
+                    </div> 
+                </div>
+              </div>
+            </div>
+          </div> -->
+            <!-----======== end pending body===========-->
+    
+    
+            <!-----======== Used body===========-->
+            <!-- <div id="Used" class="tabcontent">
+            
+          </div> -->
+            <!-----======== end Used body===========-->
+    
+    
+    
+    
+            <!-----======== all body===========-->
+    
+            <!-- <div id="All" class="tabcontent">
+             
+          </div>     -->
+            <!-----======== all body===========-->
+    
+            <!-- </section> -->
+            ---============== end customer body========================
+    
+    
+    
+    
+            <!-----============== coupon body========================-->
+            <section class="tabcontent1" id="coupon-type"><br>
+                <div class="tab100">
+                    <div class="tab12 topnav" style="top: 48px;">
+                        <button class="tablinks2" onclick="openCity22(event, 'Approved1')" id="defaultOpen2" auto>Top
+                            Offers</button>
+                        <button class="tablinks2" onclick="openCity22(event, 'Approved2')">Today's Offers</button>
+                        <button class="tablinks2" onclick="openCity22(event, 'Approved3')">SaveXTRAXTRA</button>
+                        <button class="tablinks2" onclick="openCity22(event, 'Approved4')">Others</button>
+                    </div>
+                </div>
+    
+    
+                <!-----============== coupon pending body========================-->
+    
+    
+                <!-- End of approved body -->
+    
+    
+    
+                <div id="Approved1" class="tabcontent211">
+    
+                    <div class="coupons_list">
+                            <% coupons.forEach(function(coupon){ %>
+                                <% if(coupon.homeField=="topDeals"){%>
+                                
+                                
+                        <div class="card mb-3 mt-5 card-width12">
+                            <div class="row no-gutters">
+                                <div class="col-md-6 card-col1">
+                                    <img src="<%=coupon.image.url%>" class="card-img" alt="">
+                                </div>
+                                <div class="col-md-6 zero-left-padding zero-right-padding ">
+                                    <div class="card-body">
+                                        <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%></h5>
+                                        <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                                                <%=coupon.couponType%> </b></p>
+                                        <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span
+                                                class="merchant_cop">
+                                                <%=coupon.businessName%></span></p>
+                                        <div class="row">
+                                                <%if(coupon.startDate.getDate()<10){%>
+                                                        <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                                        <%} else {%>
+                                                          <% var sdate=coupon.startDate.getDate()%>
+                                                        <%}%>
+                                                      <%if(coupon.startDate.getMonth()<9){%>
+                                                          <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                                          <%} else {%>
+                                                            <% var smonth =coupon.startDate.getMonth()+1%>
+                                                        <%}%>
+                                                      
+                                                      <% var syear=coupon.startDate.getFullYear()%>
+                                                      <% startDate=`${sdate}/${smonth}/${syear}`%>
+                                                      
+                                                      <%if(coupon.expireDate.getDate()<10){%>
+                                                          <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                                          <%} else {%>
+                                                            <% var edate=coupon.expireDate.getDate()%>
+                                                          <%}%>
+                                                        <%if(coupon.expireDate.getMonth()<9){%>
+                                                            <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                                            <%} else {%>
+                                                              <% var emonth =coupon.expireDate.getMonth()+1%>
+                                                          <%}%>
+                                                        
+                                                        <% var eyear=coupon.expireDate.getFullYear()%>
+                                                        <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                                                        <div class="col-md-6 col-xs-6">
+                                                            <p>
+                                                              <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                                                              <br>
+                                                              <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                                                            </p>
+                                                          </div>
+                                                          <%if(coupon.startTime){%>
+                                                          <div class="col-md-6 col-xs-6">
+                                                            <p>
+                                                              &nbsp;<span>Timing
+                                                                <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                                                              <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                                                            </p>
+                                                          </div>
+                                                          <%}%>
+                                        </div>
+                                    </div>
+                                    <form action="/coupons/<%= coupon.id %>/homeField?_method=PUT" method="POST">
+                                    <div class="card-bottom deals-card card-base1">
+                                        <div class="col-md-7 col-xs-8">
+                                            <div class="form-group x1">
+                                                <select type="String" name="coupon[homeField]" id="name" class="form-control" style="margin-top: 8px;" required>
+                                                    <option value="<%=coupon.homeField%>">Offer Type</option>
+                                                    <option value="todayDeals" <%if(coupon.homeField=="todayDeals"){%>selected<%}%> >Todays Offers</option>
+                                                    <option value="topDeals" <%if(coupon.homeField=="topDeals"){%>selected<%}%> >Top Offers</option>
+                                                    <option value="happyHours" <%if(coupon.homeField=="happyHours"){%>selected<%}%> >happyHours</option>
+                                                    <option value="majorDiscount" <%if(coupon.homeField=="majorDiscount"){%>selected<%}%> >SaveXTRA</option>
+                                                    <option value="none" <%if(coupon.homeField=="none"){%>selected<%}%> >none</option>
+                                                </select>
+    
+                                            </div>
+                                        </div><button type="submit"
+                                            class="btn btn-primary d-inline button-margin deals-btn">submit</button></p>
+                                    </div></form>
+                                </div>
+                            </div>
+                        </div>
+                        <% }%> <% }) %>
+                    </div>
+                </div>
+    
+                <div id="Approved2" class="tabcontent211">
+    
+                        <div class="coupons_list">
+                            
+                                <% coupons.forEach(function(coupon){ %>
+                                    <% if(coupon.homeField=="todayDeals"){%>
+                                    
+                                    
+                            <div class="card mb-3 mt-5 card-width12">
+                                <div class="row no-gutters">
+                                    <div class="col-md-6 card-col1">
+                                        <img src="<%=coupon.image.url%>" class="card-img" alt="">
+                                    </div>
+                                    <div class="col-md-6 zero-left-padding zero-right-padding ">
+                                        <div class="card-body">
+                                            <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%></h5>
+                                            <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                                                    <%=coupon.couponType%> </b></p>
+                                            <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span
+                                                    class="merchant_cop">
+                                                    <%=coupon.businessName%></span></p>
+                                            <div class="row">
+                                                    <%if(coupon.startDate.getDate()<10){%>
+                                                            <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                                            <%} else {%>
+                                                              <% var sdate=coupon.startDate.getDate()%>
+                                                            <%}%>
+                                                          <%if(coupon.startDate.getMonth()<9){%>
+                                                              <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                                              <%} else {%>
+                                                                <% var smonth =coupon.startDate.getMonth()+1%>
+                                                            <%}%>
+                                                          
+                                                          <% var syear=coupon.startDate.getFullYear()%>
+                                                          <% startDate=`${sdate}/${smonth}/${syear}`%>
+                                                          
+                                                          <%if(coupon.expireDate.getDate()<10){%>
+                                                              <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                                              <%} else {%>
+                                                                <% var edate=coupon.expireDate.getDate()%>
+                                                              <%}%>
+                                                            <%if(coupon.expireDate.getMonth()<9){%>
+                                                                <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                                                <%} else {%>
+                                                                  <% var emonth =coupon.expireDate.getMonth()+1%>
+                                                              <%}%>
+                                                            
+                                                            <% var eyear=coupon.expireDate.getFullYear()%>
+                                                            <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                                                            <div class="col-md-6 col-xs-6">
+                                                                <p>
+                                                                  <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                                                                  <br>
+                                                                  <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                                                                </p>
+                                                              </div>
+                                                              <%if(coupon.startTime){%>
+                                                              <div class="col-md-6 col-xs-6">
+                                                                <p>
+                                                                  &nbsp;<span>Timing
+                                                                    <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                                                                  <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                                                                </p>
+                                                              </div>
+                                                              <%}%>
+                                            </div>
+                                        </div>
+                                        <form action="/coupons/<%= coupon.id %>/homeField?_method=PUT" method="POST">
+                                        <div class="card-bottom deals-card card-base1">
+                                            <div class="col-md-7 col-xs-8">
+                                                <div class="form-group x1">
+                                                    <select type="String" name="coupon[homeField]" id="name" class="form-control" style="margin-top: 8px;" required>
+                                                        <option value="<%=coupon.homeField%>">Offer Type</option>
+                                                        <option value="todayDeals" <%if(coupon.homeField=="todayDeals"){%>selected<%}%> >Todays Offers</option>
+                                                        <option value="topDeals" <%if(coupon.homeField=="topDeals"){%>selected<%}%> >Top Offers</option>
+                                                       <option value="happyHours" <%if(coupon.homeField=="happyHours"){%>selected<%}%> >happyHours</option>
+                                                        <option value="majorDiscount" <%if(coupon.homeField=="majorDiscount"){%>selected<%}%> >SaveXTRA</option>
+                                                        <option value="none" <%if(coupon.homeField=="none"){%>selected<%}%> >none</option>
+                                                    </select>
+        
+                                                </div>
+                                            </div><button type="submit"
+                                                class="btn btn-primary d-inline button-margin deals-btn">submit</button></p>
+                                        </div></form>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }%> <% }) %>
+                        </div>
+                    </div>
+    
+    
+    
+    
+                    <div id="Approved3" class="tabcontent211">
+    
+                            <div class="coupons_list">
+                                
+                                    <% coupons.forEach(function(coupon){ %>
+                                        <% if(coupon.homeField=="majorDiscount"){%>
+                                        
+                                        
+                                <div class="card mb-3 mt-5 card-width12">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-6 card-col1">
+                                            <img src="<%=coupon.image.url%>" class="card-img" alt="">
+                                        </div>
+                                        <div class="col-md-6 zero-left-padding zero-right-padding ">
+                                            <div class="card-body">
+                                                <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%></h5>
+                                                <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                                                        <%=coupon.couponType%> </b></p>
+                                                <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span
+                                                        class="merchant_cop">
+                                                        <%=coupon.businessName%></span></p>
+                                                <div class="row">
+                                                        <%if(coupon.startDate.getDate()<10){%>
+                                                                <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                                                <%} else {%>
+                                                                  <% var sdate=coupon.startDate.getDate()%>
+                                                                <%}%>
+                                                              <%if(coupon.startDate.getMonth()<9){%>
+                                                                  <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                                                  <%} else {%>
+                                                                    <% var smonth =coupon.startDate.getMonth()+1%>
+                                                                <%}%>
+                                                              
+                                                              <% var syear=coupon.startDate.getFullYear()%>
+                                                              <% startDate=`${sdate}/${smonth}/${syear}`%>
+                                                              
+                                                              <%if(coupon.expireDate.getDate()<10){%>
+                                                                  <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                                                  <%} else {%>
+                                                                    <% var edate=coupon.expireDate.getDate()%>
+                                                                  <%}%>
+                                                                <%if(coupon.expireDate.getMonth()<9){%>
+                                                                    <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                                                    <%} else {%>
+                                                                      <% var emonth =coupon.expireDate.getMonth()+1%>
+                                                                  <%}%>
+                                                                
+                                                                <% var eyear=coupon.expireDate.getFullYear()%>
+                                                                <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                                                                <div class="col-md-6 col-xs-6">
+                                                                    <p>
+                                                                      <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                                                                      <br>
+                                                                      <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                                                                    </p>
+                                                                  </div>
+                                                                  <%if(coupon.startTime){%>
+                                                                  <div class="col-md-6 col-xs-6">
+                                                                    <p>
+                                                                      &nbsp;<span>Timing
+                                                                        <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                                                                      <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                                                                    </p>
+                                                                  </div>
+                                                                  <%}%>
+                                                </div>
+                                            </div>
+                                            <form action="/coupons/<%= coupon.id %>/homeField?_method=PUT" method="POST">
+                                            <div class="card-bottom deals-card card-base1">
+                                                <div class="col-md-7 col-xs-8">
+                                                    <div class="form-group x1">
+                                                        <select type="String" name="coupon[homeField]" id="name" class="form-control" style="margin-top: 8px;" required>
+                                                            <option value="<%=coupon.homeField%>">Offer Type</option>
+                                                            <option value="todayDeals" <%if(coupon.homeField=="todayDeals"){%>selected<%}%> >Todays Offers</option>
+                                                            <option value="topDeals" <%if(coupon.homeField=="topDeals"){%>selected<%}%> >Top Offers</option>
+                                                            <option value="happyHours" <%if(coupon.homeField=="happyHours"){%>selected<%}%> >happyHours</option>
+                                                            <option value="majorDiscount" <%if(coupon.homeField=="majorDiscount"){%>selected<%}%> >SaveXTRA</option>
+                                                            <option value="none" <%if(coupon.homeField=="none"){%>selected<%}%> >none</option>
+                                                        </select>
+            
+                                                    </div>
+                                                </div><button type="submit"
+                                                    class="btn btn-primary d-inline button-margin deals-btn">submit</button></p>
+                                            </div></form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }%> <% }) %>
+                            </div>
+                        </div>
+                
+    
+        <div id="Approved4" class="tabcontent211">
+    
+                <div class="coupons_list">
+                    
+                        <% coupons.forEach(function(coupon){ %>
+                            <% if((coupon.homeField!="topDeals")&&(coupon.homeField!="todayDeals")&&(coupon.homeField!="majorDiscount")){%>
+                            
+                            
+                    <div class="card mb-3 mt-5 card-width12">
+                        <div class="row no-gutters">
+                            <div class="col-md-6 card-col1">
+                                <img src="<%=coupon.image.url%>" class="card-img" alt="">
+                            </div>
+                            <div class="col-md-6 zero-left-padding zero-right-padding ">
+                                <div class="card-body">
+                                    <h5 class="coup_name text-left padding-left" style="margin-bottom: 6px;"><%=coupon.offerName%></h5>
+                                    <p class="timing1 text-left padding-left">Type : <b class="coup_name">
+                                            <%=coupon.couponType%> </b></p>
+                                    <p class="timing2">HappyDeal by <br> <i class="fas fa-store-alt blk"></i><span
+                                            class="merchant_cop">
+                                            <%=coupon.businessName%></span></p>
+                                    <div class="row">
+                                            <%if(coupon.startDate.getDate()<10){%>
+                                                    <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                                    <%} else {%>
+                                                      <% var sdate=coupon.startDate.getDate()%>
+                                                    <%}%>
+                                                  <%if(coupon.startDate.getMonth()<9){%>
+                                                      <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                                      <%} else {%>
+                                                        <% var smonth =coupon.startDate.getMonth()+1%>
+                                                    <%}%>
+                                                  
+                                                  <% var syear=coupon.startDate.getFullYear()%>
+                                                  <% startDate=`${sdate}/${smonth}/${syear}`%>
+                                                  
+                                                  <%if(coupon.expireDate.getDate()<10){%>
+                                                      <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                                      <%} else {%>
+                                                        <% var edate=coupon.expireDate.getDate()%>
+                                                      <%}%>
+                                                    <%if(coupon.expireDate.getMonth()<9){%>
+                                                        <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                                        <%} else {%>
+                                                          <% var emonth =coupon.expireDate.getMonth()+1%>
+                                                      <%}%>
+                                                    
+                                                    <% var eyear=coupon.expireDate.getFullYear()%>
+                                                    <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                                                    <div class="col-md-6 col-xs-6">
+                                                        <p>
+                                                          <span style="padding-left: 15px;">From<br>&nbsp;&nbsp;<span class="date timing"><%=startDate%></span></span>
+                                                          <br>
+                                                          <span style="padding-left: 15px;">To<br>&nbsp;&nbsp;<span class="date timing"><%=expireDate%></span></span>
+                                                        </p>
+                                                      </div>
+                                                      <%if(coupon.startTime){%>
+                                                      <div class="col-md-6 col-xs-6">
+                                                        <p>
+                                                          &nbsp;<span>Timing
+                                                            <br>&nbsp;<span class="time timing">From</span><span class="timing"><%=coupon.startTime%></span></span><br>
+                                                          <span> <br> &nbsp;<span class="time timing">To</span><span class="timing"><%=coupon.expireTime%></span></span>
+                                                        </p>
+                                                      </div>
+                                                      <%}%>
+                                    </div>
+                                </div>
+                                <form action="/coupons/<%= coupon.id %>/homeField?_method=PUT" method="POST">
+                                <div class="card-bottom deals-card card-base1">
+                                    <div class="col-md-7 col-xs-8">
+                                        <div class="form-group x1">
+                                            <select type="String" name="coupon[homeField]" id="name" class="form-control" style="margin-top: 8px;" required>
+                                                <option value="<%=coupon.homeField%>">Offer Type</option>
+                                                <option value="todayDeals" <%if(coupon.homeField=="todayDeals"){%>selected<%}%> >Todays Offers</option>
+                                                <option value="topDeals" <%if(coupon.homeField=="topDeals"){%>selected<%}%> >Top Offers</option>
+                                                <option value="happyHours" <%if(coupon.homeField=="happyHours"){%>selected<%}%> >happyHours</option>
+                                                <option value="majorDiscount" <%if(coupon.homeField=="majorDiscount"){%>selected<%}%> >SaveXTRA</option>
+                                                <option value="none" <%if(coupon.homeField=="none"){%>selected<%}%> >none</option>
+                                            </select>
+
+                                        </div>
+                                    </div><button type="submit"
+                                        class="btn btn-primary d-inline button-margin deals-btn">submit</button></p>
+                                </div></form>
+                            </div>
+                        </div>
+                    </div>
+                    <% }%> <% }) %>
+                </div>
+            </div>
+            </div>
+        <!-----======== end all body===========---->
+        </section>
+        <!--============== end coupon body========================-->
+    
+        <!-----============================== js files  ===========================================-->
+        
+    
+        
+    
+        
+    
+        <!--================== coupon search ==================-->
+        <script>
+            $(document).ready(function () {
+                $("#myInput1").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable1 tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    
+        
+    
+        
+    
+        <script src="vertical-responsive-menu.min.js"></script>
+    
+    
+        <!--================== inner coupons toogle areas==================-->
+        <script>
+            function openCity22(evt, cityName2) {
+                var i, tabcontent211, tablinks2;
+                tabcontent211 = document.getElementsByClassName("tabcontent211");
+                for (i = 0; i < tabcontent211.length; i++) {
+                    tabcontent211[i].style.display = "none";
+                }
+                tablinks2 = document.getElementsByClassName("tablinks2");
+                for (i = 0; i < tablinks2.length; i++) {
+                    tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName2).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+    
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen2").click();
+        </script>
+    
+        <script src="vertical-responsive-menu.min.js"></script>
+    
+<% include ../adminPartials/footer.ejs%>

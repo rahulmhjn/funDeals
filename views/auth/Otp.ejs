@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+    <script src="/javascripts/all.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>HappinessDeals</title>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloading">
+        <div class="preUpper">
+            <img src="/images/preloadergif.gif" alt="Loading">
+        </div>
+    </div>
+<% if(success &&success.length){%>
+<div class="flash2">
+  <%=success%>
+   <i class="fas fa-times i" style="cursor: pointer;"></i>
+</div>
+<% }%> 
+<% if(error && error.length){%>
+<div class="flash blink">
+  <%=error%>
+   <i class="fas fa-times i" style="cursor: pointer;"></i>
+</div>
+<% }%>
+
+
+
+<div class="otpVerifyMain">
+    <div class="upperContainerOtp">
+            <div class="container">
+                <div class="signImage">
+                    <img src="/images/demo2.jpeg" alt="">
+                </div>
+                <div class="sideLogin">
+                    <form  action="/auth/otp/<%=number%>" method="POST">
+                            <div class="enterOtp">
+                                    <h3><b>Enter OTP Sent To Your Mobile</b></h3>
+                                    <div class="inputdiv">
+                                            <input type="text" inputmode="numeric" autofocus maxlength="1" oninput="nextFocus(this);" name="a" 
+                                            autocomplete="off"/>
+                                            <input type="text" inputmode="numeric" maxlength="1" oninput="nextFocus(this);" name="b"
+                                            autocomplete="off" />
+                                            <input type="text" inputmode="numeric" maxlength="1" oninput="nextFocus(this);" name="c"
+                                            autocomplete="off" />
+                                            <input type="text" inputmode="numeric" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="d"
+                                            autocomplete="off" />
+                                    </div>
+                                    <button class="submit">Submit</button>
+                                  
+                                    
+                                    <div class="goback">
+                                        <a href="/"><div class="adiv"><i class="fas fa-arrow-right i"></i><h5>Go Back</h5></div></a>
+                                    </div>
+
+                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+        <!-- Custom js -->
+        <script src="/javascripts/jquery-3.4.1.min.js"></script>
+    <script src="/javascripts/custom.js"></script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5dd1320c43be710e1d1db019/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

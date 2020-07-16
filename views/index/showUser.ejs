@@ -1,0 +1,199 @@
+<% include ../partials/header.ejs%>
+
+
+    <section class="userProfile">
+         <div class="modal fade" id="userupdatePop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="font-size: 1.3rem;font-weight: 600;">Edit Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <div class="signup userEdit">
+                            <form action="/update-profile/merchant?_method=PUT" method="POST" enctype="multipart/form-data">
+                               
+                                <div class="mobile in">
+                                        <i class="fas fa-mobile-alt i"></i>
+                                        <input type="text" placeholder="Phone Number" required value="<%=currentUser.number%>" name="number">
+                                </div>
+                                <div class="email in">
+                                    <i class="fas fa-envelope-square i"></i>
+                                    <input type="email" name="email" placeholder="Email" value="<%=currentUser.email%>" required>
+                                </div>
+                                <div class="address1">
+
+                                <div class="dropdown">
+                                                <h3><select type="text" class="select_" placeholder="Buiseness Name" onchange="statemerchantchange(this)"
+                                                    name="state"
+                                                    ></h3>
+                                                    <option value="0" selected>State</option>
+                                                    <%for(state in settings){%>
+                                                    <option value="<%=state%>"
+
+                                                    <%if(user.state===state){%>
+                                                        selected
+                                                    <%}%>
+                                                            
+                                                            ><%=state%></option>
+                                                    <%}%>
+                                                    
+                                                   
+        
+                                                </select>
+                                            </div>
+                                            <div class="dropdown">
+                                                    <h3><select type="text" class="select_" placeholder="Buiseness Name"
+                                                        name="city"
+                                                        onchange="districtmerchantchange(this)"></h3>
+                                                        <option value="0" selected>City</option>
+
+                                                    <%for(state in settings){%>
+                                                        <%for(city in settings[state]){%>
+                                                            <option value="<%=city%>" class="<%=state%>"
+                                                        <%if(user.city===city){%>
+                                                        selected
+                                                    <%}%>
+                                                                ><%=city%></option>    
+                                                        <%}%>
+                                                        
+                                                   <%}%>
+            
+                                                    </select>
+                                                </div>
+                                                <div class="dropdown">
+                                                        <h3><select type="text" class="select_" 
+                                                            name="area"
+                                                            placeholder="Buiseness Name"></h3>
+
+                                                  
+                                                    <option value="0">Area</option>
+                                                <%for(state in settings){%>
+                                                <%for(city in settings[state]){%>
+                                                <%for(area of settings[state][city]){%>
+                                                            <option value="<%=area%>" class="<%=city%>"
+                                                    <%if(user.area===area){%>
+                                                        selected
+                                                    <%}%>
+                                                                ><%=area%></option>    
+                                                <%}%>  
+                                                    <%}%>
+                                                        
+                                                    <%}%>
+                                                           
+                                                        </select>
+                                                    </div>
+                                                    
+                         
+                                          
+    </div> <!-- .addressLine1 -->
+                                <div class="addressLine in">
+                                    <input type="text" name="address" id="" placeholder="Address Line" value="<%=user.address%>">
+                                </div>
+                                <div class="logoupload">
+                                        <label for="imagechoose"><i class="fas fa-upload i"></i>Choose Image</label>
+                                        <input type="file" accept="image/*" name="logo" class="hide_" id="imagechoose" onchange="readURL(this);" style="display: none; " />
+                                </div>
+                                <center><img id="blah" class="img_demo1" src="" alt="" /></center>
+                                
+                                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button  class="btn btn-primary">Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="upperuserProf">
+            <a href="/user/profile" class="active">Profile</a>
+            <a href="/wish-list">Wishlist</a>
+            <a href="/myorder">Orders</a>
+             <a href="/buy/hdPoint" >HD Points</a>
+             <a data-toggle="modal" data-target="#exampleModal1b" href="">Benefits</a>
+             <a data-toggle="modal" data-target="#exampleModal1r" href="">Refer A Friend</a>
+        </div>
+        <div class="userProfileContainer">
+            <h3>Account <hr class="hrhead"></h3>
+            <div class="profileMain">
+                <div class="profileSide">
+                   
+                    <div class="profilePic">
+                         <%if(!currentUser.logo.secure_url){%>
+                            <img src="/images/images.png" alt="">
+                        <%}else{%>
+                            <img src="<%=currentUser.logo.secure_url%>" alt="">
+                        <%}%>
+                        
+                    </div>
+                </div>
+                <div class="profileDetails">
+                    <h3>Profile Details</h3>
+                    <h4>Email <span><%=user.email%></span></h4>
+                    <h4>User Name <span><%=user.username%></span></h4>
+                    <h4>Phone Number <span><%=user.number%></span></h4>
+                    <h4>Address <span><%=user.address%></span></h4><br>
+                    <button type="button" class="editP" data-toggle="modal" data-target="#userupdatePop">
+                            Update
+                          </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="exampleModal1r" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog width700" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  
+                </div>
+                <div class="modal-body">
+                  
+                    <img src="/images/coming.jpg" width="100%">
+                     </div>  
+              </div>
+            </div>
+          </div>
+        
+          <div class="modal fade" id="exampleModal1b" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog width700" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                  </div>
+                  <div class="modal-body">
+                    
+                      <img src="/images/coming.jpg" width="100%">
+                       </div>  
+                </div>
+              </div>
+            </div>
+    <script>
+                function readURL(input) {
+                       if (input.files && input.files[0]) {
+                           var reader = new FileReader();
+            
+                           reader.onload = function (e) {
+                               $('#blah')
+                                   .attr('src', e.target.result);
+                           };
+            
+                           reader.readAsDataURL(input.files[0]);
+                       }
+                   }</script>
+<script>
+	var settings=<%-JSON.stringify(settings)%>
+	
+</script>
+ <!-- Custom js -->
+          
+<%include ../partials/footer.ejs%>
+       

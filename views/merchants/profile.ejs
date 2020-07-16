@@ -1,0 +1,456 @@
+<% include ../merchantPartials/header.ejs%>
+
+
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/profile"
+        class="active1 menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Profile</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/customer"
+        class="menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-th "></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/offer"
+        class=" menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Fun Deals</span>
+      </a>
+    </li>
+
+  
+    <li class="menu--item">
+        <a
+          href="/merchantDashboard/branch"
+          class="menu--link tablinks1"
+          title="Your profile"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Branches</span>
+        </a>
+      </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Gallery</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/review"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-comments "></i>
+        <span class="top">Reviews</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+
+<!-----==============================  body  ===========================================-->
+
+
+<!-----============== customer body========================-->
+
+<div class="wrapper" id="main">
+
+
+  <!--============== profile body========================-->
+  
+  <section class="tabcontent1" id="profile">
+    <div class="profile_card">
+      <div class="row">
+        <div class="col-md-5">
+          <img src="<%= merchant.logo.secure_url%>" class="pro_image">
+        </div>
+        <div class="col-md-7 profile_box">
+          <p class="profile_name"><i class="fas fa-store-alt" style="font-size: 15px;"></i>
+             <span class="pro_name"> <%=merchant.businessName%> </span>
+          </p>
+          <p class="profile_address"><i class="fas fa-map-marked-alt" style="font-size: 15px;"></i>
+            <% if(!merchant.address){%>
+            <span class="pro_add"><%= merchant.area%>,<%= merchant.city%>,<%= merchant.state%> </span>
+            <%} else {%>
+            <span class="pro_add"><%= merchant.address%> </span>
+              <%}%>
+          </p>
+          <p class="profile_website"><i class="fas fa-globe" style="font-size: 15px;"></i>
+            <span class="pro_website"><%=merchant.website%></span>
+          </p>
+          <p class="profile_phone"><i class="fas fa-phone-alt" style="font-size: 15px;"></i>
+            Tel.  <span class="pro_phone"> <%=merchant.number%></span>
+          </p>
+          <p class="profile_email"><i class="fas fa-envelope" style="font-size: 14px;"></i>
+            E-mail. <span class="pro_email"><%=merchant.email%></span>
+          </p>
+          <span class="des"><br><br> </span>
+          <div class="row">
+          <div class="col-md-6">
+          <p class="profile_type">
+           * Bussiness in  <span class="pro_type"> <%=merchant.businessType%> </span>  *
+           </p>
+          <p class="profile_year">
+           * Established in  <span class="pro_year"><%=merchant.establishedYear%></span> *
+          </p>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary mob_b" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal1" id="addRow" onclick="addRow()">
+              <b> &nbsp; Update Profile &nbsp; </b>
+             </button>
+          </div>
+          <div class="modal fade" id="myModal1" role="dialog">
+              <div class="modal-dialog modal-dialog-centred">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                    <h4 class="modal-title"><b>Update Profile</b></h4>
+                  </div>
+                  <div class="modal-body">
+                      <form action="/update-profile/merchant?_method=PUT" method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group x1">
+                                    <select type="text" name="businessType" id="name" class="form-control" onchange="changedroptype(this)"
+                                     required>
+                                    <option value="<%=merchant.businessType%>" >Business Type</option>
+                                      <option value="food" <%if(merchant.businessType=="food"){%>selected<%}%>
+                                        class="A">Food</option>
+                                      <option value="fashion" <%if(merchant.businessType=="fashion"){%>selected<%}%> class="A">Fashion</option>
+                                      <option value="others" <%if(merchant.businessType=="others"){%>selected<%}%> class="A">Activity / other</option>
+                                    </select>
+                                  
+                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group x1">
+                                    <select type="text" name="businessCategory" id="name" class="form-control" required>
+                                      <option value="<%=merchant.businessCategory%>">Business Category</option>
+                                                             <option class="fooddrop" value="Restaurant" <%if(merchant.businessCategory=="Restaurant"){%>selected<%}%> >Restaurant</option>
+                                                            <option class="fooddrop" value="Food Corner" <%if(merchant.businessCategory=="Food Corner"){%>selected<%}%> >Food Corner</option>
+                                                            <option class="fooddrop" value="Outlet" <%if(merchant.businessCategory=="Outlet"){%>selected<%}%> >Outlet</option>
+                                                            <option class="fooddrop" value="Food Truck" <%if(merchant.businessCategory=="Food Truck"){%>selected<%}%> >Food Truck</option>
+                                                            <option class="fooddrop" value="Snack and Farsan" <%if(merchant.businessCategory=="Snack and Farsan"){%>selected<%}%> >Snack and Farsan</option>
+                                                            <option class="fooddrop" value="Confectionary and Dessert" <%if(merchant.businessCategory=="Confectionary and Dessert"){%>selected<%}%> >Confectionary and Dessert</option>
+                                                            <option class="fooddrop" value="Ice Cream Parlour" <%if(merchant.businessCategory=="Ice Cream Parlour"){%>selected<%}%> >Ice Cream Parlour</option>
+                                                            <option class="fooddrop" value="Juice Center" <%if(merchant.businessCategory=="Juice Center"){%>selected<%}%> >Juice Center</option>
+                                                            <option class="fooddrop" value="Fast Food" <%if(merchant.businessCategory=="Fast Food"){%>selected<%}%>>Fast Food</option>
+                                                            <option class="fooddrop" value="Cafe" <%if(merchant.businessCategory=="Cafe"){%>selected<%}%> >Cafe</option>
+                                                            <option class="fooddrop" value="Sweet Shop" <%if(merchant.businessCategory=="Sweet Shop"){%>selected<%}%> >Sweet Shop</option>
+                                                            <option class="fooddrop" value="Bakery" <%if(merchant.businessCategory=="Bakery"){%>selected<%}%> >Bakery</option>
+                                                            <option class="fooddrop" value="Dairy Product" <%if(merchant.businessCategory=="Dairy Product"){%>selected<%}%> >Dairy Product</option>
+                                                            <option class="fooddrop" value="Hotels" <%if(merchant.businessCategory=="Hotels"){%>selected<%}%> >Hotels</option>
+                                                            <option class="fooddrop" value="Banquet" <%if(merchant.businessCategory=="Banquet"){%>selected<%}%> >Banquet</option>
+                                                            <option class="fashiondrop" value="Women's Wear" <%if(merchant.businessCategory=="Women's Wear"){%>selected<%}%> >Women's Wear</option>
+                                                            <option class="fashiondrop" value="Men's Wear" <%if(merchant.businessCategory=="Men's Wear"){%>selected<%}%> >Men's Wear</option>
+                                                            <option class="fashiondrop" value="Kid's Wear" <%if(merchant.businessCategory=="Kid's Wear"){%>selected<%}%> >Kid's Wear</option>
+                                                            <option class="fashiondrop" value="Bridal Wear" <%if(merchant.businessCategory=="Bridal Wear"){%>selected<%}%> >Bridal Wear</option>
+                                                            <option class="fashiondrop" value="Groom's Wear" <%if(merchant.businessCategory=="Groom's Wear"){%>selected<%}%> >Groom's Wear</option>
+                                                            <option class="fashiondrop" value="Boutique" <%if(merchant.businessCategory=="Boutique"){%>selected<%}%> >Boutique</option>
+                                                            <option class="fashiondrop" value="Clothing Store" <%if(merchant.businessCategory=="Clothing Store"){%>selected<%}%> >Clothing Store</option>
+                                                            <option class="fashiondrop" value="Shoe Wear" <%if(merchant.businessCategory=="Shoe Wear"){%>selected<%}%> >Shoe Wear</option>
+                                                            <option class="fashiondrop" value="Purse and Handbag" <%if(merchant.businessCategory=="Purse and Handbag"){%>selected<%}%> >Purse and Handbag</option>
+                                                            <option class="fashiondrop" value="Jwellery" <%if(merchant.businessCategory=="Jwellery"){%>selected<%}%> >Jwellery</option>
+                                                            <option class="fashiondrop" value="Make Up and More" <%if(merchant.businessCategory=="Make Up and More"){%>selected<%}%> >Make Up and More</option>
+                                                            <option class="fashiondrop" value="Optic Wear" <%if(merchant.businessCategory=="Optic Wear"){%>selected<%}%> >Optic Wear</option>
+                                                            <option class="fashiondrop" value="Nail Painting" <%if(merchant.businessCategory=="Nail Painting"){%>selected<%}%>>Nail Painting</option>
+                                                            <option class="fashiondrop" value="Tattos" <%if(merchant.businessCategory=="Tattos"){%>selected<%}%> >Tattos</option>
+                                                            <option class="fashiondrop" value="Mehndi Art" <%if(merchant.businessCategory=="Mehndi Art"){%>selected<%}%> >Mehndi Art</option>
+                                                            <option class="fashiondrop" value="Salon and Spa" <%if(merchant.businessCategory=="Salon and Spa"){%>selected<%}%> >Salon and Spa</option>
+                                                            <option class="fashiondrop" value="Man Salon" <%if(merchant.businessCategory=="Man Salon"){%>selected<%}%> >Man Salon</option>
+                                                            <option class="fashiondrop" value="Women Salon" <%if(merchant.businessCategory=="Women Salon"){%>selected<%}%> >Women Salon</option>
+                                                            <option class="othersdrop" value="Resorts" <%if(merchant.businessCategory=="Resorts"){%>selected<%}%> >Resorts</option>
+                                                            <option class="othersdrop" value="Events" <%if(merchant.businessCategory=="Events"){%>selected<%}%> >Events</option>
+                                                            <option class="othersdrop" value="Toy Store" <%if(merchant.businessCategory=="Toy Store"){%>selected<%}%> >Toy Store</option>
+                                                            <option class="othersdrop" value="others" <%if(merchant.businessCategory=="Activity"){%>selected<%}%> >Activity</option>
+                                                            <option class="othersdrop" value="Health & Wellness" <%if(merchant.businessCategory=="Health & Wellness"){%>selected<%}%> >Health & Wellness</option>
+                                                            <option class="othersdrop" value="Spa" <%if(merchant.businessCategory=="Spa"){%>selected<%}%> >Spa</option>
+                                                            <option class="othersdrop" value="Fitness" <%if(merchant.businessCategory=="Fitness"){%>selected<%}%> >Fitness</option>
+                                                            <option class="othersdrop" value="Pet Care" <%if(merchant.businessCategory=="Pet Care"){%>selected<%}%> >Pet Care</option>
+                                                            <option class="othersdrop" value="Aesthetics" <%if(merchant.businessCategory=="Aesthetics"){%>selected<%}%> >Aesthetics</option>
+                                                            <option class="othersdrop" value="Car spa" <%if(merchant.businessCategory=="Car spa"){%>selected<%}%> >Car spa</option>
+                                                            <option class="othersdrop" value="Automobile" <%if(merchant.businessCategory=="Automobile"){%>selected<%}%> >Automobile</option>
+                                                            <option class="othersdrop" value="Adventure sports" <%if(merchant.businessCategory=="Adventure sports"){%>selected<%}%> >Adventure sports</option>
+
+                                                            <option class="othersdrop" value="Banquets" <%if(merchant.businessCategory=="Banquets"){%>selected<%}%> >Banquets</option>
+                                                            
+                                                            <option class="othersdrop" value="Discotheque" <%if(merchant.businessCategory=="Discotheque"){%>selected<%}%> >Discotheque</option>
+                                                            
+                                                            <option class="othersdrop" value="Art Gallery" <%if(merchant.businessCategory=="Art Gallery"){%>selected<%}%> >Art Gallery</option>
+                                                            
+                                                            <option class="othersdrop" value="Exhibitions" <%if(merchant.businessCategory=="Exhibitions"){%>selected<%}%> >Exhibitions</option>
+                                                            
+                                                            <option class="othersdrop" value="Photo Frames" <%if(merchant.businessCategory=="Photo Frames"){%>selected<%}%> >Photo Frames</option>
+
+                                                             <option class="othersdrop" value="Home Decor" <%if(merchant.businessCategory=="Home Decor"){%>selected<%}%> >Home Decor</option>
+
+                                                             <option class="othersdrop" value="Watch Gallery" <%if(merchant.businessCategory=="Watch Gallery"){%>selected<%}%> >Watch Gallery</option>
+                                                             <option class="othersdrop" value="Electronics" <%if(merchant.businessCategory=="Electronics"){%>selected<%}%> >Electronics</option>
+                                                             <option class="othersdrop" value="Mobile shop & Accessories" <%if(merchant.businessCategory=="Mobile shop & Accessories"){%>selected<%}%> >Mobile shop & Accessories</option>
+
+                                                             <option class="othersdrop" value="Photography" <%if(merchant.businessCategory=="Photography"){%>selected<%}%> >Photography</option>
+
+                                                             <option class="othersdrop" value="Dance & Zumba" <%if(merchant.businessCategory=="Dance & Zumba"){%>selected<%}%> >Dance & Zumba</option>
+                                    </select>
+                                  
+                                    </div>
+                            </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="text" name="businessName" value="<%=currentUser.businessName%>" id="name" class="form-control" required>
+                                  <label class="form-control-placeholder" for="name">Business Name</label>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="text" inputmode="numeric" name="fassaiNumber" value="<%=currentUser.fassaiNumber%>" id="name" class="form-control" pattern="[0-9]{14}" maxlength="14">
+                                  <label class="form-control-placeholder" for="name">FSSAI number</label>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="email" name="email" value=<%=currentUser.email%> id="name" class="form-control" required>
+                                  <label class="form-control-placeholder" for="name">Email</label>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="text" name="number" value="<%=currentUser.number%>" id="name" pattern="[0-9]{10}" maxlength="10" class="form-control" required>
+                                  <label class="form-control-placeholder" for="name">Phone number</label>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="text" name="website" value="<%=currentUser.website%>"  id="name" class="form-control">
+                                  <label class="form-control-placeholder" for="name">Website</label>
+                                </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group x1">
+                                  <input type="text" name="establishedYear" value="<%=currentUser.establishedYear%>" id="name" class="form-control">
+                                  <label class="form-control-placeholder" for="name">Established Year</label>
+                                </div>
+                          </div>
+                          <div class="col-md-12">
+                              <div class="form-group x1">
+                                  <input type="text" name="address" value="<%=currentUser.address%>" id="name" class="form-control" required>
+                                  <label class="form-control-placeholder" for="name">Address</label>
+                                </div>
+                          </div>
+                          <div class="col-md-12">
+                              <div class="form-group x1">
+                                  <input type="text" name="about" value="<%=currentUser.about%>"  id="name" class="form-control" required >
+                                  <label class="form-control-placeholder" for="name">About</label>
+                                </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary pull-left" >Save Changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+                  <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Save Changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> -->
+                </div>
+              </div>
+          </div>
+          </div>
+        
+        </div>
+        <div class="col-md-12 profile_box2">
+          <p class="profile_name">
+             <span> About </span>
+             <hr class="hr_1">
+          </p>
+          <p class="profile_address1">
+            <span class="pro_add1"><%= merchant.about%></span>
+          </p>
+        </div>
+   <div class="col-md-6 profile_box3 mob1">
+        <p class="profile_name1">
+           <span> Schedule </span>
+           <hr class="hr_3">
+        </p>
+        <p class="profile_address1">
+          <div class="col-md-7">
+          <table class="Schedule_table">
+  <tr>
+    <td><span class="pro_schedule">Sunday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-closed"></i><%= merchant.sunday%></span></td>
+    
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Monday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-open"></i> <%= merchant.monday%></span> </td>
+   
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Tuesday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-open"></i><%= merchant.tuesday%></span> </td>
+   
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Wednesday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-open"></i> <%= merchant.wednesday%></span> </td>
+ 
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Thursday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-open"></i> <%= merchant.thursday%></span> </td>
+ 
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Friday - </span> </td>
+    <td><span class="store"> <i class="fa fa-door-open"></i><%= merchant.friday%></span> </td>
+  
+  </tr>
+  <tr>
+    <td><span class="pro_schedule">Saturday - </span> </td>
+    <td><span class="store">  <i class="fa fa-door-closed"></i> <%= merchant.saturday%></span></td>
+  
+  </tr>
+</table>
+          </div>
+          <div class="col-md-5 popp">
+            <p class="timing_1">Timing <hr class="hr_timing_1"></p>
+            <p class="open_1">Open at <i><span class="open_time">&nbsp; <%=merchant.openTime%> </span></i></p>
+            <p class="open_1">Close at  <i><span class="open_time">&nbsp; <%=merchant.closeTime%>  </span></i> </p>
+             
+          </div>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="profile_box2 des1">
+          <p class="profile_name">
+             <span> Branches </span>
+             <hr class="hr_2">
+          </p>
+          <p class="profile_address1">
+              <table class="">
+                  <thead>
+                      <tr>
+                        <th style="padding: 15px 0px; width: 16%;">Branch Name</th>
+                        <th style="padding: 15px 0px; width: 10%;">City</th>
+                        <th style="padding: 15px 0px; width: 10%;">&nbsp; Map Link</th>
+                      </tr>
+                    </thead>
+                  <tbody>
+                    <%branch.forEach(branch=>{%>
+                  <tr>
+                    <td><span class=""><%=branch.branchName%> </span> </td>
+                    <td><span class=""> <%=branch.city%></span></td>
+                    <td><span class="store"> <a class="link" target="_blank" href="<%=branch.mapLink%>"><span class="keywords">map</span> </a></span></td>
+                  </tr>
+                  <%})%>
+                  </tbody>
+              </table> 
+              </p>
+          </div>
+        </div>
+
+        
+    </div>
+  </div>
+
+  </section>
+  <!--============== end profile body========================-->
+  
+  
+  
+  <!--============== end reviews body========================-->
+  </div>
+  
+  
+  
+  
+  <script>
+
+  var businessType=<%-JSON.stringify(merchant.businessType)%>
+  
+    var change=document.querySelector("#name");
+    change.addEventListener("change",(el)=>{  
+      if (el.target.value == 'food') {
+      $('.fooddrop').css('display', 'block');
+      $('.fashiondrop').css('display', 'none');
+      $('.othersdrop').css('display', 'none');
+    } else if (el.target.value == 'fashion') {
+      $('.fashiondrop').css('display', 'block');
+      $('.fooddrop').css('display', 'none');
+      $('.othersdrop').css('display', 'none');
+    }else if(el.target.value == 'others'){
+        $('.fashiondrop').css('display', 'none');
+        $('.fooddrop').css('display', 'none');
+        $('.othersdrop').css('display', 'block');
+    }
+    })
+  
+ </script>
+ <script>
+  
+  if(businessType=="food"){
+    
+  $('.fooddrop').css('display', 'block');
+  $('.fashiondrop').css('display', 'none');
+  $('.othersdrop').css('display', 'none');
+  }
+  if(businessType=="fashion"){
+  $('.fooddrop').css('display', 'none');
+  $('.fashiondrop').css('display', 'block');
+  $('.othersdrop').css('display', 'none');
+  }
+  if(businessType=="others"){
+  $('.fooddrop').css('display', 'none');
+  $('.fashiondrop').css('display', 'none');
+  $('.othersdrop').css('display', 'block');
+  }
+
+  
+  </script>
+  <!-----============================== end body  ===========================================-->
+
+
+<% include ../merchantPartials/footer.ejs%>

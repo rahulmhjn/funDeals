@@ -1,0 +1,134 @@
+<% include ../partials/header.ejs%>
+<%console.log()%>
+<link rel="stylesheet" href="/stylesheets/special.css">
+     <!-- user Login -->
+    <div class="mg_tp">
+        <div class="">
+            <div class="container">
+                <div class="signImage">
+                    <img src="/images/demo1.jpeg" alt="">
+                </div>
+                <div class="sideLogin">
+                <form action="/auth/register/user" method="POST">
+                <div class="signup" id="userSignup" style="z-index: 0;">
+                     <h3><b>Register</b></h3>
+                     <div class="userName in">
+                             <i class="far fa-user i"></i>
+                             <input type="text" placeholder="Username *" name="username" required>
+                     </div>
+                     <div class="mobile in">
+                             <i class="fas fa-mobile-alt i"></i>
+                             <input type="tel" placeholder="Phone Number *" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" name="number" required>
+                     </div>
+                     <div class="email in">
+                         <i class="fas fa-envelope-square i"></i>
+                         <input type="email" name="email" placeholder="Email *" id="" required>
+                     </div>
+                     <div class="password in">
+                             <i class="fas fa-key i"></i>
+                             <input type="text" name="confirmPassword" placeholder="Password *" id="" required>
+                     </div>
+                     <div class="password in">
+                             <i class="fas fa-key i"></i>
+                             <input type="password" name="password" placeholder="Confirm Password *" id="" required>
+                             <i class="fas fa-eye" onclick="showpassword(this)" style="margin: auto;"></i>
+                     </div>
+          <div class="address1">
+
+                                <div class="dropdown">
+                                                <h3><select type="text" class="select_" placeholder="Buiseness Name" onchange="statemerchantchange(this)"
+                                                    name="state"
+                                                    ></h3>
+                                                    <option value="0" selected>State*</option>
+                                                    <%for(state in settings){%>
+                                                        <option value="<%=state%>"><%=state%></option>
+                                                    <%}%>
+                                                    
+                                                   
+        
+                                                </select>
+                                            </div>
+                                            <div class="dropdown">
+                                                    <h3><select type="text" class="select_" placeholder="Buiseness Name"
+                                                        name="city"
+                                                        onchange="districtmerchantchange(this)"></h3>
+                                                        <option value="0" selected>City*</option>
+
+                                                    <%for(state in settings){%>
+                                                        <%for(city in settings[state]){%>
+                                                            <option value="<%=city%>" class="<%=state%>"><%=city%></option>    
+                                                        <%}%>
+                                                        
+                                                   <%}%>
+            
+                                                    </select>
+                                                </div>
+                                                <div class="dropdown">
+                                                        <h3><select type="text" class="select_" 
+                                                            name="area"
+                                                            placeholder="Buiseness Name"></h3>
+
+                                                  
+                                                    <option value="0">Area*</option>
+                                                <%for(state in settings){%>
+                                                <%for(city in settings[state]){%>
+                                                <%for(area of settings[state][city]){%>
+                                                            <option value="<%=area%>" class="<%=city%>"><%=area%></option>    
+                                                <%}%>  
+                                                    <%}%>
+                                                        
+                                                    <%}%>
+                                                           
+                                                        </select>
+                                                    </div>
+                         
+                                          
+                                            </div> 
+                <input type="hidden" name="specialSignup" value="true">
+                    
+                     <div class="addressLine in">
+                         <input type="text" name="address" id="" placeholder="Address Line">
+                     </div>
+                                    
+                         <!----- new -->
+                         
+                         <div class="in3">
+                             <div class="checkOtp" id="checkTerms">
+                                 <label for="checkboxuser"><i class="fas fa-check i"></i></label><b>I Accept All The <a data-toggle="modal" data-target="#exampleModaluser">
+                                    <span class="link_"> Terms and Conditions </span></a></b>
+                                 <input type="checkbox" name="" id="checkboxuser">
+                             </div>
+                         </div>
+                         <!---- new -->
+
+
+                         <div class="in1">
+                             <button class="nextOtp disable" disabled id="createbutton">Create Account</button>
+                             <div class="in2"><a class="already"><i class="fas fa-sign-in-alt i"></i>Already a member</a></div>
+                         </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+  document.querySelector('#checkboxuser').addEventListener('click', function() {
+    var el = document.querySelector('#checkboxuser');
+    if (el.checked) {
+      $('#createbutton')[0].disabled = false;
+      $('#createbutton').css('background-color', '#227ab3');
+      $('#createbutton').css('border-color', '#227ab3');
+    } else {
+      $('#createbutton')[0].style.backgroundColor = '#8b99a2';
+      $('#createbutton')[0].style.borderColor = '#8b99a2';
+      $('#createbutton')[0].disabled = true;
+    }
+  });
+
+
+    </script>
+
+<% include ../partials/footer.ejs%>

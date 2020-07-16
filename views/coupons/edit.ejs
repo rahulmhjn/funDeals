@@ -1,0 +1,87 @@
+<% include ../partials/header.ejs%>
+<h1><%= title%></h1>
+<!-- prettier-ignore -->
+<form action="/coupons/<%= coupon.id %>?_method=PUT" method="POST" id="couponEditForm" enctype="multipart/form-data">
+  <div>
+    <label>image</label>
+    <input type="file" name="image" />
+  </div>
+  <div>
+    <input type="text" name="coupon[offerType]" value="<%= coupon.offerType%>" />
+  </div>
+  <div>
+    <input type="text" name="coupon[offerName]" value="<%= coupon.offerName%>" />
+  </div>
+  <div>
+      <input type="text" name="coupon[offerAmount]" value="<%= coupon.offerAmount%>" />
+    </div>
+  <div>
+        <input type="text" name="coupon[offerPercentage]" value="<%= coupon.offerPercentage%>" />
+  </div>
+  
+  
+  <div>
+    <input type="text" name="coupon[homeField]" value="<%=coupon.homeField%>">
+  </div>
+
+  <div>
+    <textarea name="coupon[offerDetail]" ><%= coupon.offerDetail%></textarea>
+  </div>
+  <div>
+    <input type="Number"  inputmode="numeric"  name="coupon[quantity]" value="<%= coupon.quantity%>" />
+  </div>
+  <div><input type="Number" inputmode="numeric" name="coupon[merchantAmount]" value="<%= coupon.merchantAmount %>" /></div>
+  <div>
+    <input
+      type="Date"
+      id="editstartdate"
+      name="coupon[startDate]"
+      value='<%=coupon.startDate%>'
+    />
+  </div>
+  <div>
+    <input
+      type="Date"
+      id="editexpiredate"
+      name="coupon[expireDate]"
+      value='<%= coupon.expireDate%>'
+    />
+  </div>
+  <div id="rates">
+    <input type="radio" id="r1" name="coupon[couponType]" value="fullDay" checked/>
+    Full Day
+    <input type="radio" id="r2" name="coupon[couponType]" value="happyHour" />
+    happyHour
+  </div>
+  <div>
+    <input
+      type="Time"
+      id="time"
+      name="coupon[startTime]"
+      value='<%= coupon.startTime%>'
+    />
+  </div>
+  <div>
+    <input type="Time" name="coupon[expireTime]" value='<%= coupon.expireTime%>' />
+  </div>
+  <input type="submit" />
+</form>
+
+<script>
+  let couponEditForm = document.getElementById('couponEditForm');
+  couponEditForm.addEventListener('submit', function(event) {
+    let editstartdate = document.getElementById('editstartdate').valueAsDate;
+    let editexpiredate = document.getElementById('editexpiredate').valueAsDate;
+    let date = new Date();
+    let today = date.getTime();
+    //checking if start date is greater than expire date
+    // prettier-ignore
+    alert(coupon);
+    if (editstartdate.getTime() > editexpiredate.getTime()) {
+      event.preventDefault();
+      alert('You need to correct the dates');
+    }
+  });
+</script>
+
+<% include ../partials/footer.ejs%>

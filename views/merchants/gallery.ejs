@@ -1,0 +1,237 @@
+<% include ../merchantPartials/header.ejs%>
+
+
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/gallery"
+        class="active1 menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Gallery</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/customer"
+        class="menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-th "></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/offer"
+        class=" menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Fun Deals</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/profile"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Profile</span>
+      </a>
+    </li>
+    <li class="menu--item">
+        <a
+          href="/merchantDashboard/branch"
+          class="menu--link tablinks1"
+          title="Your profile"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Branches</span>
+        </a>
+      </li>
+   
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/review"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-comments "></i>
+        <span class="top">Reviews</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+
+<!-----==============================  body  ===========================================-->
+
+
+<!-----============== customer body========================-->
+
+<div class="wrapper" id="main">
+
+   
+
+
+
+
+
+
+    <!--============== gallery body========================-->
+    
+    <section class="tabcontent1" id="gallery"><br>
+        <div class="create pull-right gallery">
+            <b>Note :</b> Maximum 10 images can be uploaded in total ( Each Image size should be less than 1 MB)
+            <% if(!merchant.gallery[0]){ %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2" id="addRow" onclick="addRow()">
+               <b> &nbsp; Upload Image &nbsp; </b>
+              </button>
+              <% } %>
+            <% if(merchant.gallery[0]){ %>
+              <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3" id="addRow" onclick="addRow()">
+                  <b> &nbsp; Edit Image &nbsp; </b>
+                 </button>
+                 <%}%>
+         </div>
+         <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog modal-dialog-centred">
+              <!-- Modal content-->
+              
+              <div class="modal-content">
+                  
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                  <h4 class="modal-title"><b>Update Images</b></h4>
+                </div>
+                
+                <div class="modal-body"><center>
+                    <form action="/merchantDashboard" method="POST" id="uploadMerchantGalleryForm" enctype="multipart/form-data">
+                    <div class="upload-btn-wrapper">
+                    <button class="btn btn-primary">Upload Image</button>
+                  
+                    <input type="file" name="gallery" id="uploadimageupload" onchange="Filevalidation()" accept="image/png, image/jpeg" onchange="readURL(this);" multiple />
+                    </div>
+                    </center>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+                
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog modal-dialog-centred">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                  <h4 class="modal-title"><b>Edit Images</b></h4>
+                </div>
+                <div class="modal-body"><center>
+                    <% if(merchant.gallery){ %>
+                      <form action="/merchantDashboard?_method=PUT" method="POST"  id="merchantGalleryForm" enctype=multipart/form-data>
+                          
+                        <div class="upload-btn-wrapper">
+                            <button class="btn btn-primary">Upload New Image</button>
+                            <input type="file" name="gallery" id="imageUpload" onchange="msg()" accept="images/*" multiple />
+                            </div>
+                            
+                            <div class="form-group row">
+                                <h5>Select Images you want to Delete</h5>
+                                <div class="col-sm-10">
+                                    <%merchant.gallery.forEach((image,index)=>{ %>
+                                        <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                        <label for="image<%=index%>">Delete?</label>
+                                        <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                        
+                                    <% })%>
+                                </div> <!-- note deletecheck box is array -->
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                  <% } %>
+                  
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+        </div>
+        <div class="cotainer md-t">
+            <% if(merchant.gallery){ %>
+              <%merchant.gallery.forEach((image,index)=>{ %>
+                <div class="col-md-3">
+                  <img class="gallery_img" src="<%=image.url%>">
+                </div>
+              <% })%>
+          <% } %>
+                  
+        </div>
+    </section>
+    <!--============== end gallery body========================-->
+    
+    
+    
+    <!--============== end reviews body========================-->
+    </div>
+    
+    
+    
+    
+    
+    <!-----============================== end body  ===========================================-->
+    <script>
+    
+    let form=document.querySelector("#merchantGalleryForm");
+    form.addEventListener("submit",function(event){
+    let uploadImage=document.querySelector("#imageUpload").files.length;
+    let uploadImagee=document.querySelector("#imageUpload");
+	  let checkedImage=document.querySelectorAll(".imageDeleteCheckbox:checked").length;
+	  let totalImage=document.querySelectorAll(".imageDeleteCheckbox").length
+	  if(((totalImage-checkedImage) +uploadImage)>10){
+		event.preventDefault();
+    alert("images cann't be more than 10 ....")
+  }
+  
+
+    </script>
+<% include ../merchantPartials/footer.ejs%>

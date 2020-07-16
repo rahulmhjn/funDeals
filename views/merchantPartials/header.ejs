@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fun Deal</title>
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link href="/stylesheets/merchantStyleSheets/demo.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito|Rubik|Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="/stylesheets/merchantStyleSheets/vertical-responsive-menu.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    
+    <style>
+    /* ---------------------------new preloader ------------------------------ */
+
+.preloading{
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 111;
+  top: 0;
+  background-color: white;
+}
+.preloading .preUpper{
+    width: 40%;
+    height: 200px;
+    margin: auto;
+    margin-top: 13%;
+    text-align: center;
+  }
+  .preloading .preUpper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+  @media screen and (max-width: 600px){
+    .mininav select{
+        width: 75px;
+        padding: 3px 2px;
+        font-size: 0.8rem;
+        margin-left: 6px;
+        border-radius: 20px;
+        border: 1px solid rgb(180,180,180);
+        background-color: white;
+        height: 100%;
+    }
+    .preloading .preUpper{
+      margin-top: 50%;
+      width: 100%;
+  }
+  }
+  
+    </style>
+  </head>
+
+  <body>
+    <!-----==============================header nav bar ===========================================-->
+    <header class="header clearfix">
+      <button type="button" id="toggleMenu" class="toggle_menu">
+        <i onclick="myFunction(this)" class="fas fa-bars"></i>
+      </button>
+
+      <h1>Merchant</h1>
+      <div class="dropdown">
+      <button class="dropbtn"> <b><%=currentUser.username.substring(0,6)%> &#11163;</b></button>
+      <div class="dropdown-content">
+          <!-- <a href="https://rzp.io/l/UaF2LjA" style="text-decoration: none;"><b> Payment &nbsp; &#8377; </b></a> -->
+    <a href="https://rzp.io/l/DQ5lScN" style="text-decoration: none;">
+      <b>Payment &#8377; </b></a>
+        <a href="/auth/logout" style="text-decoration: none;"><b> Logout &nbsp;&nbsp; <i class="fas fa-sign-out-alt" style="font-size: px;"></i></b></a>
+      </div>
+      </div>
+      
+      <%if(currentUser.logo.secure_url){%>
+      <img class="profile" src="<%=currentUser.logo.secure_url%>" />
+      <% } else {%>
+      <img class="profile" src="/images/mer_image/images.png" />
+      <%}%>
+    </header>
+    <!-----==============================end header nav bar ===========================================-->
+ 
+<!-----==============================preloader preloader ===========================================-->
+
+    <div class="preloading">
+        <div class="preUpper">
+          <img src="/images/preloadergif.gif" alt="Loading">
+        </div>
+    </div>
+        <!-----==============================preloader preloader ===========================================-->

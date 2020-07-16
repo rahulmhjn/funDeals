@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="<%=description%>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fun Deal" />
+    <meta property="og:title" content="<%=title%> " />
+    <meta property="og:description" content="<%=description%>" />
+    <meta property="og:image" content="<%=image%>" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:title" content="<%=title%>" />
+    <meta name="twitter:description" content="<%=description%>" />
+    <meta name="twitter:image" content="<%=image%>" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- meta -->
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/dfmotjqxz/image/upload/v1575136239/happiness/logof7ef103052192ff82960f5aadcca50b2.png"
+    />
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <script src="/stylesheets/jquery-3.3.1.slim.min.js"></script>
+    <script src="/stylesheets/popper.min.js"></script>
+    <script src="/stylesheets/bootstrap.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- costum -->
+    <script src="/javascripts/all.js"></script>
+    <!-- star -->
+    <link rel="stylesheet" href="/stylesheets/starability-basic.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>
+      <%if(title==="Fun Deal"){%> <%=title%> <%} else{%> Fun Deal :
+      <%=title%> <%}%>
+    </title>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div class="preloading">
+      <div class="preUpper">
+        <img src="/images/preloadergif.gif" alt="Loading" />
+      </div>
+    </div>
+
+    <% include ./navbar.ejs%>
+  </body>
+</html>

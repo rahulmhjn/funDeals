@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fun Deal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/stylesheets/adminStyleSheets/dadmin1.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Rubik|Ubuntu&display=swap" rel="stylesheet">
+    <link href="/stylesheets/adminStyleSheets/vertical-responsive-menu.min.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/adminStyleSheets/style.css">
+</head>
+
+<body>
+    <!-----==============================header nav bar ===========================================-->
+    <header class="header clearfix">
+        <button type="button" id="toggleMenu" class="toggle_menu">
+          <i onclick="myFunction(this)" class="fas fa-bars"></i>
+        </button>
+    
+        <h1>Admin</h1>
+        <div class="dropdown">
+          <button class="dropbtn" id="new-shipping"> <b>Admin &#11163;</b></button>
+          <div class="dropdown-content" id="add-shipping-modal" style="display:none;">
+            <a href="/auth/logout" style="text-decoration: none;"><b> Logout &nbsp;&nbsp; <i class="fas fa-sign-out-alt"
+                  style="font-size: px;"></i></b></a>
+          </div>
+        </div>
+        <img class="profile" src="/images/mer_image/images.png">
+      </header>
+    <!-----==============================end header nav bar ===========================================-->
+
+
+
+    <!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+        <ul id="js-menu" class="menu">
+          <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+            <img src="/images/logo.png" width="60%;" />
+          </li>
+
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/merchant"
+              class="active menu--link tablinks1"
+              title="create coupon"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-store"></i>
+              <span class="top">Merchants</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/coupon"
+              class=" menu--link tablinks1"
+              title="Customer coupon list"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-tags"></i>
+              <span class="top">HappyDeal Requests</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/adminDashboard/couponType" class=" menu--link tablinks1" 
+                title="Customer coupon list" style="text-decoration: none;">
+                <i class="fas fa-tags"></i>
+                <span class="top">HappyDeal Type</span>
+            </a>
+        </li>
+        <li class="menu--item">
+            <a href="/adminDashboard/couponList" class=" menu--link tablinks1" 
+                title="Customer coupon list" style="text-decoration: none;">
+                <i class="fas fa-tags"></i>
+                <span class="top">HappyDeal List</span>
+            </a>
+        </li>
+        
+      
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/customer"
+              class="menu--link tablinks1"
+              title="Your profile"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-user-circle"></i>
+              <span class="top">Customers</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/adminDashboard/analytics" class="menu--link tablinks1"  title="analytics"
+                style="text-decoration: none;">
+                <i class="fas fa-user-circle"></i>
+                <span class="top">Analytics</span>
+            </a>
+        </li>
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/benefits"
+              class="menu--link tablinks1"
+              title="Reviews"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-gifts "></i>
+              <span class="top">Benefits</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/setting"
+              class="menu--link tablinks1"
+              title="Reviews"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-cogs "></i>
+              <span class="top">Settings</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+                style="text-decoration: none;" >
+                <i class="fas fa-image "></i>
+                <span class="top">HD points</span>
+            </a>
+        </li>
+          <li class="menu--item">
+            <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+                style="text-decoration: none;" >
+                <i class="fas fa-image "></i>
+                <span class="top">Special signup</span>
+            </a>
+        </li>
+          <li class="menu--item">
+            <a
+              href="/adminDashboard/gallery"
+              class="menu--link tablinks1"
+              title="Gallery"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-image "></i>
+              <span class="top">Slider Images</span>
+            </a>
+          </li>
+        </ul>
+      
+        <button id="collapse_menu" class="collapse_menu">
+          <i class="collapse_menu--icon  fas fa-fw"></i>
+          <span class="collapse_menu--label"></span>
+        </button>
+      </nav>
+      
+      <!-----============================== end side bar ===========================================-->
+    
+
+    <!-----==============================  body  ===========================================-->
+
+
+    <!-----============== customer body========================-->
+
+    <div class="wrapper" id="main">
+
+        <!-----============== coupon body========================-->
+        <section class="tabcontent1" id="coupons"><br>
+
+            <div class="profile_card ">
+                    <div class="imageLarge">
+                            <i class="fas fa-chevron-left leftImageSlide"></i>
+                            <%if(merchant.gallery&&merchant.gallery.length>0){%>
+                                <img id="imagesrc" src="<%=merchant.gallery[0].url%>" alt="">
+                              <%}%>
+                            <i class="fas fa-chevron-right rightImageSlide"></i>
+                            <a class="closeImage"><i class="fas fa-times i"></i></a>
+                            <div class="imageslider">
+                                <div class="imageInnerSlider"> 
+                                        <%for(image of merchant.gallery){%>
+                                            <img src="<%=image.url%>" alt="">
+                                          <%}%>
+                                </div>
+                            </div>
+                        </div> 
+                    <section class="merchantProf less-padding">
+                            <div class="merchantUpperProfile">
+                                    <div class="merchantDetails">
+                                        <h3><b><%=merchant.businessName%></b></h3>
+                                        <h3><i class="fas fa-map-marker-alt i"></i><%=merchant.address%></h3>
+                                        <h3><i class="fas fa-phone-alt i"></i>+91<%=merchant.number%></h3>
+                                        <h3><i class="fas fa-globe i"></i><a target="_blank" href="<%=merchant.website%>"><%=merchant.website%></a></h3>
+                                        <h3><i class="fas fa-envelope i"></i><%=merchant.email%></h3>
+                                        <h6>*Business in <%=merchant.businessType%>*</h6>
+                                        <h6>*Established in <%=merchant.establishedYear%>*</h6>
+                                    </div>
+                                    <div class="merchantUpperImage">
+                                            <%if(merchant.gallery&&merchant.gallery.length>0){%>
+                                                <img class="icon" src="<%=merchant.gallery[0].url%>" alt="">
+                                              <%}%>
+                                              <%if(merchant.gallery&&merchant.gallery.length>1){%>
+                                                <img  src="<%=merchant.gallery[1].url%>" alt="">
+                                              <%}%>
+                                        <button class="viewAllGallery">View All</button>
+                                    </div>
+                                </div>
+                                <div class="merchantMain" id="merchantGallery">
+                                    <div class="merchantMainHeading">
+                                        <h4>Coupons</h4>
+                                        <h4>About</h4>
+                                        <h4>Gallery</h4>
+                                        <h4>Reviews</h4>
+                                    </div>
+                                    <div class="merchantMainDetails">
+                                        <div class="merchantMainCoupons mainDetail">
+                                             <div class="coupontypemerchant">
+                                                <a>All</a>
+                                             </div>
+                                            <div class="Allcardmerchant couponchoose">
+                                                    <%merchantCoupon.forEach(coupon=>{%>
+                                                <div class="card">
+                                                    <div class="card-header text-center ">
+                                                      <p class="qty">Qty: <span class="qty_count"><%=coupon.quantity%></span></p>
+                                                      <img src="<%=coupon.image.url%>" alt="" class="w-100">
+                                                    </div>
+                                                    <div class="card-body22">
+                                                      <h5 class="coup_name text-center"> <%=coupon.offerName%></h5>
+                                                      <%if(coupon.startDate.getDate()<10){%>
+                                                            <% var sdate=`0${coupon.startDate.getDate()}`%>
+                                                            <%} else {%>
+                                                              <% var sdate=coupon.startDate.getDate()%>
+                                                            <%}%>
+                                                          <%if(coupon.startDate.getMonth()<9){%>
+                                                              <% var smonth=`0${coupon.startDate.getMonth()+1}`%>
+                                                              <%} else {%>
+                                                                <% var smonth =coupon.startDate.getMonth()+1%>
+                                                            <%}%>
+                                                          
+                                                          <% var syear=coupon.startDate.getFullYear()%>
+                                                          <% startDate=`${sdate}/${smonth}/${syear}`%>
+                                                          
+                                                          <%if(coupon.expireDate.getDate()<10){%>
+                                                              <% var edate=`0${coupon.expireDate.getDate()}`%>
+                                                              <%} else {%>
+                                                                <% var edate=coupon.expireDate.getDate()%>
+                                                              <%}%>
+                                                            <%if(coupon.expireDate.getMonth()<9){%>
+                                                                <% var emonth=`0${coupon.expireDate.getMonth()+1}`%>
+                                                                <%} else {%>
+                                                                  <% var emonth =coupon.expireDate.getMonth()+1%>
+                                                              <%}%>
+                                                            
+                                                            <% var eyear=coupon.expireDate.getFullYear()%>
+                                                            <% expireDate=`${edate}/${emonth}/${eyear}`%>
+                                                      <p class="timing"><i>From <br> <span class="date"><%=startDate%></span> &nbsp; - &nbsp; <span
+                                                            class="time"><%=coupon.startTime%></span></i></p>
+                                                      <p class="timing"><i>To <br> <span class="date"><%=expireDate%></span> &nbsp; - &nbsp; <span
+                                                            class="time"><%=coupon.expireTime%></span></i></p>
+                                                    </div>
+                                                    <div class="card-footer text-center">
+                                                            <%=coupon.couponType%>
+                                                    </div>
+                                                  </div> 
+                                                  <%})%>
+                                            </div>
+
+                                        </div>
+                                        <div class="merchantMainAbout mainDetail">
+                                            <div class="about">
+                                                <h3>About  <hr></h3>
+                                                <p><%=merchant.about%></p>
+                                            </div>
+                                            <div class="aboutLower">
+                                                <div class="detailschedule">
+                                                    <h3>Schedule <hr></h3>                                              
+                                                    <h4>Monday <span class="store"> <i class="fa fa-door-closed"></i><%=merchant.monday%></span></h4>
+                                                <h4>Tuesday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.tuesday%></span></h4>
+                                                <h4>Wednesday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.wednesday%></span></h4>
+                                                <h4>Thrusday <span class="store"> <i class="fa fa-door-closed"></i> <%=merchant.thursday%></span></h4>
+                                                <h4>Friday <span class="store"> <i class="fa fa-door-closed"></i><%=merchant.friday%></span></h4>
+                                                <h4>Saturday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.saturday%></span></h4>
+                                                <h4>Sunday <span class="store"> <i class="fa fa-door-open"></i> <%=merchant.sunday%></span></h4>
+                                                </div>
+                                                
+                                                <div class="aboutKeyword">
+                                                    <h3>Timing <hr></h3>                                               
+                                                    <p class="open_1">Open at <i><span class="open_time">&nbsp; <%=merchant.openTime%> </span></i></p>
+                                                    <p class="open_1">Close at  <i><span class="open_time">&nbsp; <%=merchant.closeTime%> </span></i> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="merchantMainGallery mainDetail">
+                                            <div>                                      
+                                                <%for(var i=0;i<merchant.gallery.length;i+=3) {%>
+                                              
+                                                   <img src="<%=merchant.gallery[i].url%>" alt="">
+                                              
+                                              <%}%>
+                                              </div>
+                                              <div>
+                                              <%for(var i=1;i<merchant.gallery.length;i+=3) { %>
+                                              
+                                                   <img src="<%=merchant.gallery[i].url%>" alt="">
+                                              
+                                              <%}%>
+                                              </div>
+                                              <div>
+                                              <%for(var i=2;i<merchant.gallery.length;i+=3) { %>
+                                              
+                                                   <img src="<%=merchant.gallery[i].url%>" alt="">
+                                              
+                                              <%}%>
+                                              </div>
+                                              <div>
+                                              <%for(var i=3;i<merchant.gallery.length;i+=3) {%>
+                                              
+                                                   <img src="<%=merchant.gallery[i].url%>" alt="">
+                                              
+                                              <%}%>
+                                              </div>
+                                              
+                                        </div>
+                                        <div class="merchantMainReviews mainDetail">
+                                                
+                                                <%reviews.forEach(function(review) { %>
+                                                  <div class="row"><br>
+                                                    <div class="col-md-1">
+                                                            <%if(!review.author.logo.secure_url){%>
+                                                                <img src="/images/images.png" class="dp_customer">
+                                                                <%}else{%>
+                                                                <img src="<%=review.author.logo.secure_url%>" class="dp_customer">
+                                      
+                                                                <%}%>
+                                                    </div>
+                                                    <div class="col-md-11 hr_b">
+                                                      <p > 
+                                                        <span class="rev_name"><%=review.author.username%></span><br>
+                                                        <span class="rev_date"> <%=review.date.toDateString()%></span><br>
+                                                        <div class="rating-stars1">
+                                                                <%for(i=0;i<5;i++){ %>
+                                                                        <%if(i<review.rating){%>
+                                                                          <span><i class="active fas fa-star"></i></span>
+                                                                        <%}else{%>
+                                                                            <span><i class="fas fa-star"></i></span>
+                                                                        <%}%>
+                                                                      <% }%>
+                                                          </div>
+                                                        <span class="rev_comment"><%=review.body%></span><br>
+                                                      </p>
+                                                      
+                                                    </div>
+                                                  </div>
+                                                  <%})%>
+                                        </div>
+                                    </div>
+                                </div>
+                    </section>
+
+        </section>
+        <!--============== end reviews body========================-->
+    </div>
+
+    <!-----============================== js files  ===========================================-->
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }</script>
+
+    <script>
+        $(document).ready(function () {
+            $('.bar span').hide();
+            $('#bar-five').animate({
+                width: '75%'
+            }, 1000);
+            $('#bar-four').animate({
+                width: '35%'
+            }, 1000);
+            $('#bar-three').animate({
+                width: '20%'
+            }, 1000);
+            $('#bar-two').animate({
+                width: '15%'
+            }, 1000);
+            $('#bar-one').animate({
+                width: '30%'
+            }, 1000);
+
+            setTimeout(function () {
+                $('.bar span').fadeIn('slow');
+            }, 1000);
+
+        });</script>
+    <!--================== menu icon toogle ==================-->
+    <script>
+        $(document).ready(function () {
+      $("#close-add").on("click",function(){
+             $("#add-shipping-modal").hide();
+           });
+           
+           $("#new-shipping").on("click",function(e){
+             $("#add-shipping-modal").show();
+              e.stopPropagation();
+           });
+           
+ $("#add-shipping-modal").click(function(e){
+     e.stopPropagation();
+ });
+ 
+ $(document).click(function(){
+     $("#add-shipping-modal").hide();
+ });
+ 
+ });</script>
+  <script>
+   function myFunction(x) {
+     x.classList.toggle("fa-times");
+   }
+ </script>
+
+    <!--================== side menu active ==================-->
+    <script>
+        $('ul li a').click(function () {
+
+            if ($('ul li a').hasClass("active")) {
+                $('ul li a').removeClass("active");
+            }
+
+            $(this).addClass("active");
+
+        });</script>
+
+    <!--================== customer search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== coupon search ==================-->
+    <script>
+        $(document).ready(function () {
+            $("#myInput1").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable1 tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <!--================== side menu toogle ==================-->
+    <script>
+        function openCity1(evt, cityName1) {
+            var i, tabcontent1, tablinks1;
+            tabcontent1 = document.getElementsByClassName("tabcontent1");
+            for (i = 0; i < tabcontent1.length; i++) {
+                tabcontent1[i].style.display = "none";
+            }
+            tablinks1 = document.getElementsByClassName("tablinks1");
+            for (i = 0; i < tablinks1.length; i++) {
+                tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName1).style.display = "block";
+            evt.currentTarget.className1 += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen1").click();
+    </script>
+
+    <!--================== inner customers toogle areas==================-->
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+
+
+    <!--================== inner coupons toogle areas==================-->
+    <script>
+        function openCity2(evt, cityName2) {
+            var i, tabcontent2, tablinks2;
+            tabcontent2 = document.getElementsByClassName("tabcontent2");
+            for (i = 0; i < tabcontent2.length; i++) {
+                tabcontent2[i].style.display = "none";
+            }
+            tablinks2 = document.getElementsByClassName("tablinks2");
+            for (i = 0; i < tablinks2.length; i++) {
+                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName2).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen2").click();
+    </script>
+
+    <script src="/javascripts/vertical-responsive-menu.min.js"></script>
+    <script src="/javascripts/jquery-3.4.1.min.js"></script>
+    <script src="/javascripts/custom.js"></script>
+
+
+</body>
+
+</html>

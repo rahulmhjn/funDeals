@@ -1,0 +1,100 @@
+<% include ../partials/header.ejs%>
+<form
+  action="/auth/register/merchant"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <div>
+    <label>username</label>
+    <input name="username" type="text" />
+  </div>
+  <div>
+    <label>email</label>
+    <input name="email" type="email" />
+  </div>
+  <div>
+    <label>password</label>
+    <input name="password" type="password" />
+  </div>
+  <div>
+    <label>logo</label>
+    <input type="file" name="logo" />
+  </div>
+  <div>
+    <label>mob</label>
+    <input name="number" type="text" />
+  </div>
+  <div>
+    <label>state</label>
+    <input name="state" type="text" />
+  </div>
+  <div>
+    <label>city</label>
+    <input name="city" type="text" />
+  </div>
+  <div>
+    <label>araea</label>
+    <input name="area" type="text" />
+  </div>
+  <div>
+    <label>businesscat</label>
+    <input name="businessCategory" type="text" />
+  </div>
+  <div>
+    <label>business type</label>
+    <input name="businessType" type="text" />
+  </div>
+  <div>
+    <label>business name</label>
+    <input name="businessName" type="text" />
+  </div>
+  <div>
+    <label>business keywords</label>
+    <input
+      name="businessKeyWords"
+      type="text"
+      placeholder="dominos,dominos pizza,etc"
+    />
+  </div>
+  <div>
+    <label>fassai number</label>
+    <input name="fassaiNumber" type="text" />
+  </div>
+  <div>
+    <label>monday</label>
+    <input name="mondayOpen" type="text" />
+    <input name="mondayClose" type="text" />
+  </div>
+  <div>
+    <label>tuesday</label>
+    <input name="tuesdayOpen" type="text" />
+    <input name="tuesdayClose" type="text" />
+  </div>
+  <div>
+    <label>wednesday</label>
+    <input name="wednesdayOpen" type="text" />
+    <input name="wednesdayClose" type="text" />
+  </div>
+  <div>
+    <label>thursday</label>
+    <input name="thursdayOpen" type="text" />
+    <input name="thursdayClose" type="text" />
+  </div>
+  <div>
+    <label>friday</label>
+    <input name="fridayOpen" type="text" />
+    <input name="fridayClose" type="text" />
+  </div>
+  <div>
+    <label>saturday</label>
+    <input name="saturdayOpen" type="text" />
+    <input name="saturdayClose" type="text" />
+  </div>
+  <div>
+    <label>sunday</label>
+    <input name="sundayOpen" type="text" />
+    <input name="sundayClose" type="text" />
+  </div>
+  <button>submit</button>
+</form>
+<% include ../partials/footer.ejs%>

@@ -1,0 +1,494 @@
+<% include ../merchantPartials/header.ejs%>
+<!-- calculating rating for profile -->
+<%var r1=0%>
+<%var r2=0%>
+<%var r3=0%>
+<%var r4=0%>
+<%var r5=0%>
+<%var ptotal=0%>
+
+<% merchantReviews.forEach(function(review){ %>
+		
+			<%if(review.rating==1){%>
+      <% r1=r1+1%>
+      <% ptotal=ptotal+1%>
+			<%}else if(review.rating==2){%>
+      <% r2=r2+1%>
+      <% ptotal=ptotal+1%>
+			<%}else if(review.rating==3){%>
+      <% r3=r3+1%>
+      <% ptotal=ptotal+1%>
+			<%}else if(review.rating==4){%>
+      <% r4=r4+1%>
+      <% ptotal=ptotal+1%>
+			<%}else if(review.rating==5){%>
+      <% r5=r5+1%>
+      <% ptotal=ptotal+1%>
+			<%}%>
+		
+<% })%>
+<!-- calculating rating for coupon -->
+<%var cr1=0%>
+<%var cr2=0%>
+<%var cr3=0%>
+<%var cr4=0%>
+<%var cr5=0%>
+<%var ctotal=0%>
+
+<% coupons.forEach(function(coupon){ %>
+	<% coupon.reviews.forEach(function(review) { %>
+	
+		<%if(review.rating==1){%>
+			<% cr1=cr1+1%>
+			<% ctotal=ctotal+1%>
+			<%}else if(review.rating==2){%>
+			<% cr2=cr2+1%>
+			<% ctotal=ctotal+1%>
+			<%}else if(review.rating==3){%>
+			<% cr3=cr3+1%>
+			<% ctotal=ctotal+1%>
+			<%}else if(review.rating==4){%>
+			<% cr4=cr4+1%>
+			<% ctotal=ctotal+1%>
+			<%}else if(review.rating==5){%>
+			<% cr5=cr5+1%>
+			<% ctotal=ctotal+1%>
+			<%}%>
+	
+	<% })%> <% })%>
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/review"
+        class="active1 menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-comments "></i>
+        <span class="top">Reviews</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/customer"
+        class="menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-th "></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/offer"
+        class=" menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Fun Deals</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/profile"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Profile</span>
+      </a>
+    </li>
+    <li class="menu--item">
+        <a
+          href="/merchantDashboard/branch"
+          class="menu--link tablinks1"
+          title="Your profile"
+          style="text-decoration: none;"
+        >
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Branches</span>
+        </a>
+      </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Gallery</span>
+      </a>
+    </li>
+  
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+
+<!-----==============================  body  ===========================================-->
+
+
+<!-----============== customer body========================-->
+
+<div class="wrapper" id="main">
+
+
+  <!--============== reviews body========================-->
+  
+  <section class="tabcontent1"><br>
+      <div class="tab11">
+        <button class="tablinks" onclick="openCity3(event, 'Pending')" id="defaultOpen">Profile Reviews</button>
+        <button class="tablinks" onclick="openCity3(event, 'Used')">H-Deals Reviews</button>
+        <!-- <div class="form-group search_">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        </div> -->
+      </div>
+  
+    <div id="Pending" class="tabcontent3">
+    <div class="container">
+      <div class="row">
+        <% if(ptotal!=0) {%>
+        <div class="col-md-4 right">
+            <div class="container1">
+                <div class="inner">
+                  <div class="rating">        
+                    <span class="rating-num"><%=merchantFloorRating%>.0</span>
+                    
+                    <div class="rating-stars">
+                        <%for(i=0;i<5;i++){ %>
+                            <%if(i<merchantFloorRating){%>
+                      <span><i class="active fas fa-star"></i></span>
+                      
+                            <%}else{%>
+                      <span><i class="fas fa-star"></i></span>
+                      
+                            <%}%>
+                          <% }%>
+                      
+                    </div>
+                    <div class="rating-users">
+                      <i class="icon-user"></i><%=ptotal%> total
+                    </div>
+                  </div>
+                  
+                  <div class="histo">
+                    <div class="five histo-rate">
+                      <span class="histo-star">
+                          <i class="fas fa-star"></i> 5           </span>
+                      <span class="bar-block">
+                        <span id="bar-five" class="bar">
+                          <span><%=r5%></span>&nbsp;
+                        </span> 
+                      </span>
+                    </div>
+                    
+                    <div class="four histo-rate">
+                      <span class="histo-star">
+                          <i class="fas fa-star"></i> 4           </span>
+                      <span class="bar-block">
+                        <span id="bar-four" class="bar">
+                          <span><%=r4%></span>&nbsp;
+                        </span> 
+                      </span>
+                    </div> 
+                    
+                    <div class="three histo-rate">
+                      <span class="histo-star">
+                          <i class="fas fa-star"></i> 3           </span>
+                      <span class="bar-block">
+                        <span id="bar-three" class="bar">
+                          <span><%=r3%></span>&nbsp;
+                        </span> 
+                      </span>
+                    </div>
+                    
+                    <div class="two histo-rate">
+                      <span class="histo-star">
+                          <i class="fas fa-star"></i> 2          </span>
+                      <span class="bar-block">
+                        <span id="bar-two" class="bar">
+                          <span><%=r2%></span>&nbsp;
+                        </span> 
+                      </span>
+                    </div>
+                    
+                    <div class="one histo-rate">
+                      <span class="histo-star">
+                          <i class="fas fa-star"></i> 1           </span>
+                      <span class="bar-block">
+                        <span id="bar-one" class="bar">
+                          <span><%=r1%></span>&nbsp;
+                        </span> 
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-8 left" id="myTable">
+            <% merchantReviews.forEach(function(review){ %>
+              
+              
+              <div class="row"><br>
+              <div class="col-md-1">
+                <span><img src="/images/mer_image/dumy.png" class="dp_customer"></span>
+              </div>
+              <div class="col-md-11 hr_b">
+                <p > 
+                  <span class="rev_name"><%= review.author.username %></span><br>
+                  <span class="rev_date"> 1 day ago</span><br>
+              
+                  <div class="rating-stars1">
+                      <%for(i=0;i<5;i++){ %>
+                          <%if(i<review.rating){%>
+                      <span><i class="active fas fa-star"></i></span>                        
+                        <%}else{%>
+                      <span><i class="fas fa-star"></i></span>
+                            <%}%>
+                      <% }%>
+                    </div>
+                  <span class="rev_comment"><%= review.body %></span><br>
+                </p>
+                
+              </div>
+            </div>
+            <% })%>
+                  
+  </div>
+  <%} else {%>
+    <div class="col-md-12 nor">
+      <img src="/images/Thinking.gif" style="padding: 20px 0px;">
+      </div>
+    <%}%>
+  </div>
+  </div>
+  
+    
+  </div>
+  
+    <div id="Used" class="tabcontent3">
+        <div class="container">
+          
+            <div class="row">
+              <% if(ctotal!=0) {%>
+              <div class="col-md-4 right">
+                  <div class="container1">
+                      <div class="inner">
+                        <div class="rating">
+                          <span class="rating-num"><%=couponFloorRating%>.0</span>
+                          <div class="rating-stars">
+                              <%for(i=0;i<5;i++){ %>
+                                  <%if(i<couponFloorRating){%>
+                            <span><i class="active fas fa-star"></i></span>
+                            
+                                  <%}else{%>
+                            <span><i class="fas fa-star"></i></span>
+                            
+                                  <%}%>
+                                <% }%>
+                            
+                          </div>
+                          <div class="rating-users">
+                            <i class="icon-user"></i> <%=ctotal%> total
+                          </div>
+                        </div>
+                        
+                        <div class="histo">
+                          <div class="five histo-rate">
+                            <span class="histo-star">
+                                <i class="fas fa-star"></i> 5           </span>
+                            <span class="bar-block">
+                              <span id="bar-five1" class="bar1">
+                                <span><%=cr5%></span>&nbsp;
+                              </span> 
+                            </span>
+                          </div>
+                          
+                          <div class="four histo-rate">
+                            <span class="histo-star">
+                                <i class="fas fa-star"></i> 4           </span>
+                            <span class="bar-block">
+                              <span id="bar-four1" class="bar1">
+                                <span><%=cr4%></span>&nbsp;
+                              </span> 
+                            </span>
+                          </div> 
+                          
+                          <div class="three histo-rate">
+                            <span class="histo-star">
+                                <i class="fas fa-star"></i> 3           </span>
+                            <span class="bar-block">
+                              <span id="bar-three1" class="bar1">
+                                <span><%=cr3%></span>&nbsp;
+                              </span> 
+                            </span>
+                          </div>
+                          
+                          <div class="two histo-rate">
+                            <span class="histo-star">
+                                <i class="fas fa-star"></i> 2           </span>
+                            <span class="bar-block">
+                              <span id="bar-two1" class="bar1">
+                                <span><%=cr2%></span>&nbsp;
+                              </span> 
+                            </span>
+                          </div>
+                          
+                          
+                          <div class="one histo-rate">
+                            <span class="histo-star">
+                                <i class="fas fa-star"></i> 1           </span>
+                            <span class="bar-block">
+                              <span id="bar-one1" class="bar1">
+                                <span><%=cr1%></span>&nbsp;
+                              </span> 
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              
+               
+              <div class="col-md-8 left" >
+                <% coupons.forEach(function(coupon){ %>
+                  <div class="row"><br><br>
+                    <div class="col-md-12"><p class="coupon_name_r">HappyDeal : <span class="cop_rev_name"><%= coupon.offerName %></span> </p><hr class="hr__"></div>
+                </div>
+                <% coupon.reviews.forEach(function(review) { %>
+                    <div class="row">
+                    <div class="col-md-1">
+                      <span><img src="/images/mer_image/dumy.png" class="dp_customer"></span>
+                    </div>
+                    <div class="col-md-11 hr_b">
+                      <p > 
+                        <span class="rev_name"><%= review.author.username%></span><br>
+                        <span class="rev_date"> 1 day ago</span><br>
+                        <div class="rating-stars1">
+                            <%for(i=0;i<5;i++){ %>
+                                <%if(i<review.rating){%>
+                            <span><i class="active fas fa-star"></i></span>
+                            
+                                <%}else{%>
+                            <span><i class="fas fa-star"></i></span>
+                            
+                                <%}%>
+                              <% }%>
+                            
+                          </div>
+                        <span class="rev_comment"><%= review.body %></span><br>
+                      </p>
+                      
+                    </div>
+                  </div><% })%><% })%>
+                          
+                  
+                      
+        </div> 
+        <%} else {%>
+          <div class="col-md-12 nor">
+            <img src="/images/Thinking.gif" style="padding: 20px 0px;">
+            </div>
+          <%}%>
+        </div>
+        </div>
+        
+
+      </div>
+  
+  
+  </section>
+  <!--============== end reviews body========================-->
+  </div>
+  
+  
+  
+  
+  <!-----============================== end body  ===========================================-->
+  <script>
+    var r1=<%-JSON.stringify(r1)%>;
+    var r2=<%-JSON.stringify(r2)%>;
+    var r3=<%-JSON.stringify(r3)%>;
+    var r4=<%-JSON.stringify(r4)%>;
+    var r5=<%-JSON.stringify(r5)%>;
+    const total=r1+r2+r3+r4+r5;
+    const onepercent=(100/total);
+    const r11=`${r1*onepercent}%`;
+    const r22=`${r2*onepercent}%`;
+    const r33=`${r3*onepercent}%`;
+    const r44=`${r4*onepercent}%`;
+    const r55=`${r5*onepercent}%`;
+
+    $(document).ready(function() {
+      
+      $('.bar span').hide();
+      $('#bar-five').animate({
+         width: r55}, 1000);
+      $('#bar-four').animate({
+         width: r44}, 1000);
+      $('#bar-three').animate({
+         width: r33}, 1000);
+      $('#bar-two').animate({
+         width: r22}, 1000);
+      $('#bar-one').animate({
+         width: r11}, 1000);
+      
+      setTimeout(function() {
+        $('.bar span').fadeIn('slow');
+      }, 1000);
+      
+    });</script>
+    <script>
+    var cr1=<%-JSON.stringify(cr1)%>;
+    var cr2=<%-JSON.stringify(cr2)%>;
+    var cr3=<%-JSON.stringify(cr3)%>;
+    var cr4=<%-JSON.stringify(cr4)%>;
+    var cr5=<%-JSON.stringify(cr5)%>;
+    const totall=cr1+cr2+cr3+cr4+cr5;
+    const onepercentt=(100/totall);
+    const cr11=`${cr1*onepercentt}%`;
+    const cr22=`${cr2*onepercentt}%`;
+    const cr33=`${cr3*onepercentt}%`;
+    const cr44=`${cr4*onepercentt}%`;
+    const cr55=`${cr5*onepercentt}%`;
+      $(document).ready(function() {
+        
+        $('.bar1 span').hide();
+        $('#bar-five1').animate({
+           width: cr55}, 1000);
+        $('#bar-four1').animate({
+           width: cr44}, 1000);
+        $('#bar-three1').animate({
+           width: cr33}, 1000);
+        $('#bar-two1').animate({
+           width: cr22}, 1000);
+        $('#bar-one1').animate({
+           width: cr11}, 1000);
+        
+        setTimeout(function() {
+          $('.bar1 span').fadeIn('slow');
+        }, 1000);
+        
+      });</script>
+    
+  
+
+<% include ../merchantPartials/footer.ejs%>

@@ -1,0 +1,279 @@
+<% include ../partials/header.ejs%>
+
+<% var qtyZero=0%>
+      <%for(id in currentUser.cart.items){%>
+        <%let c = currentUser.cart.items[id]%>
+        
+        <%if(couponObj[id]==0||c.item.expireDate<Date.now()){%>
+     
+          <%qtyZero=qtyZero+1%>
+      <%}}%>
+
+      
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title"
+          id="exampleModalLabel"
+          style="font-size: 1.5rem;color: #217ab3;font-weight: 600;"
+        >
+          Terms and Conditions
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12" style="text-align: center; width: 100%;">
+              <img src="/images/logo.png" width="15%">
+          </div>
+        <ul class="termsul">
+          <li>
+              Fun Deal (voucher) packs are available based on the number of people going for Dine-in, selection of the pack
+              must be made while checking out.
+          </li>
+          <li>The selected offer is valid for Dine-in and not Takeaway or Delivery.</li>
+          <li>This offer will not be available on any National/Public holiday.</li>
+          <li>
+              No refunds shall be granted for Fun Deal (voucher)s.
+          </li>
+          <li>
+              Fun Deal (voucher)s are redeemable in their entirety only and may not be redeemed incrementally.          </li>
+          <li>
+              Fun Deal (voucher)s can be redeemed only after due verification of the customer including, without
+              limitation, matching the unique identification number provided to the customer at the time of purchase of Happy
+              Deal (voucher)s.          </li>
+          <li>
+              For 10 and more than 10 members, another Fun Deal (voucher)s transaction must be initiated.          </li>
+          <li>
+              Validity period for redemption of Fun Deal (voucher)s is determined by Restaurants, Fashion or other
+              institutions and shall be mentioned on Fun Deal (voucher)s.          </li>
+          <li>
+              One Fun Deal voucher could be used during billing, other offers cannot be clubbed with any Fun Deal offer
+              being used.          </li>
+          
+        </ul>
+      </div>
+      <div class="modal-footer" style="justify-content:flex-start;">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%if(!currentUser.cart||currentUser.cart.totalQty<=0||!currentUser.cart.totalQty){%>
+
+    <section class="cartOuter">
+    <div class="cartContainer">
+            <div class="cart-details">
+                <div class="cartTotalHeading">
+                    <h3>My Bag(<span>0</span> items) <hr class="hr3"></h3>
+                    <h4>Total: &#8377; <span>0</span></h4>
+                </div>
+                
+                  <div class="emptycart">
+                    <img src="/images/Mia-03.png" alt="">
+                </div>
+               
+                 
+                
+                
+            </div>
+    </div>
+</section>
+
+<%}else{%>
+<section class="cartOuter">
+  <div class="cartContainer">
+    <div class="cart-details">
+      <div class="cartTotalHeading">
+        <h3>
+          My Bag(<span><%=currentUser.cart.totalQty%></span> items)
+          <hr class="hr3" />
+        </h3>
+        <h4>Total: &#8377; <span><%=currentUser.cart.totalPrice%></span></h4>
+      </div>
+      <!--  -->
+      <%for(id in currentUser.cart.items){%>
+        <!--  -->
+        <%let coupon = currentUser.cart.items[id]%>
+        <!--  -->
+      <div class="cart">
+        <div class="cartImage">
+          <%if(coupon.item.image){%>
+          <img src="<%=coupon.item.image.url%>" alt="" />
+          <%}%>
+        </div>
+        <div class="cartDetail">
+          <div class="cartHeading">
+            <h3>
+                    <%=coupon.item.offerName%>
+            </h3>
+          </div>
+          <div class="cartBy">
+            <h3>HappyDeal By: <b><%=coupon.item.businessName%></b></h3>
+          </div>
+          <div class="quantity">
+            <label for="qty">Qty</label>
+            <div class="">
+              <div class="form-group">
+                <select class="form-control" id="sel1" style="border: 2px solid #227ab3;padding: .0rem .75rem;height: calc(1.45em + .35rem + 0px);" onchange="location=this.value">
+                  <%for(i=1;i<=coupon.item.quantity;i++){%>
+                    <option value="/cart/mul-to-cart/<%=coupon.item._id%>/<%=i%>" 
+                      <%if(coupon.qty==i){%>
+                        selected
+                      <%}%>
+                      
+                      ><%=i%></option>
+                          <%}%>
+                </select>
+              </div>
+              
+          
+            </div>
+          </div>
+        
+          <div class="unitLeft">
+            <%if(couponObj[id]==0||coupon.item.expireDate<Date.now()){%>
+                <%if(couponObj[id]==0){%>
+            <h3 style="color:red">Only <span>0</span> Units(s) In Left</h3>
+              <%}%>
+         <%if(coupon.item.expireDate<Date.now()){%>
+            <h3 style="color:red">This coupon has expired</h3>
+          <%}%>
+         
+            <%}else{%>
+            <h3>Only <span><%=couponObj[id]%></span66> Units(s) In Left</h3>
+            <%}%>
+            <h4>Price &#8377; <span><%=coupon.item.adminAmount%></span></h4>
+          </div>
+          <div class="cartButtons">
+            <button ><a style="text-decoration:none" href="/cart/remove/<%=id%>">Remove</a></button>
+            <hr />
+            <%if(couponObj[id]!=0){%>
+            <button><a style="text-decoration:none" href="/cart/add-to-wishList/<%=coupon.item._id%>">Move To WishList</a></button>
+            <%}%>
+          </div>
+        </div>
+      </div><%}%>
+      
+      <a style="text-decoration:none" href="/wish-list"><div class="addFromwish">
+            <h3>Add From Wishlist</h3>
+            <i class="fas fa-chevron-right leftWishlist"></i>
+        </div></a>
+    </div>
+
+    <!-- cart Total Price -->
+    <div class="cartPrice">
+      <div class="cartside">
+    
+                  <div class="emptycart">
+                    <img src="/images/Mia_and_Cart.gif" alt="" />
+                </div>
+                        
+      </div>
+      <h3>
+        Price Details
+        <hr class="hr1" />
+      </h3>
+      <h4>Bag Total <span>&#8377; <%=currentUser.cart.totalPrice%></span></h4>
+      
+      <h4>Tax <span>&#8377; <%=taxedPrice.toFixed(2)%></span></h4>
+      <div class="acceptterm">
+        <%if(currentUser.HdPoints>0){%>
+        <div class="checkOtp">
+          
+          <a href="/cart/Hd"><span class="hd_points"><%if(HDstatus!="HdPoints"){%>Redeem<%}%> HD points</span></a>
+          <a href="/cart"><span class="right_hd"><%if(HDstatus=="HdPoints"){%>remove<%}%></span></a>
+          <%if(HDstatus=="HdPoints"){%>
+          <input type="checkbox" name="" id="mmyCheck" onclick="myFunction()" />
+          <p id="ttext" style="display:block;width: 100%;">
+            <span style="float: left;"
+              >HD points
+              <i class="tooltip0"
+                >?
+                <span class="tooltiptext"
+                  >only <span class="hp_p"><%=redeemPercent%></span>% of total shoping price can
+                  be used.</span
+                >
+              </i></span
+            >
+            <span style="float: right;">- &#8377; <%=redeemedPrice%> </span>
+          </p>
+          <% }%>
+        </div>
+<%}%>
+
+      </div>
+      <div class="total">
+        <h5>Total <span>&#8377; <%=(newTotalPrice/100).toFixed(2)%></span></h5>
+      </div>
+      <div class="acceptterm">
+        <div class="checkOtp">
+          <label for="myCheck"><i class="fas fa-check i"></i></label
+          ><b
+            >I Accept All The
+            <a data-toggle="modal" data-target="#exampleModal">
+              <span class="link_"> Terms and Conditions </span></a
+            ></b
+          >
+          <input type="checkbox" name="" id="myCheck" onclick="myFunctioncart()"/>
+        </div>
+      </div>
+      <div id="text1" style="display:block" class="button">
+          <button onclick="myFunctionalert()">PLACE ORDER</button>
+      </div>
+      <%if(qtyZero==0){%>
+      <div id="text" style="display:none" class="button">
+          <form action="/buy/<%=HDstatus%>" method="POST" class="btncheck">
+            <!-- prettier-ignore -->
+            <!-- <script
+              src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key= <%= process.env.razorpayKeyId %>
+                data-amount= <%=currentUser.cart.totalPrice*100 %>
+                data-currency="INR"
+                data-buttontext="PLACE ORDER"
+                data-name="www.happinessdeal.com"
+                data-order_id= <%=orderId%>
+                data-description="A Deal That Brings Happiness"
+                data-prefill.name=" "
+                data-prefill.email= <%=currentUser.email %>
+                data-prefill.contact= <%=currentUser.number %>
+                data-theme.color="#64a2df"
+              >
+            </script> -->
+            <!-- <input type="hidden" custom="Hidden Element" name="hidden" class="btncheck"/> -->
+            <div  style="display:block" class="button">
+              <button type="submit" style="background-color:red" >Click to buy</button>
+          </div>
+          </form>
+      </div>
+      <%}else{%>
+        <div  style="display:block" class="button">
+          <button style="background-color:red" >Remove Coupon with 0 Units or Expired to place order</button>
+      </div>
+      <%}%>
+    </div>
+  </div>
+</section>
+<%}%>
+
+<% include ../partials/footer.ejs%>

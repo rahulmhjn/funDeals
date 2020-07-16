@@ -1,0 +1,391 @@
+<% include ../merchantPartials/header.ejs%>
+
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/branch"
+        class="active1 menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Branches</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/customer"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-th "></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/offer"
+        class=" menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Fun Deals</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/profile"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Profile</span>
+      </a>
+    </li>
+
+   
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/gallery"
+        class="menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Gallery</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/merchantDashboard/review"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-comments "></i>
+        <span class="top">Reviews</span>
+      </a>
+    </li>
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+<!-----==============================  body  ===========================================-->
+
+<!-----============== customer body========================-->
+
+<div class="wrapper" id="main">
+  <!-----============== coupon body========================-->
+  <section class="tabcontent1" id="coupons">
+    <br />
+    <div class="tab">
+      <div class="form-group search_">
+        <input
+          class="form-control"
+          id="myInput"
+          type="text"
+          placeholder="Search.."
+        />
+      </div>
+    </div>
+
+    <!-----======== pending body===========-->
+
+    <div id="Pending" class="tabcontent00">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th style="padding: 15px 0px;width: 20%">&nbsp; Branch Name</th>
+            <th style="padding: 15px 0px;width: 20%">&nbsp; City</th>
+            <th style="padding: 15px 0px;width: 20%">&nbsp; Full Address</th>
+            <th style="padding: 15px 0px;width: 20%">&nbsp; Map Link</th>
+            <th style="padding: 15px 0px;width: 5%;padding-left: 60px;">
+              &nbsp; Delete
+            </th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <%branch.forEach(branch=>{%>
+          <tr>
+            <td style="width: 20%;"><%=branch.branchName%></td>
+            <td style="width: 20%;"><%=branch.city%></td>
+            <td style="width: 20%;"><%=branch.address%></td>
+            <td style="width: 20%;"><%=branch.mapLink%></td>
+            <td style="width: 20%;text-align: center;">
+              <form
+                action="/merchantDashboard/branch/<%=branch._id%>?_method=DELETE"
+                method="POST"
+              >
+                <button class="btn btn-primary">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="navbar1">
+      <form
+        class="form-group row"
+        action="/merchantDashboard/branch"
+        method="POST"
+      >
+        <div class="col-md-2 col-xs-6 pp">
+          <input
+            type="text"
+            class="form-control"
+            id="branchName"
+            placeholder="Branch Name"
+            name="branchName"
+          />
+        </div>
+        <div class="col-md-2 col-xs-6 pp">
+          <select
+            type="select"
+            class="form-control"
+            id="city"
+            placeholder="City"
+            name="city"
+          >
+            <option value="0">City</option>
+
+            <%for(state in settings){%> <%for(city in settings[state]){%>
+            <option value="<%=city%>"><%=city%></option>
+            <%}}%>
+          </select>
+        </div>
+        <div class="col-md-3 col-xs-6 pp">
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Full Address"
+            name="address"
+          />
+        </div>
+        <div class="col-md-3 col-xs-6 pp">
+          <input
+            type="text"
+            class="form-control"
+            id="link"
+            placeholder="Map Link"
+            name="mapLink"
+          />
+        </div>
+        <div class="col-md-2 col-xs-12 pp">
+          <button class="btn btn-primary">Add Row</button>
+        </div>
+      </form>
+    </div>
+    <!-----======== end all body===========---->
+  </section>
+  <!--============== end coupon body========================-->
+
+  <!--============== end reviews body========================-->
+</div>
+
+<!-----============================== end body  ===========================================-->
+
+<!-----============================== js files  ===========================================-->
+<script>
+  $(".trigger, .cl1").click(function() {
+    $(".slider1").toggleClass("close");
+  });
+</script>
+<script type="text/javascript">
+  function yesnoCheck() {
+    if (document.getElementById("yesCheck").checked) {
+      document.getElementById("ifYes").style.display = "block";
+    } else document.getElementById("ifYes").style.display = "none";
+  }
+</script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $("#blah").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+<script>
+  $(document).ready(function() {
+    $(".bar span").hide();
+    $("#bar-five").animate(
+      {
+        width: "75%"
+      },
+      1000
+    );
+    $("#bar-four").animate(
+      {
+        width: "35%"
+      },
+      1000
+    );
+    $("#bar-three").animate(
+      {
+        width: "20%"
+      },
+      1000
+    );
+    $("#bar-two").animate(
+      {
+        width: "15%"
+      },
+      1000
+    );
+    $("#bar-one").animate(
+      {
+        width: "30%"
+      },
+      1000
+    );
+
+    setTimeout(function() {
+      $(".bar span").fadeIn("slow");
+    }, 1000);
+  });
+</script>
+<!--================== menu icon toogle ==================-->
+<script>
+  function myFunction(x) {
+    x.classList.toggle("fa-times");
+  }
+</script>
+
+<!--================== side menu active ==================-->
+<script>
+  $("ul li a").click(function() {
+    if ($("ul li a").hasClass("active")) {
+      $("ul li a").removeClass("active");
+    }
+
+    $(this).addClass("active");
+  });
+</script>
+
+<!--================== customer search ==================-->
+<script>
+  $(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+      var value = $(this)
+        .val()
+        .toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle(
+          $(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
+</script>
+
+<!--================== coupon search ==================-->
+<script>
+  $(document).ready(function() {
+    $("#myInput1").on("keyup", function() {
+      var value = $(this)
+        .val()
+        .toLowerCase();
+      $("#myTable1 tr").filter(function() {
+        $(this).toggle(
+          $(this)
+            .text()
+            .toLowerCase()
+            .indexOf(value) > -1
+        );
+      });
+    });
+  });
+</script>
+
+<!--================== side menu toogle ==================-->
+<script>
+  function openCity1(evt, cityName1) {
+    var i, tabcontent1, tablinks1;
+    tabcontent1 = document.getElementsByClassName("tabcontent1");
+    for (i = 0; i < tabcontent1.length; i++) {
+      tabcontent1[i].style.display = "none";
+    }
+    tablinks1 = document.getElementsByClassName("tablinks1");
+    for (i = 0; i < tablinks1.length; i++) {
+      tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName1).style.display = "block";
+    evt.currentTarget.className1 += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen1").click();
+</script>
+
+<!--================== inner customers toogle areas==================-->
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+
+<!--================== inner coupons toogle areas==================-->
+<script>
+  function openCity2(evt, cityName2) {
+    var i, tabcontent2, tablinks2;
+    tabcontent2 = document.getElementsByClassName("tabcontent2");
+    for (i = 0; i < tabcontent2.length; i++) {
+      tabcontent2[i].style.display = "none";
+    }
+    tablinks2 = document.getElementsByClassName("tablinks2");
+    for (i = 0; i < tablinks2.length; i++) {
+      tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName2).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen2").click();
+</script>
+
+<script src="/merchantStyleSheets/vertical-responsive-menu.min.js"></script>
+
+<% include ../merchantPartials/footer.ejs%>

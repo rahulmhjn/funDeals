@@ -1,0 +1,1047 @@
+<% include ../adminPartials/header.ejs%>
+<!-----==============================side bar ===========================================-->
+
+<nav class="vertical_nav">
+  <ul id="js-menu" class="menu">
+    <li class="menu--item" style="text-align: center;padding-bottom: 10px;">
+      <img src="/images/logo.png" width="60%;" />
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/gallery"
+        class="active menu--link tablinks1"
+        title="Gallery"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-image "></i>
+        <span class="top">Slider Images</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/coupon"
+        class=" menu--link tablinks1"
+        title="Customer coupon list"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-tags"></i>
+        <span class="top">Deal Requests</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/couponType" class=" menu--link tablinks1" 
+          title="Customer coupon list" style="text-decoration: none;">
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal Type</span>
+      </a>
+  </li>
+  <li class="menu--item">
+      <a href="/adminDashboard/couponList" class=" menu--link tablinks1" 
+          title="Customer coupon list" style="text-decoration: none;">
+          <i class="fas fa-tags"></i>
+          <span class="top">HappyDeal List</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/merchant"
+        class="menu--link tablinks1"
+        title="create coupon"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-store"></i>
+        <span class="top">Merchants</span>
+      </a>
+    </li>
+
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/customer"
+        class="menu--link tablinks1"
+        title="Your profile"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-user-circle"></i>
+        <span class="top">Customers</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/analytics" class="menu--link tablinks1"  title="analytics"
+          style="text-decoration: none;">
+          <i class="fas fa-user-circle"></i>
+          <span class="top">Analytics</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/benefits"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-gifts "></i>
+        <span class="top">Benefits</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a
+        href="/adminDashboard/setting"
+        class="menu--link tablinks1"
+        title="Reviews"
+        style="text-decoration: none;"
+      >
+        <i class="fas fa-cogs "></i>
+        <span class="top">Settings</span>
+      </a>
+    </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/hd" class="menu--link tablinks1"  title="special signup"
+          style="text-decoration: none;" >
+          <i class="fas fa-image "></i>
+          <span class="top">HD points</span>
+      </a>
+  </li>
+    <li class="menu--item">
+      <a href="/adminDashboard/specialSignup" class=" menu--link tablinks1" 
+          style="text-decoration: none;" >
+          <i class="fas fa-image "></i>
+          <span class="top">Special signup</span>
+      </a>
+  </li>
+   
+  </ul>
+
+  <button id="collapse_menu" class="collapse_menu">
+    <i class="collapse_menu--icon  fas fa-fw"></i>
+    <span class="collapse_menu--label"></span>
+  </button>
+</nav>
+
+<!-----============================== end side bar ===========================================-->
+
+<!--============== gallery body========================-->
+
+
+
+<section class="tabcontent1" id="gallery">
+  <br />
+  <div class="uploadImagepop">
+    <div class="innerUpload">
+      <div class="heading">
+        <h3>Upload Photo</h3>
+      </div>
+      <div class="upimg">
+        <label for="image">Choose Image</label>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/png, image/jpeg"
+        />
+      </div>
+      <div class="btn">
+        <button>Upload</button>
+        <button onclick="closeupload()">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="create pull-right gallery">
+    <div class="UpperImageSlider">
+      <div class="slideadmin">
+        <h3 class="head">Slider One (Home page)</h3>
+        <!-- new code starts here -->
+        <% if(admin.gallery[0]){ %>
+          <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3gallery" id="addRow" onclick="addRow()">
+                    <b> &nbsp; Edit Image &nbsp; </b>
+                   </button>
+                   <%}%>
+                <% if(!admin.gallery[0]){ %>
+              <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2gallery" id="addRow" onclick="addRow()">
+                 <b> &nbsp; Upload Imagee &nbsp; </b>
+              </button>
+                <%}%>
+                
+          
+           <div class="modal fade" id="myModal2gallery" role="dialog">
+              <div class="modal-dialog modal-dialog-centred">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                    <h4 class="modal-title"><b>Update Images</b></h4>
+                  </div>
+                  <div class="modal-body"><center>
+                      <% if(!admin.gallery[0]){ %>
+                        
+                    <form action="/adminDashboard" method="POST" enctype="multipart/form-data">
+                      <div class="upload-btn-wrapper">
+                      <button class="btn btn-primary">Upload Image</button>
+                      <input type="file" id="image" name="gallery" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                      </center>
+                      <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </form>
+                    <% } %>
+                  </div>
+                  <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> -->
+                </div>
+              </div>
+          </div>
+      
+          <div class="modal fade" id="myModal3gallery" role="dialog">
+              <div class="modal-dialog modal-dialog-centred">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                    <h4 class="modal-title"><b>Edit Images</b></h4>
+                  </div>
+                  <div class="modal-body"><center>
+                      <% if(admin.gallery[0]){ %>
+                        <form action="/adminDashboard?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                            
+                          <div class="upload-btn-wrapper">
+                              <button class="btn btn-primary">Upload New Image</button>
+                              <input type="file" name="gallery" id="imageUpload" accept="images/*" multiple />
+                              </div>
+                              
+                              <div class="form-group row">
+                                  <h5>Select Images you want to Delete</h5>
+                                  <div class="col-sm-10">
+                                      <%admin.gallery.forEach((image,index)=>{ %>
+                                          <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                          <label for="image<%=index%>">Delete?</label>
+                                          
+                                          <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                          
+                                      <% })%>
+                                  </div> <!-- note deletecheck box is array -->
+                                  
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                          </form>
+                    <% } %>
+                  </div>
+                  <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> -->
+                </div>
+              </div>
+          </div>
+              <div>
+              <br><br>
+            </div>
+          
+        <!-- new code ends here -->
+        <div class="abcd">
+          <div class="scrollfixed1" id="firstSlideadmin">
+            <div class="slideshowcardUpper" id="">
+                <% if(admin.gallery[0]){ %>
+                  <%admin.gallery.forEach((image,index)=>{ %>
+                      <div class="adminslideimage">
+                <img src="<%=image.url%>" alt="" />
+                
+                <p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gallery<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                    LINK
+                  </button>
+                </p>
+                <div class="collapse" id="gallery<%=index%>">
+                  <div class="card card-body">
+                    <form   action="/adminDashboard/gallery/<%=image.public_id%>?_method=PUT" method="POST">
+                      <input  type="text" name="link" value="<%=image.link%>" >
+                      <input type="submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+                  <% })%>
+              <% } %>
+              
+              
+            </div>
+          </div>
+          <% if(admin.gallery[0]){ %>
+          <div class="moveRight" id="firstSlideadminRight">
+            <i class="fas fa-chevron-right i"></i>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <!-- this is slider 2 -->
+      <div class="slideadmin">
+          <h3 class="head">Advertisement Images 1 (Home page )</h3>
+          <!-- new code starts here -->
+          <% if(admin.indexAdOne[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3indexAdOne" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.indexAdOne[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2indexAdOne" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2indexAdOne" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.indexAdOne[0]){ %>
+                          
+                      <form action="/adminDashboard/indexAdOne" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="indexAdOne" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3indexAdOne" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.indexAdOne[0]){ %>
+                          <form action="/adminDashboard/indexAdOne?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="indexAdOne" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.indexAdOne.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            
+            <div>
+              <br><br>
+            </div>
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.indexAdOne[0]){ %>
+                    <%admin.indexAdOne.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                  <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#indexAdOne<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                      LINK
+                    </button>
+                  </p>
+                  <div class="collapse" id="indexAdOne<%=index%>">
+                    <div class="card card-body">
+                      <form   action="/adminDashboard/indexAdOne/<%=image.public_id%>?_method=PUT" method="POST">
+                        <input  type="text" name="link" value="<%=image.link%>" >
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.indexAdOne[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      <!-- this is slider 3 -->
+      <div class="slideadmin">
+          <h3 class="head"> Mini Slider 1 (Home page)</h3>
+          <!-- new code starts here -->
+          <% if(admin.indexSliderTwo[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3indexSliderTwo" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.indexSliderTwo[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2indexSliderTwo" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2indexSliderTwo" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.indexSliderTwo[0]){ %>
+                          
+                      <form action="/adminDashboard/indexSliderTwo" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="indexSliderTwo" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3indexSliderTwo" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.indexSliderTwo[0]){ %>
+                          <form action="/adminDashboard/indexSliderTwo?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="indexSliderTwo" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.indexSliderTwo.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            
+            <div>
+              <br><br>
+            </div>
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.indexSliderTwo[0]){ %>
+                    <%admin.indexSliderTwo.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                  <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#indexSliderTwo<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                      LINK
+                    </button>
+                  </p>
+                  <div class="collapse" id="indexSliderTwo<%=index%>">
+                    <div class="card card-body">
+                      <form   action="/adminDashboard/indexSliderTwo/<%=image.public_id%>?_method=PUT" method="POST">
+                        <input  type="text" name="link" value="<%=image.link%>" >
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.indexSliderTwo[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      <!-- this is slider 4 -->
+      <div class="slideadmin">
+          <h3 class="head"> Advertisement 2 (Home page)</h3>
+          <!-- new code starts here -->
+          <% if(admin.indexAdTwo[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3indexAdTwo" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.indexAdTwo[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2indexAdTwo" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2indexAdTwo" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.indexAdTwo[0]){ %>
+                          
+                      <form action="/adminDashboard/indexAdTwo" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="indexAdTwo" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3indexAdTwo" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.indexAdTwo[0]){ %>
+                          <form action="/adminDashboard/indexAdTwo?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="indexAdTwo" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.indexAdTwo.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            <div>
+              <br><br>
+            </div>
+            
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.indexAdTwo[0]){ %>
+                    <%admin.indexAdTwo.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                  <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#indexAdTwo<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                      LINK
+                    </button>
+                  </p>
+                  <div class="collapse" id="indexAdTwo<%=index%>">
+                    <div class="card card-body">
+                      <form   action="/adminDashboard/indexAdTwo/<%=image.public_id%>?_method=PUT" method="POST">
+                        <input  type="text" name="link" value="<%=image.link%>" >
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.indexAdTwo[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      <!-- this is slider 5 -->
+      <div class="slideadmin">
+          <h3 class="head">Mini Slider 2 (Home page)</h3>
+          <!-- new code starts here -->
+          <% if(admin.indexSliderThree[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3indexSliderThree" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.indexSliderThree[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2indexSliderThree" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2indexSliderThree" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.indexSliderThree[0]){ %>
+                          
+                      <form action="/adminDashboard/indexSliderThree" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="indexSliderThree" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3indexSliderThree" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.indexSliderThree[0]){ %>
+                          <form action="/adminDashboard/indexSliderThree?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="indexSliderThree" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.indexSliderThree.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            
+                <div>
+              <br><br>
+            </div>
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.indexSliderThree[0]){ %>
+                    <%admin.indexSliderThree.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                  <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#indexSliderThree<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                      LINK
+                    </button>
+                  </p>
+                  <div class="collapse" id="indexSliderThree<%=index%>">
+                    <div class="card card-body">
+                      <form   action="/adminDashboard/indexSliderThree/<%=image.public_id%>?_method=PUT" method="POST">
+                        <input  type="text" name="link" value="<%=image.link%>" >
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.indexSliderThree[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      <!-- this is slider 6 -->
+      <div class="slideadmin">
+          <h3 class="head"> All HappyDeal (Voucher page)</h3>
+          <!-- new code starts here -->
+          <% if(admin.couponPageAd[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3couponPageAd" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.couponPageAd[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2couponPageAd" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2couponPageAd" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.couponPageAd[0]){ %>
+                          
+                      <form action="/adminDashboard/couponPageAd" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="couponPageAd" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3couponPageAd" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.couponPageAd[0]){ %>
+                          <form action="/adminDashboard/couponPageAd?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="couponPageAd" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.couponPageAd.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+            
+                <div>
+              <br><br>
+            </div>
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.couponPageAd[0]){ %>
+                    <%admin.couponPageAd.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                  <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#couponPageAd<%=index%>" aria-expanded="false" aria-controls="collapseExample">
+                      LINK
+                    </button>
+                  </p>
+                  <div class="collapse" id="couponPageAd<%=index%>">
+                    <div class="card card-body">
+                      <form   action="/adminDashboard/couponPageAd/<%=image.public_id%>?_method=PUT" method="POST">
+                        <input  type="text" name="link" value="<%=image.link%>" >
+                        <input type="submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.couponPageAd[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      <!-- this is slider 7 -->
+      <div class="slideadmin">
+          <h3 class="head">  Cart image (Cart page)</h3>
+          <!-- new code starts here -->
+          <% if(admin.cartAd[0]){ %>
+            <button type="button" class="btn btn-primary edit" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal3cartAd" id="addRow" onclick="addRow()">
+                      <b> &nbsp; Edit Image &nbsp; </b>
+                     </button>
+                     <%}%>
+                     <% if(!admin.cartAd[0]){ %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" style="font-family: 'Nunito', sans-serif;" data-target="#myModal2cartAd" id="addRow" onclick="addRow()">
+                   <b> &nbsp; Upload Image &nbsp; </b>
+                  </button>
+                  <%}%>
+                  
+            
+             <div class="modal fade" id="myModal2cartAd" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Update Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(!admin.cartAd[0]){ %>
+                          
+                      <form action="/adminDashboard/cartAd" method="POST" enctype="multipart/form-data">
+                        <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary">Upload Image</button>
+                        <input type="file" id="image" name="cartAd" accept="image/png, image/jpeg" onchange="readURL(this);" multiple/>
+                        </center>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left" >Upload</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Upload</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+        
+            <div class="modal fade" id="myModal3cartAd" role="dialog">
+                <div class="modal-dialog modal-dialog-centred">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="font-size: 25px;">&times;</button>
+                      <h4 class="modal-title"><b>Edit Images</b></h4>
+                    </div>
+                    <div class="modal-body"><center>
+                        <% if(admin.cartAd[0]){ %>
+                          <form action="/adminDashboard/cartAd?_method=PUT" method="POST"  id="form" enctype=multipart/form-data>
+                              
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary">Upload New Image</button>
+                                <input type="file" name="cartAd" id="imageUpload" accept="images/*" multiple />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <h5>Select Images you want to Delete</h5>
+                                    <div class="col-sm-10">
+                                        <%admin.cartAd.forEach((image,index)=>{ %>
+                                            <img src="<%=image.url%>" alt="" width="100px" class="img-thumbnail img-fluid">
+                                            <label for="image<%=index%>">delete?</label>
+                                            <input type="checkbox" name="deleteCheckbox[]"  id="image<%=index%>" class="imageDeleteCheckbox" value="<%=image.public_id%>">
+                                            
+                                        <% })%>
+                                    </div> <!-- note deletecheck box is array -->
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary pull-left" >Submit</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                      <% } %>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div> -->
+                  </div>
+                </div>
+            </div>
+
+                <div>
+              <br><br>
+            </div>
+            
+          <!-- new code ends here -->
+          <div class="abcd">
+            <div class="scrollfixed1" id="firstSlideadmin">
+              <div class="slideshowcardUpper" id="">
+                  <% if(admin.cartAd[0]){ %>
+                    <%admin.cartAd.forEach((image,index)=>{ %>
+                        <div class="adminslideimage">
+                  <img src="<%=image.url%>" alt="" />
+                </div>
+                    <% })%>
+                <% } %>
+                
+                
+              </div>
+            </div>
+            <% if(admin.cartAd[0]){ %>
+            <div class="moveRight" id="firstSlideadminRight">
+              <i class="fas fa-chevron-right i"></i>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+<!--============== end gallery body========================-->
+<% include ../adminPartials/footer.ejs%>
