@@ -1,0 +1,2 @@
+# funDeals
+An E-commerce webApp. UserAuthentication using passport.js. Database used is Mongodb. 3 portals- customer, vendor, admin. Vendor can add products, his shop details and many more. Admin can approve vendor, can also approve/reject his product and also add various images features and also hd points to the customer. Customer can watch and buy products. Wishlist and cart included. Deal types also included which can be set by admin according to his interest. Search and filter also included
